@@ -1,1 +1,1 @@
-# flickr_project
+# puppr
