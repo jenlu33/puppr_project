@@ -1,0 +1,32 @@
+
+<!-- root.html.erb -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400&display=swap" rel="stylesheet">
+
+  <% if logged_in? %>
+    <script type="text/javascript">
+      window.currentUser = <%= render(
+        "api/users/user.json.jbuilder",
+        user: current_user
+      ).html_safe %>
+    </script>
+  <% end %>
+
+</head>
+
+<body>
+  <main id="root">Borken</main>
+</body>
+
+</html>
+
