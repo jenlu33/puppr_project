@@ -18,8 +18,6 @@ class Greeting extends React.Component {
     this.props.login(demoUser);
   }
 
-  //REMEMBER CLEAR ERRORS = {}
-
   render() {
     // const {currentUser} = this.props;
 
@@ -64,7 +62,6 @@ class Greeting extends React.Component {
             <h3 className="main-message-h3">Join the puppr community, home to tens of billions of pup photos</h3>
 
             <div className="start-signup">
-              {/* <Link to="/" className='start-demo'>Start for free</Link> */}
               <button onClick={this.loginDemo} className="start-demo">Start for free</button>
             </div>
           </div>

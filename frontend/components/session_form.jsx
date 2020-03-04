@@ -10,8 +10,14 @@ class SessionForm extends React.Component {
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.myClick = this.myClick.bind(this);
+    
   }
+
+  // componentWillReceiveProps(nextProps){
+  //   this.setState({
+  //     errors: nextProps.sessionErrors
+  //   })
+  // }
 
   handleSubmit(e) {
     e.preventDefault();
@@ -19,20 +25,12 @@ class SessionForm extends React.Component {
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
 
-    this.props.history.push('/')
-
     this.setState({
       username: '',
       password: ''
     })
   }
 
-  demoUser(e) {
-    e.preventDefault();
-
-    const user = Object.assign({username: demo, password:123123});
-    this
-  }
 
   update(field) {
     return e => this.setState({
@@ -40,10 +38,22 @@ class SessionForm extends React.Component {
     })
   }
 
-  myClick(e) {
-    const ele = document.getElementById("test2");
-    ele.classList.toggle(".clicked");
+  renderErrors() {
+    return (
+      <ul className="error-list">
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    )
   }
+
+  componentWillUnmount() {
+    this.props.removeErrors();
+  }
+  
 
   render() {
     const { formType } = this.props;
@@ -55,7 +65,7 @@ class SessionForm extends React.Component {
      ) : (
       <div className="change-form">
         <p>already a puppr member?</p>
-        <Link id="link" className="pointer" to='/login'>log in here</Link>
+          <Link id="link" className="pointer" to='/login'>log in here</Link>
       </div>
      )
 
@@ -65,10 +75,7 @@ class SessionForm extends React.Component {
        <p>sign up for puppr</p>
      )
 
-    //  const inputClick =() => {
-    //    const ele = document.getElementById("input-label");
-    //    ele.classList.add("input-clicked")
-    //  }
+   
 
     return(
       <div className="main-auth-div">
@@ -80,6 +87,7 @@ class SessionForm extends React.Component {
         </div>
 
         <div className="background">
+
           <div className="main-session-container">
       
 
@@ -94,7 +102,6 @@ class SessionForm extends React.Component {
                     className="input-area"
                     type="text" 
                     value={this.state.username}
-                    // placeholder="Username"
                     onChange={this.update('username')}/>
               </div>
               
@@ -107,26 +114,20 @@ class SessionForm extends React.Component {
                     onChange={this.update('password')}/>
               </div>
              
-              <input id="submit-btn" className="pointer" type="submit" value={formType}/>
+              <div className="errors">
+                <h1>{this.renderErrors()}</h1>
+              </div>
+
+              <input  id="submit-btn" className="pointer" type="submit" value={formType}/>
 
             </form>
-              {/* <input id="submit-btn" className="pointer" type="submit" value="demo user"/> */}
 
             <div className="form-separator"></div>
 
             <div className="change-form-container">
-              
               {display}
             </div>
           </div>
-          
-          {/* <div id="test">Test
-            <div onclick={this.myClick} id="test2"></div>
-          </div> */}
-
-          {/* <div className="test">Test */}
-            {/* <img src="./images/puppy2.jpg" alt=""/> */}
-          {/* </div> */}
 
         </div>
           {/* <div className="photo-cred">
