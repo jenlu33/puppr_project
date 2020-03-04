@@ -1,0 +1,153 @@
+.main-div {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 400;
+}
+
+/* NAV BAR */
+
+.nav-bar {
+  position: relative;
+}
+
+.tr {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: black;
+  opacity: 50%;
+  height: 64px;
+  width: 100%;
+}
+
+.nav-reg {
+  display: flex;
+  position: absolute;
+  width: 100%;
+}
+
+
+.main-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  width: 100%;
+  height: 64px;
+  padding: 0px 24px 0px 24px;
+}
+
+
+.puppr-h1 {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: 700;
+  font-size: 30px;
+
+}
+
+
+
+  /* Login / Signup Buttons */
+
+.nav-session {
+  cursor: pointer;
+  font-size: 15px;
+
+}
+
+.nav-ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.login {
+display: flex;
+color: white;
+text-decoration: none;
+width: auto;
+height: auto;
+margin-right: 13px;
+padding-top: 4px;
+}
+
+.box-btn {
+display: flex;
+align-items: center;
+justify-content: center;
+color: black;
+text-decoration: none;
+background-color: white;
+height: 32px;
+width: 56px;
+padding: 0px 20px;
+border-radius: 3px;
+}
+
+.box-btn:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/* WELCOME NAV */
+
+.welcome-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 60px;
+  width: 250px;
+}
+
+/* MAIN CONTENT */
+
+.content-container {
+  padding-left: 60px;
+  padding-right: 60px;
+  
+  height: 900px;
+  border: 1 px solid blue;
+}
+
+.main-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* width: 100%; */
+  height: 920px;
+  border: 1px solid red;
+}
+
+.main-message-h1 {
+  font-size: 48px;
+}
+
+.main-message-h3 {
+  margin-top: 22px;
+  margin-bottom: 50px;
+  font-size: 30px;
+}
+
+.start-demo {
+  padding: 20px 20px 20px 20px;
+  /* padding-left: 20px; */
+  /* padding-right: 20px; */
+  height: 64px;
+  width: 160px;
+  font-size: 22px;
+  text-decoration: none;
+  background-color: white;
+  color: black;
+  border-radius: 4px;
+  border: 1px solid red;
+}
+
+.start-demo:hover {
+  opacity: 80%;
+}
