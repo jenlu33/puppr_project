@@ -79,8 +79,8 @@ class SessionForm extends React.Component {
           </div>
         </div>
 
-      <div className="main-session-container">
         <div className="background">
+          <div className="main-session-container">
       
 
           <div className="option-container">

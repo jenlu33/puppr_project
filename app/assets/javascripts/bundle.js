@@ -572,9 +572,9 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         to: "/",
         className: "auth-puppr-h1"
       }, "puppr"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "main-session-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "background"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "main-session-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "option-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
