@@ -176,7 +176,6 @@
 }
 
 #submit-btn-login {
-  // margin-top: 12px;
   margin-bottom: 6px;
   padding: 8px 24px 8px 24px;
   width: 272px;
@@ -186,7 +185,29 @@
   border-radius: 4px;
   font-size: 16px;
   color: white;
-  background-color: #128fdc;;
+  background-color: #128fdc;
+}
+
+#submit-btn-login:hover {
+  opacity: 96%;
+}
+
+#submit-btn-demo {
+  margin-bottom: 6px;
+  padding: 8px 24px 8px 24px;
+  width: 272px;
+  
+  height: 40px;
+  border: 2px solid #128fdc;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #128fdc;
+  background-color: white;
+}
+
+#submit-btn-demo:hover {
+  opacity: 85%;
+  background-color:rgb(248, 248, 248) ;
 }
 
 #submit-btn-signup {
@@ -203,10 +224,8 @@
   background-color: #128fdc;;
 }
 
-
-
-#submit-btn:hover {
-  opacity: 96%;
+#submit-btn-signup:hover {
+  opacity: 90%;
 }
 
 .form-separator {

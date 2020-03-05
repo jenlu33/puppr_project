@@ -597,7 +597,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         type: "submit",
         value: formType
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        id: "submit-btn-login",
+        id: "submit-btn-demo",
         className: "pointer",
         onClick: this.loginDemo,
         type: "submit",

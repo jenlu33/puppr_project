@@ -80,7 +80,7 @@ class SessionForm extends React.Component {
         type="submit" 
         value={formType} />
        <input 
-        id="submit-btn-login" 
+        id="submit-btn-demo" 
         className="pointer" 
         onClick={this.loginDemo} 
         type="submit" 
