@@ -9,10 +9,11 @@ Rails.application.routes.draw do
 
     resources :users, only: [:create, :show] do
       resources :photos, only: [:index]
-      resources :albums, only: [:index, :create]
+      # resources :albums, only: [:index, :create]
     end
 
-    resource :photos, only: [:index, :show, :create, :update, :destroy]
+    resource :photos, except: [:new, :edit]
+    
   end
   
 end
