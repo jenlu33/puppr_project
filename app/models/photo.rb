@@ -10,13 +10,14 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+class Photo < ApplicationRecord
+  validates :title, presence: true
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+  belongs_to :user,
+    foreign_key: :user_id,
+    class_name: :User
+
+  belongs_to :album,
+    foreign_key: :album_id,
+    class_name: :Album
+end

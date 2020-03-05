@@ -61,7 +61,7 @@ class Greeting extends React.Component {
             <h3 className="main-message-h3">Join the puppr community, home to tens of billions of pup photos</h3>
 
             <div className="start-signup">
-              <button onClick={this.loginDemo} className="start-demo">Start for free</button>
+              <button onClick={this.loginDemo} className="start-demo">Start Demo</button>
             </div>
           </div>
     

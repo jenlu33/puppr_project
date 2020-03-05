@@ -274,6 +274,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     processForm: function processForm(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["log_in"])(user));
     },
+    loginDemo: function loginDemo(user) {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["log_in"])(user));
+    },
     removeErrors: function removeErrors() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["removeErrors"])());
     }
@@ -312,6 +315,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     processForm: function processForm(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["sign_up"])(user));
+    },
+    loginDemo: function loginDemo(user) {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["log_in"])(user));
     },
     removeErrors: function removeErrors() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["removeErrors"])());
@@ -426,7 +432,7 @@ var Greeting = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.loginDemo,
         className: "start-demo"
-      }, "Start for free")))));
+      }, "Start Demo")))));
     }
   }]);
 
@@ -516,6 +522,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       password: ""
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.loginDemo = _this.loginDemo.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -554,6 +561,16 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
       this.props.removeErrors();
+    }
+  }, {
+    key: "loginDemo",
+    value: function loginDemo(e) {
+      e.preventDefault();
+      var demoUser = {
+        username: "demo-user",
+        password: "password"
+      };
+      this.props.loginDemo(demoUser);
     }
   }, {
     key: "render",
@@ -615,12 +632,19 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.update('password')
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "errors"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.renderErrors())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.renderErrors())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "submit-btn-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "submit-btn",
         className: "pointer",
         type: "submit",
         value: formType
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "submit-btn",
+        onClick: this.loginDemo,
+        type: "submit",
+        value: "demo"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-separator"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "change-form-container"

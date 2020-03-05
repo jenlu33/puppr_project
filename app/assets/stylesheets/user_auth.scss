@@ -35,6 +35,10 @@
   text-decoration: none;
 }
 
+.auth-puppr-h1:hover {
+  opacity: 80%;
+}
+
 .main-session-container {
   display: flex;
   align-items: center;
@@ -166,11 +170,17 @@
 }
 
 
+.submit-btn-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 #submit-btn {
   margin-top: 12px;
   margin-bottom: 12px;
   padding: 8px 24px 8px 24px;
-  width: 272px;
+  // width: 272px;
+  width: 130px;
   height: 40px;
   border: none;
   border-radius: 4px;
