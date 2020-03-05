@@ -81,6 +81,7 @@ class SessionForm extends React.Component {
         </div>
 
         <div className="background">
+          {/* <img className="background-pic" src={window.authpup}/> */}
 
           <div className="main-session-container">
       
