@@ -40,32 +40,28 @@ export const removePhotoErrors = () => ({
 
 //general photo index
 export const fetchPhotos = () => dispatch => (PhotoAPIUtil.fetchAllPhotos()
-  .then(photos => dispatch(receiveAllPhotos(photos)))  
-)
+  .then(photos => dispatch(receiveAllPhotos(photos))))
 
 //user's photo index
 export const fetchUserPhotos = () => dispatch => (PhotoAPIUtil.fetchAllUserPhotos()
-  .then(photos => dispatch(receiveAllUserPhotos(photos)))
-)
+  .then(photos => dispatch(receiveAllUserPhotos(photos))))
 
 //photo show
 export const fetchPhoto = (photoId) => dispatch => (PhotoAPIUtil.fetchPhoto(photoId)
-  .then(photo => dispatch(receivePhoto(photo)))
-)
+  .then(photo => dispatch(receivePhoto(photo))))
 
 //photo create
 export const createPhoto = (photo) => dispatch => (PhotoAPIUtil.fetchPhoto(photo)
-  .then(photo => dispatch(createPhoto(photo)))
-)
+  .then(photo => dispatch(createPhoto(photo)),
+        (error) => dispatch(receivePhotoErrors(error.responseJSON))))
 
 //photo update
 export const updatePhoto = (photo) => dispatch => (PhotoAPIUtil.fetchPhoto(photo)
-  .then(photo => dispatch(receivePhoto(photo)))
-)
+  .then(photo => dispatch(receivePhoto(photo)),
+        (error) => dispatch(receivePhotoErrors(error.responseJSON))))
 
 //photo delete
 export const deletePhoto = (photoId) => dispatch => (PhotoAPIUtil.deletePhoto(photoId)
-  .then(() => dispatch(removePhoto(photoId)))
-)
+  .then(() => dispatch(removePhoto(photoId))))
 
 
