@@ -589,6 +589,27 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         className: "pointer",
         to: "/login"
       }, "log in here"));
+      var demoOption = formType === 'log in' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "submit-btn-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "submit-btn-login",
+        className: "pointer",
+        type: "submit",
+        value: formType
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "submit-btn-login",
+        className: "pointer",
+        onClick: this.loginDemo,
+        type: "submit",
+        value: "demo"
+      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "submit-btn-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "submit-btn-login",
+        className: "pointer",
+        type: "submit",
+        value: formType
+      }));
       var optionText = formType === 'log in' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "log in to puppr") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "sign up for puppr");
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-auth-div"
@@ -632,19 +653,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.update('password')
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "errors"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.renderErrors())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "submit-btn-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        id: "submit-btn",
-        className: "pointer",
-        type: "submit",
-        value: formType
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        id: "submit-btn",
-        onClick: this.loginDemo,
-        type: "submit",
-        value: "demo"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.renderErrors())), demoOption), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-separator"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "change-form-container"

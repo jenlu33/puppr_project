@@ -72,6 +72,32 @@ class SessionForm extends React.Component {
       </div>
      )
 
+     const demoOption = formType === 'log in' ? (
+       <div className="submit-btn-container">
+         <input 
+        id="submit-btn-login" 
+        className="pointer" 
+        type="submit" 
+        value={formType} />
+       <input 
+        id="submit-btn-login" 
+        className="pointer" 
+        onClick={this.loginDemo} 
+        type="submit" 
+        value="demo" />
+       </div>
+       
+     ) : (
+       <div className="submit-btn-container">
+            <input
+        id="submit-btn-login"
+        className="pointer"
+        type="submit"
+        value={formType} />
+       </div>
+   
+    )
+
      const optionText = formType === 'log in' ? (
        <p>log in to puppr</p>
      ) : (
@@ -122,10 +148,9 @@ class SessionForm extends React.Component {
                 <h1>{this.renderErrors()}</h1>
               </div>
 
-              <div className="submit-btn-container">
-                <input  id="submit-btn" className="pointer" type="submit" value={formType}/>
-                <input id="submit-btn" onClick={this.loginDemo} type="submit" value="demo"/>
-              </div>
+              
+            {demoOption}
+              
 
             </form>
 

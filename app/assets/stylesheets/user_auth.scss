@@ -90,9 +90,8 @@
 
 .logo-container {
   display: flex;
-  // background-image: url("./flickr-logo.png");
   background: image-url('flickr-logo.png');
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   width: 42px;
   height: 52px;
@@ -172,15 +171,16 @@
 
 .submit-btn-container {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }
 
-#submit-btn {
-  margin-top: 12px;
-  margin-bottom: 12px;
+#submit-btn-login {
+  // margin-top: 12px;
+  margin-bottom: 6px;
   padding: 8px 24px 8px 24px;
-  // width: 272px;
-  width: 130px;
+  width: 272px;
+  
   height: 40px;
   border: none;
   border-radius: 4px;
@@ -188,6 +188,22 @@
   color: white;
   background-color: #128fdc;;
 }
+
+#submit-btn-signup {
+  // margin-top: 12px;
+  margin-bottom: 12px;
+  padding: 8px 24px 8px 24px;
+  width: 272px;
+  
+  height: 40px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  color: white;
+  background-color: #128fdc;;
+}
+
+
 
 #submit-btn:hover {
   opacity: 96%;
