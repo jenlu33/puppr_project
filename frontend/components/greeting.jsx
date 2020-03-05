@@ -19,7 +19,6 @@ class Greeting extends React.Component {
   }
 
   render() {
-    // const {currentUser} = this.props;
 
     const display = this.props.currentUser ? (
       <div className="welcome-nav">
@@ -42,7 +41,7 @@ class Greeting extends React.Component {
       </nav>
       
     );
-    // debugger
+  
     return (
       <div className="main-div">
         <div className="nav-bar">

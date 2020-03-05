@@ -13,12 +13,6 @@ class SessionForm extends React.Component {
     
   }
 
-  // componentWillReceiveProps(nextProps){
-  //   this.setState({
-  //     errors: nextProps.sessionErrors
-  //   })
-  // }
-
   handleSubmit(e) {
     e.preventDefault();
 
