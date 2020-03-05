@@ -14,6 +14,7 @@ export const fetchAllUserPhotos = (userId) => (
   })
 )
 
+//show photo
 export const fetchPhoto = (photoId) => (
   $.ajax({
     url: `/api/photos/${photoId}`,
@@ -21,6 +22,7 @@ export const fetchPhoto = (photoId) => (
   })
 )
 
+//upload photo
 export const createPhoto = (photo) => (
   $.ajax({
     url: "api/photos",
@@ -29,6 +31,7 @@ export const createPhoto = (photo) => (
   })
 )
 
+//update photo
 export const updatePhoto = (photo) => (
   $.ajax({
     url: "api/photos",
@@ -37,6 +40,7 @@ export const updatePhoto = (photo) => (
   })
 )
 
+//delete photo
 export const deletePhoto = (photoId) => (
   $.ajax({
     url: `api/photos/${photoId}`,

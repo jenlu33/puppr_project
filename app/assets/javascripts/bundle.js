@@ -200,12 +200,9 @@ var App = function App() {
     path: "/signup",
     component: _containers_signup_form_container__WEBPACK_IMPORTED_MODULE_4__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/",
-    component: _containers_greeting_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     exact: true,
     path: "/",
-    component: _containers_home_container__WEBPACK_IMPORTED_MODULE_6__["default"]
+    component: _containers_greeting_container__WEBPACK_IMPORTED_MODULE_3__["default"]
   })));
 };
 
@@ -459,7 +456,20 @@ var Greeting = /*#__PURE__*/function (_React$Component) {
         className: "main-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "puppr-h1"
-      }, "puppr"), display))));
+      }, "puppr"), display))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "content-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "main-message"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "main-message-h1"
+      }, "Find your inspiration."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "main-message-h3"
+      }, "Join the puppr community, home to tens of billions of pup photos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "start-signup"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.loginDemo,
+        className: "start-demo"
+      }, "Start Demo")))));
     }
   }]);
 
@@ -515,22 +525,21 @@ var Home = /*#__PURE__*/function (_React$Component) {
   _createClass(Home, [{
     key: "render",
     value: function render() {
+      var currentUser = this.props.currentUser;
+      var display = currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "LOGGED IN WOOHOO") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-home-div"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "LOGGED IN WOOHOO"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "content-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "main-message"
+        className: "nav-bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tr"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "nav-reg"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+        className: "main-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "main-message-h1"
-      }, "Find your inspiration."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "main-message-h3"
-      }, "Join the puppr community, home to tens of billions of pup photos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "start-signup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.loginDemo,
-        className: "start-demo"
-      }, "Start Demo")))));
+        className: "puppr-h1"
+      }, "puppr")))), display);
     }
   }]);
 

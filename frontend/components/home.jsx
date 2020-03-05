@@ -7,21 +7,30 @@ class Home extends React.Component {
   }
 
   render() {
+    const {currentUser} = this.props;
+
+    const display = currentUser ? (
+      <h1>LOGGED IN WOOHOO</h1>
+    ) : (
+      <div></div>
+    )
+
+
     return(
       <div className="main-home-div">
-        <h1>LOGGED IN WOOHOO</h1>
+        <div className="nav-bar">
+          <div className="tr"></div>
+          <div className="nav-reg">
 
-        <div className="content-container">
-          <div className="main-message">
-            <h1 className="main-message-h1">Find your inspiration.</h1>
-            <h3 className="main-message-h3">Join the puppr community, home to tens of billions of pup photos</h3>
-
-            <div className="start-signup">
-              <button onClick={this.loginDemo} className="start-demo">Start Demo</button>
-            </div>
+            <header className="main-header">
+              <h1 className="puppr-h1">puppr</h1>
+             
+            </header>
           </div>
-
         </div>
+
+        {display}
+        
       </div>
     )
   }
