@@ -37,9 +37,9 @@ export const updatePhoto = (photo) => (
   })
 )
 
-export const deletePhoto = () => (
+export const deletePhoto = (photoId) => (
   $.ajax({
-    url: "api/photos",
+    url: `api/photos/${photoId}`,
     method: "DELETE"
   })
 )
