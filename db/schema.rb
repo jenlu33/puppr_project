@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_05_174251) do
+ActiveRecord::Schema.define(version: 2020_03_05_202350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,11 +20,7 @@ ActiveRecord::Schema.define(version: 2020_03_05_174251) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "comments", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["name", "user_id"], name: "index_albums_on_name_and_user_id", unique: true
   end
 
   create_table "photos", force: :cascade do |t|
@@ -34,11 +30,9 @@ ActiveRecord::Schema.define(version: 2020_03_05_174251) do
     t.string "caption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_photos_on_album_id"
+    t.index ["title", "user_id"], name: "index_photos_on_title_and_user_id", unique: true
+    t.index ["user_id"], name: "index_photos_on_user_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
