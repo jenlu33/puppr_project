@@ -1,1 +1,1 @@
-@photo.extract! :id, :title
+@photo.extract! :id, :user_id, :title, :caption
