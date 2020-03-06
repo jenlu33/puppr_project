@@ -5,7 +5,9 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import GreetingContainer from './containers/greeting_container';
 import SignupContainer from './containers/signup_form_container';
 import LoginContainer from './containers/login_form_container';
-import HomeContainer from './containers/home_container';
+import PhotoContainer from './containers/photo_index_container';
+
+// import HomeContainer from './containers/home_container';
 
 const App = () => (
   <div>
@@ -14,6 +16,7 @@ const App = () => (
       <AuthRoute path="/signup" component={SignupContainer} />
       {/* <ProtectedRoute path="/feed" component={HomeContainer} /> */}
       <Route exact path="/" component={GreetingContainer} />
+      <ProtectedRoute path="/" component={PhotoContainer} />
     </Switch>
   </div>
 )
