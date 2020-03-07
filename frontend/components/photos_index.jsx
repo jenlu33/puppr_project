@@ -22,8 +22,8 @@ class PhotosIndex extends React.Component {
         { <LoggedInHeader /> }
 
         <div></div>
-        <div>
-          <ul>
+        <div className="photos-container">
+          <ul className="photos-ul">
             {
               photos.map(photo => 
                 <li 

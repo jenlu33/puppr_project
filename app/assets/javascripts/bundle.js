@@ -320,7 +320,7 @@ var App = function App() {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["AuthRoute"], {
     path: "/signup",
     component: _containers_signup_form_container__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     path: "/feed",
     component: _containers_photo_index_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
@@ -786,7 +786,11 @@ var PhotosIndex = /*#__PURE__*/function (_React$Component) {
       var photos = this.props.photos;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-photo-index-div"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_logged_in_header__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, photos.map(function (photo) {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_logged_in_header__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "photos-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "photos-ul"
+      }, photos.map(function (photo) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: photo.id,
           className: "photo-index-item",
@@ -891,9 +895,17 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   _createClass(SessionForm, [{
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this2 = this;
+
       e.preventDefault();
       var user = Object.assign({}, this.state);
-      this.props.processForm(user);
+      this.props.processForm(user).then(function () {
+        return _this2.props.history.push('/feed');
+      }); // if (this.props.formType === 'sign up') {
+      //   this.props.processForm(user)
+      //     .then(() => this.props.history.push('/feed'))
+      // }
+
       this.setState({
         username: '',
         password: ''
@@ -902,10 +914,10 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "update",
     value: function update(field) {
-      var _this2 = this;
+      var _this3 = this;
 
       return function (e) {
-        return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
+        return _this3.setState(_defineProperty({}, field, e.currentTarget.value));
       };
     }
   }, {

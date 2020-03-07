@@ -17,7 +17,13 @@ class SessionForm extends React.Component {
     e.preventDefault();
 
     const user = Object.assign({}, this.state);
-    this.props.processForm(user);
+    this.props.processForm(user)
+      .then(() => this.props.history.push('/feed'));
+
+    // if (this.props.formType === 'sign up') {
+    //   this.props.processForm(user)
+    //     .then(() => this.props.history.push('/feed'))
+    // }
 
     this.setState({
       username: '',
