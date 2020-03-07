@@ -9,7 +9,7 @@ export const RECEIVE_PHOTO_ERRORS = "RECEIVE_ERRORS";
 export const REMOVE_PHOTO_ERRORS = "REMOVE_ERRORS";
 
 
-const receiveAllPhotos = (photos) => ({
+const receivePhotos = (photos) => ({
   type: RECEIVE_ALL_PHOTOS,
   photos
 })
@@ -39,12 +39,15 @@ export const removePhotoErrors = () => ({
 })
 
 //general photo index
-export const fetchPhotos = () => dispatch => (PhotoAPIUtil.fetchAllPhotos()
-  .then(photos => dispatch(receiveAllPhotos(photos))))
+export const fetchPhotos = () => dispatch => {
+  // debugger
+  return (
+  PhotoAPIUtil.fetchPhotos().then(photos => dispatch(receivePhotos(photos))))
+}
 
-//user's photo index
-export const fetchUserPhotos = () => dispatch => (PhotoAPIUtil.fetchAllUserPhotos()
-  .then(photos => dispatch(receiveAllUserPhotos(photos))))
+// user's photo index
+// export const fetchUserPhotos = () => dispatch => (PhotoAPIUtil.fetchAllUserPhotos()
+//   .then(photos => dispatch(receiveAllUserPhotos(photos))))
 
 //photo show
 export const fetchPhoto = (photoId) => dispatch => (PhotoAPIUtil.fetchPhoto(photoId)

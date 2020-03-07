@@ -1,18 +1,21 @@
 //photo feed (all photos in general)
-export const fetchAllPhotos = () => (
-  $.ajax({
-    url: "/api/photos",
-    method: "GET"
-  })
-)
+export const fetchPhotos = () => {
+  // debugger
+  return (
+    $.ajax({
+      url: "/api/photos",
+      method: "GET"
+    })
+  )
+}
 
 //all photos of specified user
-export const fetchAllUserPhotos = (userId) => (
-  $.ajax({
-    url: `/api/users/${userId}/photos`,
-    method: "GET"
-  })
-)
+// export const fetchAllUserPhotos = (userId) => (
+//   $.ajax({
+//     url: `/api/users/${userId}/photos`,
+//     method: "GET"
+//   })
+// )
 
 //show photo
 export const fetchPhoto = (photoId) => (

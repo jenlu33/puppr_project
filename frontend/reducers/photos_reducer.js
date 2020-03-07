@@ -7,7 +7,7 @@ import {
 
 const photosReducer = (state = {}, action) => {
   Object.freeze(state);
-
+  // debugger
   switch (action.type) {
     case RECEIVE_ALL_PHOTOS:
       return Object.assign({}, state, action.photos)
@@ -15,10 +15,10 @@ const photosReducer = (state = {}, action) => {
     //   return Object.assign({}, state, action.userId)
     case RECEIVE_PHOTO:
       return Object.assign({}, state, {[action.photo.id]: action.photo})
-    case REMOVE_PHOTO:
-      let newState = Object.assign({}, state);
-      delete newState[action.photoId];
-      return newState;
+    // case REMOVE_PHOTO:
+    //   let newState = Object.assign({}, state);
+    //   delete newState[action.photoId];
+    //   return newState;
     default:
       return state;
   }

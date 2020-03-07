@@ -12,13 +12,15 @@
 #
 class Photo < ApplicationRecord
   validates :title, presence: true
-  validates :title, uniqueness: {scope: :user_id}
+  # validates :title, uniqueness: {scope: :user_id}
+
+  has_one_attached :photo
 
   belongs_to :user,
     foreign_key: :user_id,
     class_name: :User
 
-  belongs_to :album,
-    foreign_key: :album_id,
-    class_name: :Album
+  # belongs_to :album,
+  #   foreign_key: :album_id,
+  #   class_name: :Album
 end

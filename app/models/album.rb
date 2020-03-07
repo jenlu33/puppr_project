@@ -10,7 +10,7 @@
 #
 class Album < ApplicationRecord
   validates :name, presence: true
-  validates :name, uniquness: {scope: :user_id}
+  # validates :name, uniquness: {scope: :user_id}
 
   belongs_to :user,
     foreign_key: :user_id,

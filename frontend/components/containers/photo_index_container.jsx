@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import PhotoIndex from '../containers';
-import { fetchAllPhotos } from '../../util/photo_api_util';
+import PhotoIndex from '../photos_index';
+import { fetchPhotos } from '../../actions/photo_actions';
 
 const mapStateToProps = state => ({
   currentUser: state.entities.users[state.session.id],
@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  displayPhotos: () => dispatch(fetchAllPhotos())
+  displayPhotos: (photos) => dispatch(fetchPhotos(photos)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(PhotoIndex);
+export default connect(mapStateToProps,mapDispatchToProps)(PhotoIndex);

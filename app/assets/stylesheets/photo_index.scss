@@ -1,0 +1,23 @@
+.main-photo-index-div {
+  // border: 1px solid red;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 400;
+
+  width: 100%;
+  height: 100vh;
+  background-color: #d9f3ff;
+}
+
+// logged in header
+
+.loggedin-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: calc(100% - 92%);
+  margin-right: calc(100% - 92%);
+  min-width: 250px;
+  width: auto;
+  height: 48px;
+  // position: sticky;
+}
