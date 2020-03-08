@@ -24,4 +24,4 @@ user1 = User.create!(username: 'jen', password: 'password')
 # user11 = User.create!(username: 'maltesefalcon95', password: 'password')
 
 photo1 = Photo.create!(user_id: 1, title: 'doggo', caption: 'a doggo!')
-photo1.picture.attach(io: open("https://puppr-dev.s3-us-west-1.amazonaws.com/bCedQmDXo1C7cjruKBDW3Cs2"), filename:'p1.jpeg')
+# photo1.picture.attach(io: open("https://puppr-dev.s3-us-west-1.amazonaws.com/bCedQmDXo1C7cjruKBDW3Cs2"), filename:'p1.jpeg')
