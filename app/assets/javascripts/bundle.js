@@ -159,7 +159,6 @@ var removePhotoErrors = function removePhotoErrors() {
 
 var fetchPhotos = function fetchPhotos() {
   return function (dispatch) {
-    // debugger
     return _util_photo_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchPhotos"]().then(function (photos) {
       return dispatch(receivePhotos(photos));
     });
@@ -777,7 +776,6 @@ var PhotosIndex = /*#__PURE__*/function (_React$Component) {
   _createClass(PhotosIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      // debugger
       this.props.displayPhotos();
     }
   }, {
@@ -1161,7 +1159,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var photosReducer = function photosReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(state); // debugger
+  Object.freeze(state);
 
   switch (action.type) {
     case _actions_photo_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_PHOTOS"]:
@@ -1361,7 +1359,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deletePhoto", function() { return deletePhoto; });
 //photo feed (all photos in general)
 var fetchPhotos = function fetchPhotos() {
-  // debugger
   return $.ajax({
     url: "/api/photos",
     method: "GET"

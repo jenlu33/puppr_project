@@ -1,6 +1,5 @@
 //photo feed (all photos in general)
 export const fetchPhotos = () => {
-  // debugger
   return (
     $.ajax({
       url: "/api/photos",

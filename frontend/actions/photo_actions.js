@@ -40,7 +40,6 @@ export const removePhotoErrors = () => ({
 
 //general photo index
 export const fetchPhotos = () => dispatch => {
-  // debugger
   return (
   PhotoAPIUtil.fetchPhotos().then(photos => dispatch(receivePhotos(photos))))
 }
