@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PhotosIndex from './photos_index';
 
 class Greeting extends React.Component {
   constructor(props) {
@@ -43,8 +44,8 @@ class Greeting extends React.Component {
     );
 
     const main = this.props.currentUser ? (
-      <div>
-        <h2>logged in!</h2>
+      <div className="logged-in">
+        {/* {<PhotosIndex />} */}
       </div>
     ) : (
         <div className = "content-container">

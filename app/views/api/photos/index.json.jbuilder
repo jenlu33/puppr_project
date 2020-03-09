@@ -8,6 +8,5 @@ require 'byebug'
     if photo.photo.attached?
       json.photoUrl url_for(photo.photo)
     end
-    # json.src url_for(photo.photo)
   end
 end

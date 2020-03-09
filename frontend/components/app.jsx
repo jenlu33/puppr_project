@@ -16,7 +16,7 @@ const App = () => (
       <ProtectedRoute path="/photos/:photoId" component={PhotoContainer}/>
     </Switch>
       <Route exact path="/" component={GreetingContainer} />
-      <ProtectedRoute exact path="/" component={PhotoIndexContainer} />
+      <Route exact path="/" component={PhotoIndexContainer} />
   </div>
 )
 

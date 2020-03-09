@@ -25,21 +25,18 @@ class PhotosIndex extends React.Component {
 
     return(
       <div className="main-photo-index-div">
-        {/* { <LoggedInHeader /> } */}
-
-        <div></div>
         <div className="photos-container">
             <ul className="photos-ul">
               {
                 photos.map(photo => 
                   // users.map(user => 
                     <div className="photo-box">
-                      {/* <h2>{users[photo.id].username}</h2> */}
 
+                      {/* <h2>{users[photo.id].username}</h2> */}
                       <li 
                         key={`${photo.id}`}
                         className="photo-index-item"
-                        id={photo.id}
+                        id={`${photo.id}`}
                         onClick={this.viewPhoto}
                       >
                       </li>

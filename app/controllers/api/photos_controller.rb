@@ -6,26 +6,26 @@ class Api::PhotosController < ApplicationController
   end
 
   def show
-    @photo = Photo.find(params[:id])
+    @photo = Photo.with_attached_photos.find(params[:id])
     render :show
   end
 
-  # def create
-  #   @photo = Photo.new(photo_params)
-  #   @photo.user_id = current_user.id
+  def create
+    @photo = Photo.new(photo_params)
+    @photo.user_id = current_user.id
     
-  #   if @photo.save
-  #     render :show
-  #   else
-  #     render json: @photo.errors.full_messages, status: 422
-  #   end
-  # end
+    if @photo.save
+      render :show
+    else
+      render json: @photo.errors.full_messages, status: 422
+    end
+  end
 
-  # def update
-  # end
+  def update
+  end
 
-  # def destroy
-  # end
+  def destroy
+  end
 
   private
   

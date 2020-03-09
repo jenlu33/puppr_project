@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import {sign_up, log_in, log_out} from './actions/session_actions';
 import configureStore from './store/store';
 import Root from './components/root';
-import {} from './actions/photo_actions';
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -25,8 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   //testing
-
-  window.fetchPhotos = store.getPhotos;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
 

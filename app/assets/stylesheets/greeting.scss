@@ -6,7 +6,9 @@
 /* NAV BAR */
 
 .nav-bar {
-  position: relative;
+  // position: relative;
+  position: -webkit-sticky;
+  position: sticky;
 }
 
 .tr {

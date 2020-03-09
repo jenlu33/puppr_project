@@ -28,7 +28,8 @@ user1 = User.create!(username: 'jen', password: 'password')
 Photo.destroy_all
 
 photo1 = Photo.create!(user_id: user1.id, title: 'doggo', caption: 'a doggo!')
-# photo1.photo.attach(io: open("https://puppr-dev.s3-us-west-1.amazonaws.com/bCedQmDXo1C7cjruKBDW3Cs2"), filename:'p1.jpeg')
+  file = open('https://puppr-seeds.s3-us-west-1.amazonaws.com/p1.jpeg')
+  photo1.photo.attach(io: file, filename:'p1.jpeg')
 
 photo2 = Photo.create!(user_id: user1.id, title: 'doggo2', caption: 'a doggo!')
 photo3 = Photo.create!(user_id: user1.id, title: 'doggo3', caption: 'a doggo!')
