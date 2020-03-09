@@ -210,7 +210,7 @@ var deletePhoto = function deletePhoto(photoId) {
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_ERRORS, REMOVE_ERRORS, removeErrors, log_in, log_out, sign_up */
+/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_ERRORS, REMOVE_ERRORS, RECEIVE_ALL_USERS, removeErrors, log_in, log_out, sign_up, fetchUsers */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -219,16 +219,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOGOUT_CURRENT_USER", function() { return LOGOUT_CURRENT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ERRORS", function() { return RECEIVE_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_ERRORS", function() { return REMOVE_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_USERS", function() { return RECEIVE_ALL_USERS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeErrors", function() { return removeErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "log_in", function() { return log_in; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "log_out", function() { return log_out; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sign_up", function() { return sign_up; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchUsers", function() { return fetchUsers; });
 /* harmony import */ var _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/session_api_util */ "./frontend/util/session_api_util.js");
 
 var RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 var LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
 var RECEIVE_ERRORS = "RECEIVE_ERRORS";
 var REMOVE_ERRORS = "REMOVE_ERRORS";
+var RECEIVE_ALL_USERS = "RECEIVE_ALL_USERS";
 
 var receiveCurrentUser = function receiveCurrentUser(user) {
   return {
@@ -255,7 +258,15 @@ var removeErrors = function removeErrors() {
     type: REMOVE_ERRORS,
     errors: []
   };
+};
+
+var receiveAllUsers = function receiveAllUsers(users) {
+  return {
+    type: RECEIVE_ALL_USERS,
+    users: users
+  };
 }; //creating a new session
+
 
 var log_in = function log_in(user) {
   return function (dispatch) {
@@ -284,6 +295,13 @@ var sign_up = function sign_up(user) {
     });
   };
 };
+var fetchUsers = function fetchUsers() {
+  return function (dispatch) {
+    return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchAllUsers"]().then(function (users) {
+      return dispatch(receiveAllUsers(users));
+    });
+  };
+};
 
 /***/ }),
 
@@ -304,13 +322,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _containers_signup_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./containers/signup_form_container */ "./frontend/components/containers/signup_form_container.jsx");
 /* harmony import */ var _containers_login_form_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./containers/login_form_container */ "./frontend/components/containers/login_form_container.jsx");
 /* harmony import */ var _containers_photo_index_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./containers/photo_index_container */ "./frontend/components/containers/photo_index_container.jsx");
+/* harmony import */ var _containers_photo_show__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./containers/photo_show */ "./frontend/components/containers/photo_show.jsx");
+/* harmony import */ var _containers_photo_show__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_containers_photo_show__WEBPACK_IMPORTED_MODULE_7__);
 
 
 
 
 
 
- // import HomeContainer from './containers/home_container';
+
+
 
 var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["AuthRoute"], {
@@ -320,12 +341,15 @@ var App = function App() {
     path: "/signup",
     component: _containers_signup_form_container__WEBPACK_IMPORTED_MODULE_4__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
-    path: "/feed",
-    component: _containers_photo_index_container__WEBPACK_IMPORTED_MODULE_6__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/photos/:photoId",
+    component: _containers_photo_show__WEBPACK_IMPORTED_MODULE_7___default.a
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/",
     component: _containers_greeting_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-  })));
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
+    path: "/",
+    component: _containers_photo_index_container__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -424,6 +448,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _photos_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../photos_index */ "./frontend/components/photos_index.jsx");
 /* harmony import */ var _actions_photo_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/photo_actions */ "./frontend/actions/photo_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
 
 
 
@@ -431,7 +457,8 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state) {
   return {
     currentUser: state.entities.users[state.session.id],
-    photos: Object.values(state.entities.photos)
+    photos: Object.values(state.entities.photos),
+    users: Object.values(state.entities.users)
   };
 };
 
@@ -439,11 +466,25 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     displayPhotos: function displayPhotos(photos) {
       return dispatch(Object(_actions_photo_actions__WEBPACK_IMPORTED_MODULE_2__["fetchPhotos"])(photos));
+    },
+    getAllUsers: function getAllUsers(users) {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["fetchUsers"])(users));
     }
   };
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_photos_index__WEBPACK_IMPORTED_MODULE_1__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/containers/photo_show.jsx":
+/*!*******************************************************!*\
+  !*** ./frontend/components/containers/photo_show.jsx ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
 
 /***/ }),
 
@@ -567,19 +608,7 @@ var Greeting = /*#__PURE__*/function (_React$Component) {
         to: "/signup",
         className: "box-btn"
       }, "Sign Up"))));
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "main-greeting-div"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "nav-bar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "tr"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "nav-reg"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
-        className: "main-header"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "puppr-h1"
-      }, "puppr"), display))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      var main = this.props.currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "logged in!")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "content-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-message"
@@ -592,7 +621,20 @@ var Greeting = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.loginDemo,
         className: "start-demo"
-      }, "Start Demo")))));
+      }, "Start Demo"))));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "main-greeting-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "nav-bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tr"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "nav-reg"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+        className: "main-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "puppr-h1"
+      }, "puppr"), display))), main);
     }
   }]);
 
@@ -648,7 +690,9 @@ var LoggedInHeader = /*#__PURE__*/function (_React$Component) {
   _createClass(LoggedInHeader, [{
     key: "render",
     value: function render() {
-      var logout = this.props.logout;
+      var _this$props = this.props,
+          logout = _this$props.logout,
+          currentUser = _this$props.currentUser;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "auth-toolbar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -671,62 +715,6 @@ var LoggedInHeader = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./frontend/components/photo_index_item.jsx":
-/*!**************************************************!*\
-  !*** ./frontend/components/photo_index_item.jsx ***!
-  \**************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-var PhotoIndexItem = /*#__PURE__*/function (_React$Component) {
-  _inherits(PhotoIndexItem, _React$Component);
-
-  function PhotoIndexItem(props) {
-    _classCallCheck(this, PhotoIndexItem);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(PhotoIndexItem).call(this, props));
-  }
-
-  _createClass(PhotoIndexItem, [{
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "main-photoindexitem-div"
-      });
-    }
-  }]);
-
-  return PhotoIndexItem;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (PhotoIndexItem);
-
-/***/ }),
-
 /***/ "./frontend/components/photos_index.jsx":
 /*!**********************************************!*\
   !*** ./frontend/components/photos_index.jsx ***!
@@ -739,8 +727,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _logged_in_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./logged_in_header */ "./frontend/components/logged_in_header.jsx");
-/* harmony import */ var _photo_index_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./photo_index_item */ "./frontend/components/photo_index_item.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -751,16 +738,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
-
+ // import PhotoIndexItem from './photo_index_item';
 
 
 
@@ -768,35 +755,57 @@ var PhotosIndex = /*#__PURE__*/function (_React$Component) {
   _inherits(PhotosIndex, _React$Component);
 
   function PhotosIndex(props) {
+    var _this;
+
     _classCallCheck(this, PhotosIndex);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(PhotosIndex).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(PhotosIndex).call(this, props));
+    _this.viewPhoto = _this.viewPhoto.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(PhotosIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.displayPhotos();
+      this.props.getAllUsers();
+    }
+  }, {
+    key: "viewPhoto",
+    value: function viewPhoto(e) {
+      this.props.history.push("/photos/".concat(e.currentEvent.id));
     }
   }, {
     key: "render",
     value: function render() {
-      var photos = this.props.photos;
+      var _this2 = this;
+
+      var _this$props = this.props,
+          photos = _this$props.photos,
+          users = _this$props.users;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-photo-index-div"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_logged_in_header__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "photos-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "photos-ul"
       }, photos.map(function (photo) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: photo.id,
-          className: "photo-index-item",
-          id: photo.id
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "photo-index-details"
-        }));
-      }))));
+        return (// users.map(user => 
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "photo-box"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            key: "".concat(photo.id),
+            className: "photo-index-item",
+            id: photo.id,
+            onClick: _this2.viewPhoto
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "photo-details-container"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "photo-details"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, photo.title))))
+        );
+      } // )
+      ))));
     }
   }]);
 
@@ -1164,15 +1173,9 @@ var photosReducer = function photosReducer() {
   switch (action.type) {
     case _actions_photo_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_PHOTOS"]:
       return Object.assign({}, state, action.photos);
-    // case RECEIVE_ALL_USER_PHOTOS:
-    //   return Object.assign({}, state, action.userId)
 
     case _actions_photo_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PHOTO"]:
       return Object.assign({}, state, _defineProperty({}, action.photo.id, action.photo));
-    // case REMOVE_PHOTO:
-    //   let newState = Object.assign({}, state);
-    //   delete newState[action.photoId];
-    //   return newState;
 
     default:
       return state;
@@ -1305,6 +1308,9 @@ var usersReducer = function usersReducer() {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
       newState[action.user.id] = action.user;
       return newState;
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_USERS"]:
+      return Object.assign({}, state, action.users);
 
     default:
       return state;
@@ -1472,7 +1478,7 @@ var ProtectedRoute = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withR
 /*!*******************************************!*\
   !*** ./frontend/util/session_api_util.js ***!
   \*******************************************/
-/*! exports provided: signup, login, logout */
+/*! exports provided: signup, login, logout, fetchAllUsers */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1480,6 +1486,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signup", function() { return signup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllUsers", function() { return fetchAllUsers; });
 var signup = function signup(user) {
   return $.ajax({
     url: "/api/users",
@@ -1502,6 +1509,12 @@ var logout = function logout() {
   return $.ajax({
     url: "/api/session",
     method: "DELETE"
+  });
+};
+var fetchAllUsers = function fetchAllUsers() {
+  return $.ajax({
+    url: "/api/users",
+    method: "GET"
   });
 };
 

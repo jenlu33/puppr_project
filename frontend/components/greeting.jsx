@@ -41,6 +41,23 @@ class Greeting extends React.Component {
       </nav>
       
     );
+
+    const main = this.props.currentUser ? (
+      <div>
+        <h2>logged in!</h2>
+      </div>
+    ) : (
+        <div className = "content-container">
+          <div className = "main-message">
+            <h1 className = "main-message-h1">Find your inspiration.</h1>
+            <h3 className="main-message-h3">Join the puppr community, home to tens of billions of pup photos</h3>
+
+      <div className="start-signup">
+        <button onClick={this.loginDemo} className="start-demo">Start Demo</button>
+      </div>
+          </div >
+        </div >
+    )
   
     return (
       <div className="main-greeting-div">
@@ -54,18 +71,7 @@ class Greeting extends React.Component {
           </header>
           </div>
         </div>
-
-        <div className="content-container">
-          <div className="main-message">
-            <h1 className="main-message-h1">Find your inspiration.</h1>
-            <h3 className="main-message-h3">Join the puppr community, home to tens of billions of pup photos</h3>
-
-            <div className="start-signup">
-              <button onClick={this.loginDemo} className="start-demo">Start Demo</button>
-            </div>
-          </div>
-        </div>
-        
+        {main}
       </div>
       
     )
