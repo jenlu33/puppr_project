@@ -344,9 +344,11 @@ var App = function App() {
     path: "/photos/:photoId",
     component: _containers_photo_show__WEBPACK_IMPORTED_MODULE_7___default.a
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
     path: "/",
     component: _containers_greeting_container__WEBPACK_IMPORTED_MODULE_3__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
+    exact: true,
     path: "/",
     component: _containers_photo_index_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }));
