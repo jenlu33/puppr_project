@@ -6,7 +6,7 @@ import GreetingContainer from './containers/greeting_container';
 import SignupContainer from './containers/signup_form_container';
 import LoginContainer from './containers/login_form_container';
 import PhotoIndexContainer from './containers/photo_index_container';
-import PhotoContainer from './containers/photo_show';
+import PhotoContainer from './containers/photo_show_container';
 
 const App = () => (
   <div>

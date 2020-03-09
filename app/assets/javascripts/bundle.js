@@ -322,8 +322,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _containers_signup_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./containers/signup_form_container */ "./frontend/components/containers/signup_form_container.jsx");
 /* harmony import */ var _containers_login_form_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./containers/login_form_container */ "./frontend/components/containers/login_form_container.jsx");
 /* harmony import */ var _containers_photo_index_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./containers/photo_index_container */ "./frontend/components/containers/photo_index_container.jsx");
-/* harmony import */ var _containers_photo_show__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./containers/photo_show */ "./frontend/components/containers/photo_show.jsx");
-/* harmony import */ var _containers_photo_show__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_containers_photo_show__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _containers_photo_show_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./containers/photo_show_container */ "./frontend/components/containers/photo_show_container.jsx");
 
 
 
@@ -342,7 +341,7 @@ var App = function App() {
     component: _containers_signup_form_container__WEBPACK_IMPORTED_MODULE_4__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     path: "/photos/:photoId",
-    component: _containers_photo_show__WEBPACK_IMPORTED_MODULE_7___default.a
+    component: _containers_photo_show_container__WEBPACK_IMPORTED_MODULE_7__["default"]
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/",
@@ -459,8 +458,8 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state) {
   return {
     currentUser: state.entities.users[state.session.id],
-    photos: Object.values(state.entities.photos),
-    users: Object.values(state.entities.users)
+    photos: Object.values(state.entities.photos) // users: Object.values(state.entities.users)
+
   };
 };
 
@@ -479,14 +478,37 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/containers/photo_show.jsx":
-/*!*******************************************************!*\
-  !*** ./frontend/components/containers/photo_show.jsx ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "./frontend/components/containers/photo_show_container.jsx":
+/*!*****************************************************************!*\
+  !*** ./frontend/components/containers/photo_show_container.jsx ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _photo_show__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../photo_show */ "./frontend/components/photo_show.jsx");
+/* harmony import */ var _actions_photo_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/photo_actions */ "./frontend/actions/photo_actions.js");
 
 
+
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    photo: state.entities.photos[ownProps.match.params.photoId]
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchPhoto: function fetchPhoto(photoId) {
+      return dispatch(Object(_actions_photo_actions__WEBPACK_IMPORTED_MODULE_2__["fetchPhoto"])(photoId));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_photo_show__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
@@ -721,6 +743,78 @@ var LoggedInHeader = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
+/***/ "./frontend/components/photo_show.jsx":
+/*!********************************************!*\
+  !*** ./frontend/components/photo_show.jsx ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var PhotoShow = /*#__PURE__*/function (_React$Component) {
+  _inherits(PhotoShow, _React$Component);
+
+  function PhotoShow(props) {
+    _classCallCheck(this, PhotoShow);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(PhotoShow).call(this, props));
+  }
+
+  _createClass(PhotoShow, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchPhoto(this.props.match.params.photoId);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var photo = this.props.photo;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "main-photo-show-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "a single pup"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "photo-content-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "photo-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "back-btn"
+      }, "back to activity feed"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "single-photo-container"
+      }))));
+    }
+  }]);
+
+  return PhotoShow;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (PhotoShow);
+
+/***/ }),
+
 /***/ "./frontend/components/photos_index.jsx":
 /*!**********************************************!*\
   !*** ./frontend/components/photos_index.jsx ***!
@@ -779,16 +873,14 @@ var PhotosIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "viewPhoto",
     value: function viewPhoto(e) {
-      this.props.history.push("/photos/".concat(e.currentEvent.id));
+      this.props.history.push("/photos/".concat(e.currentTarget.id));
     }
   }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      var _this$props = this.props,
-          photos = _this$props.photos,
-          users = _this$props.users;
+      var photos = this.props.photos;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-photo-index-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -798,13 +890,16 @@ var PhotosIndex = /*#__PURE__*/function (_React$Component) {
       }, photos.map(function (photo) {
         return (// users.map(user => 
           react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "photo-box"
+            className: "photo-box",
+            key: "".concat(photo.id)
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-            key: "".concat(photo.id),
             className: "photo-index-item",
             id: "".concat(photo.id),
             onClick: _this2.viewPhoto
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            className: "index-photo",
+            src: photo.photoUrl
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "photo-details-container"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "photo-details"

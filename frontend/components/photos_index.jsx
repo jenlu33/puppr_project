@@ -17,11 +17,11 @@ class PhotosIndex extends React.Component {
   }
 
   viewPhoto(e) {
-    this.props.history.push(`/photos/${e.currentEvent.id}`)
+    this.props.history.push(`/photos/${e.currentTarget.id}`)
   }
 
   render() {
-    const { photos, users } = this.props;
+    const { photos } = this.props;
 
     return(
       <div className="main-photo-index-div">
@@ -30,15 +30,20 @@ class PhotosIndex extends React.Component {
               {
                 photos.map(photo => 
                   // users.map(user => 
-                    <div className="photo-box">
+                    <div className="photo-box"
+                        key={`${photo.id}`}
+                    >
 
                       {/* <h2>{users[photo.id].username}</h2> */}
                       <li 
-                        key={`${photo.id}`}
+                        
                         className="photo-index-item"
                         id={`${photo.id}`}
                         onClick={this.viewPhoto}
                       >
+                        <img 
+                          className="index-photo"
+                          src={photo.photoUrl}/>
                       </li>
 
                       <div className="photo-details-container">

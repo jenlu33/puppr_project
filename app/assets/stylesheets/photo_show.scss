@@ -1,0 +1,30 @@
+.main-photo-show-div {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 400;
+}
+
+.photo-content-container {
+  width: 100vw;
+  height: 85vh;
+  background-color: #212124;
+  color: white;
+  border: 1px solid red;
+}
+
+.photo-content {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid blue;
+}
+
+.back-btn {
+  border: none;
+  background-color: #212124;
+  color: white;
+  width: 150px;
+  height: auto;
+}
+
+.single-photo-container {
+
+}
