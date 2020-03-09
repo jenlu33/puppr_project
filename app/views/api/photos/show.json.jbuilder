@@ -1,1 +1,1 @@
-@photo.extract! :id, :user_id, :title, :caption
+json.partial! '/api/photos/photo', photo: @photo
