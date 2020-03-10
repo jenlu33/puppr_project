@@ -5,26 +5,52 @@
 
 .photo-content-container {
   width: 100vw;
-  height: 85vh;
+  height: 75vh;
   background-color: #212124;
   color: white;
-  border: 1px solid red;
+  // border: 1px solid red;
 }
 
 .photo-content {
   display: flex;
   flex-direction: column;
+  align-items: center;
   border: 1px solid blue;
+  height: 90%;
 }
 
 .back-btn {
   border: none;
   background-color: #212124;
   color: white;
+  font-size: 12px;
   width: 150px;
   height: auto;
+  padding: 5px;
 }
 
 .single-photo-container {
-
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  height: 100%;
+  border: 1px solid yellow;
 }
+
+.show-img {
+  object-fit: scale-down;
+  width: 100%;
+  min-width: 400px;
+}
+
+.sub-photo-container {
+  width: 100%;
+  
+}
+
+.profile-pic {
+  border-radius: 50px;
+  width: 60px;
+  height: 60px;
+}
+

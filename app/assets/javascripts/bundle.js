@@ -496,7 +496,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    photo: state.entities.photos[ownProps.match.params.photoId]
+    photo: state.entities.photos[ownProps.match.params.photoId] // photoUsers: Object.values(state.entities.users[ownProps.match.params.photoId])
+
   };
 };
 
@@ -765,9 +766,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -780,9 +781,13 @@ var PhotoShow = /*#__PURE__*/function (_React$Component) {
   _inherits(PhotoShow, _React$Component);
 
   function PhotoShow(props) {
+    var _this;
+
     _classCallCheck(this, PhotoShow);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(PhotoShow).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(PhotoShow).call(this, props));
+    _this.prevPage = _this.prevPage.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(PhotoShow, [{
@@ -791,20 +796,46 @@ var PhotoShow = /*#__PURE__*/function (_React$Component) {
       this.props.fetchPhoto(this.props.match.params.photoId);
     }
   }, {
+    key: "prevPage",
+    value: function prevPage(e) {
+      e.preventDefault();
+      this.props.history.push('/');
+    }
+  }, {
     key: "render",
     value: function render() {
-      var photo = this.props.photo;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "main-photo-show-div"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "a single pup"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "photo-content-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "photo-content"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "back-btn"
-      }, "back to activity feed"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "single-photo-container"
-      }))));
+      var _this$props = this.props,
+          photo = _this$props.photo,
+          photoUsers = _this$props.photoUsers;
+
+      if (!photo) {
+        return null;
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "main-photo-show-div"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "a single pup"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "photo-content-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: this.prevPage,
+          className: "back-btn"
+        }, "\u2190 back to activity feed"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "photo-content"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "single-photo-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "show-img",
+          src: photo.photoUrl,
+          alt: photo.title
+        })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "sub-photo-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "User Info Here"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "profile-pic-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "profile-pic",
+          src: photo.photoUrl,
+          alt: ""
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)));
+      }
     }
   }]);
 
@@ -1003,13 +1034,10 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   _createClass(SessionForm, [{
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      var _this2 = this;
-
       e.preventDefault();
       var user = Object.assign({}, this.state);
-      this.props.processForm(user).then(function () {
-        return _this2.props.history.push('/feed');
-      }); // if (this.props.formType === 'sign up') {
+      this.props.processForm(user); // .then(() => this.props.history.push('/feed'));
+      // if (this.props.formType === 'sign up') {
       //   this.props.processForm(user)
       //     .then(() => this.props.history.push('/feed'))
       // }
@@ -1022,10 +1050,10 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "update",
     value: function update(field) {
-      var _this3 = this;
+      var _this2 = this;
 
       return function (e) {
-        return _this3.setState(_defineProperty({}, field, e.currentTarget.value));
+        return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
       };
     }
   }, {
