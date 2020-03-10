@@ -82,6 +82,10 @@
   // overflow: hidden;
 }
 
+.index-photo:hover {
+  cursor: pointer;
+}
+
 .photo-details-container {
   display: flex;
   align-items: center;

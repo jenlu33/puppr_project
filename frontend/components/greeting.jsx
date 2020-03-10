@@ -45,7 +45,6 @@ class Greeting extends React.Component {
 
     const main = this.props.currentUser ? (
       <div className="logged-in">
-        {/* {<PhotosIndex />} */}
       </div>
     ) : (
         <div className = "content-container">

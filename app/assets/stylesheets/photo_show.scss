@@ -1,11 +1,13 @@
 .main-photo-show-div {
   font-family: "Josefin Sans", sans-serif;
   font-weight: 400;
+  height: 1000px
 }
 
 .photo-content-container {
   width: 100vw;
-  height: 75vh;
+  height: 80vh;
+  margin-bottom: 16px;
   background-color: #212124;
   color: white;
   // border: 1px solid red;
@@ -15,7 +17,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid blue;
+  // border: 1px solid blue;
   height: 90%;
 }
 
@@ -26,35 +28,118 @@
   font-size: 14px;
   width: 200px;
   height: auto;
-  padding: 5px;
+  padding: 18px;
 }
 
 .back-btn:hover {
   cursor: pointer;
 }
 
+.back-btn:focus {
+  border: none;
+  outline: none;
+}
+
+.back-btn:active {
+  border: none;
+  outline: none;
+}
+
 .single-photo-container {
   display: flex;
   justify-content: center;
-  width: 90%;
+  width: 85%;
   height: 100%;
-  border: 1px solid yellow;
+  // border: 1px solid yellow;
 }
 
 .show-img {
   object-fit: scale-down;
   width: 100%;
-  min-width: 400px;
+  min-width: 450px;
+}
+
+//PHOTO INFO
+
+h2 {
+  margin-bottom: 2px;
 }
 
 .sub-photo-container {
+  // border: 1px solid purple;
   width: 100%;
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sub-photo-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  // border: 1px solid green;
+}
+
+.photo-info {
+  // border: 1px solid blue;
+  border-bottom: 1px solid lightgrey;
+  display: flex;
+  align-items: center;
+  width: 80%;
+  max-width: 950px;
+  min-width: 550px;
+}
+
+.username {
+  width: auto;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+.username:hover {
+  cursor: pointer;
+}
+
+.title {
+  font-size: 16px;
+}
+
+.caption {
+  font-weight: 300;
+}
+
+.profile-pic-container {
+  height: 70px;
+  width: 70px;
+  margin: 15px;
 }
 
 .profile-pic {
   border-radius: 50px;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
 }
 
+//COMMENTS
+
+
+.comments-container {
+  // border: 1px solid red;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  width: 80%;
+  max-width: 950px;
+  min-width: 550px;
+}
+
+.commenter-photo {
+  margin: 10px;
+}
+
+.comment {
+  margin-left: 20px;
+  font-weight: 300;
+  // border: 1px solid blue
+}

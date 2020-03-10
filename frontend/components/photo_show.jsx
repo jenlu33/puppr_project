@@ -11,7 +11,6 @@ class PhotoShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchPhoto(this.props.match.params.photoId);
-    // this.props.fetchUsers()
   }
 
   prevPage(e) {
@@ -20,7 +19,7 @@ class PhotoShow extends React.Component {
   }
 
   render() {
-    const {photo, users} = this.props;
+    const { photo } = this.props;
 
     if (!photo) {
       return null
@@ -31,9 +30,8 @@ class PhotoShow extends React.Component {
           
           {<LoggedInHeader />}
 
-          {/* <h2>a single pup</h2> */}
           <div className="photo-content-container">
-            <button onClick={this.prevPage} className="back-btn">← back to activity feed</button>
+            <button onClick={this.prevPage} className="back-btn">← Back to activity feed</button>
 
             <div className="photo-content">
               <div className="single-photo-container">
@@ -44,16 +42,38 @@ class PhotoShow extends React.Component {
           </div>
 
           <div className="sub-photo-container">
-            <h2>User Info Here</h2>
-            <div className="profile-pic-container">
-              <img className="profile-pic" src={photo.photoUrl} alt=""/>
+            <div className="sub-photo-content">
+
+              <div className="photo-info">
+                <div className="profile-pic-container">
+                  <img className="profile-pic" src={photo.photoUrl} alt=""/>
+                </div>
+              
+                <div className="user-photo-info">
+                  <h2 className="username">{photo.user.username}</h2>
+                  <h2 className="title">{photo.title}</h2>
+                  <h2 className="caption">{photo.caption}</h2>
+                </div>
+
+                <div className="views"></div>
+              </div>
             </div>
-            <div className="photo-info">
-              {photo.user.username}
-              <h2>{photo.title}</h2>
-              <h2>{photo.caption}</h2>
-            </div>
-          </div>
+
+              <div className="comments-container">
+                <div className="commenter-photo">
+                  <h2>image</h2>
+                </div>
+
+                <div className="comment">
+
+                  <h2>Comments go here</h2>
+                  <h2>comment comment comment comment comment comment comment comment
+                    comment comment comment comment comment comment comment comment comment 
+                    comment comment comment</h2>
+                </div>
+              </div>
+
+          </div> {/*sub-photo-container */}
         </div>
       )
     }

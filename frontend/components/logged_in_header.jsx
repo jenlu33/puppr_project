@@ -7,19 +7,14 @@ class LoggedInHeader extends React.Component {
   }
 
   render() {
-    const { logout, currentUser } = this.props;
-    const lg = currentUser ? (
-      <Link onClick={logout} className="box-btn" to="/">Logout</Link>
-    ) : (
-      <div></div>
-    )
+    const { logout } = this.props;
 
     return (
       <div>
         <div className="auth-toolbar">
           <div className="loggedin-header-content">
-            <Link to="/feed" className="auth-puppr-h1">puppr</Link>
-            {lg}
+            <Link to="/" className="auth-puppr-h1">puppr</Link>
+            {/* <Link onClick={logout} className="box-btn" to="/">Logout</Link> */}
           </div>
         </div>
       </div>

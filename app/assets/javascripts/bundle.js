@@ -488,6 +488,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _photo_show__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../photo_show */ "./frontend/components/photo_show.jsx");
 /* harmony import */ var _actions_photo_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/photo_actions */ "./frontend/actions/photo_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
 
 
 
@@ -503,6 +505,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchPhoto: function fetchPhoto(photoId) {
       return dispatch(Object(_actions_photo_actions__WEBPACK_IMPORTED_MODULE_2__["fetchPhoto"])(photoId));
+    },
+    logout: function logout() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["log_out"])());
     }
   };
 };
@@ -717,22 +722,15 @@ var LoggedInHeader = /*#__PURE__*/function (_React$Component) {
   _createClass(LoggedInHeader, [{
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          logout = _this$props.logout,
-          currentUser = _this$props.currentUser;
-      var lg = currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        onClick: logout,
-        className: "box-btn",
-        to: "/"
-      }, "Logout") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+      var logout = this.props.logout;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "auth-toolbar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "loggedin-header-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/feed",
+        to: "/",
         className: "auth-puppr-h1"
-      }, "puppr"), lg)));
+      }, "puppr"))));
     }
   }]);
 
@@ -794,7 +792,7 @@ var PhotoShow = /*#__PURE__*/function (_React$Component) {
   _createClass(PhotoShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchPhoto(this.props.match.params.photoId); // this.props.fetchUsers()
+      this.props.fetchPhoto(this.props.match.params.photoId);
     }
   }, {
     key: "prevPage",
@@ -805,9 +803,7 @@ var PhotoShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          photo = _this$props.photo,
-          users = _this$props.users;
+      var photo = this.props.photo;
 
       if (!photo) {
         return null;
@@ -819,7 +815,7 @@ var PhotoShow = /*#__PURE__*/function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           onClick: this.prevPage,
           className: "back-btn"
-        }, "\u2190 back to activity feed"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, "\u2190 Back to activity feed"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "photo-content"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "single-photo-container"
@@ -829,15 +825,33 @@ var PhotoShow = /*#__PURE__*/function (_React$Component) {
           alt: photo.title
         })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "sub-photo-container"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "User Info Here"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "sub-photo-content"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "photo-info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "profile-pic-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "profile-pic",
           src: photo.photoUrl,
           alt: ""
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "photo-info"
-        }, photo.user.username, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, photo.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, photo.caption))));
+          className: "user-photo-info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+          className: "username"
+        }, photo.user.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+          className: "title"
+        }, photo.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+          className: "caption"
+        }, photo.caption)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "views"
+        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "comments-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "commenter-photo"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "image")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "comment"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Comments go here"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment")))), " ");
       }
     }
   }]);
