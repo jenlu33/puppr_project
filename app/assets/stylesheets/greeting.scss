@@ -6,7 +6,7 @@
 /* NAV BAR */
 
 .nav-bar {
-  // position: relative;
+  
   position: -webkit-sticky;
   position: sticky;
 }
@@ -123,7 +123,7 @@ border-radius: 3px;
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 920px;
+  height: 100vh;
   // min-width: 50vw;
   // border: 1px solid red;
   // opacity: 90%;
@@ -140,9 +140,6 @@ border-radius: 3px;
 }
 
 .start-demo {
-  // padding: 15px 20px 20px 20px;
-  /* padding-left: 20px; */
-  /* padding-right: 20px; */
   display: flex;
   align-items: center;
   justify-content: center;

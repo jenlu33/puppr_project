@@ -467,8 +467,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     displayPhotos: function displayPhotos(photos) {
       return dispatch(Object(_actions_photo_actions__WEBPACK_IMPORTED_MODULE_2__["fetchPhotos"])(photos));
-    } // getAllUsers: (users) => dispatch(fetchUsers(users))
-
+    }
   };
 };
 
@@ -571,6 +570,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _photos_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./photos_index */ "./frontend/components/photos_index.jsx");
+/* harmony import */ var _logged_in_header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./logged_in_header */ "./frontend/components/logged_in_header.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -588,6 +588,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -620,12 +621,20 @@ var Greeting = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var display = this.props.currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "welcome-nav"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Welcome ", this.props.currentUser.username, "!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        onClick: this.props.logout,
-        className: "box-btn",
-        to: "/"
-      }, "Logout")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+        className: "loggedin-nav"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_logged_in_header__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        logout: this.props.logout
+      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "nav-bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tr"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "nav-reg"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+        className: "main-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "puppr-h1"
+      }, "puppr"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "nav-session"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-bar"
@@ -637,7 +646,7 @@ var Greeting = /*#__PURE__*/function (_React$Component) {
       }, "Log In")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/signup",
         className: "box-btn"
-      }, "Sign Up"))));
+      }, "Sign Up")))))));
       var main = this.props.currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "logged-in"
       }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -656,17 +665,7 @@ var Greeting = /*#__PURE__*/function (_React$Component) {
       }, "Start Demo"))));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-greeting-div"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "nav-bar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "tr"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "nav-reg"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
-        className: "main-header"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "puppr-h1"
-      }, "puppr"), display))), main);
+      }, display, main);
     }
   }]);
 
@@ -724,13 +723,17 @@ var LoggedInHeader = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var logout = this.props.logout;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "auth-toolbar"
+        className: "loggedin-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "loggedin-header-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/",
         className: "auth-puppr-h1"
-      }, "puppr"))));
+      }, "puppr"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        onClick: logout,
+        className: "box-btn",
+        to: "/"
+      }, "Logout"))));
     }
   }]);
 
@@ -895,7 +898,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
- // import PhotoIndexItem from './photo_index_item';
 
 
 
@@ -927,7 +929,9 @@ var PhotosIndex = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var photos = this.props.photos;
+      var _this$props = this.props,
+          photos = _this$props.photos,
+          logout = _this$props.logout;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-photo-index-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -935,25 +939,26 @@ var PhotosIndex = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "photos-ul"
       }, photos.map(function (photo) {
-        return (// users.map(user => 
-          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "photo-box",
-            key: "".concat(photo.id)
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-            className: "photo-index-item",
-            id: "".concat(photo.id),
-            onClick: _this2.viewPhoto
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            className: "index-photo",
-            src: photo.photoUrl
-          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "photo-details-container"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "photo-details"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, photo.title))))
-        );
-      } // )
-      ))));
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "photo-box",
+          key: "".concat(photo.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "photo-index-user-info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, photo.user.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+          className: "featured"
+        }, "Featured")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "photo-index-item",
+          id: "".concat(photo.id),
+          onClick: _this2.viewPhoto
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "index-photo",
+          src: photo.photoUrl
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "photo-title-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+          className: "photo-title"
+        }, photo.title)));
+      }))));
     }
   }]);
 

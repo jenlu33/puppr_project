@@ -1,6 +1,5 @@
 import React from 'react';
 import LoggedInHeader from './logged_in_header';
-// import PhotoIndexItem from './photo_index_item';
 import { Link } from 'react-router-dom';
 
 
@@ -20,39 +19,36 @@ class PhotosIndex extends React.Component {
   }
 
   render() {
-    const { photos } = this.props;
+    const { photos, logout } = this.props;
 
     return(
       <div className="main-photo-index-div">
+
         <div className="photos-container">
             <ul className="photos-ul">
               {
                 photos.map(photo => 
-                  // users.map(user => 
-                    <div className="photo-box"
-                        key={`${photo.id}`}
-                    >
+                  <div className="photo-box"
+                      key={`${photo.id}`}>
 
-                      {/* <h2>{users[photo.id].username}</h2> */}
-                      <li 
-                        
-                        className="photo-index-item"
-                        id={`${photo.id}`}
-                        onClick={this.viewPhoto}
-                      >
-                        <img 
-                          className="index-photo"
-                          src={photo.photoUrl}/>
-                      </li>
-
-                      <div className="photo-details-container">
-                        <div className="photo-details">
-                          <h2>{photo.title}</h2>
-                        
-                      </div>
+                    <div className="photo-index-user-info">
+                      <h2>{photo.user.username}</h2>
+                      <h2 className="featured">Featured</h2>
                     </div>
+
+                    <li 
+                      className="photo-index-item"
+                      id={`${photo.id}`}
+                      onClick={this.viewPhoto}>
+                      <img 
+                        className="index-photo"
+                        src={photo.photoUrl}/>
+                    </li>
+
+                    <div className="photo-title-container">
+                      <h2 className="photo-title">{photo.title}</h2>
                   </div>
-                  // )
+                </div>
               )}
             </ul>
         </div>
