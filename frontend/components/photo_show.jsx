@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import LoggedInHeader from './logged_in_header';
 
 class PhotoShow extends React.Component {
   constructor(props) {
@@ -11,6 +11,7 @@ class PhotoShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchPhoto(this.props.match.params.photoId);
+    // this.props.fetchUsers()
   }
 
   prevPage(e) {
@@ -19,7 +20,7 @@ class PhotoShow extends React.Component {
   }
 
   render() {
-    const {photo, photoUsers} = this.props;
+    const {photo, users} = this.props;
 
     if (!photo) {
       return null
@@ -28,7 +29,9 @@ class PhotoShow extends React.Component {
       return (
         <div className="main-photo-show-div">
           
-          <h2>a single pup</h2>
+          {<LoggedInHeader />}
+
+          {/* <h2>a single pup</h2> */}
           <div className="photo-content-container">
             <button onClick={this.prevPage} className="back-btn">← back to activity feed</button>
 
@@ -45,8 +48,10 @@ class PhotoShow extends React.Component {
             <div className="profile-pic-container">
               <img className="profile-pic" src={photo.photoUrl} alt=""/>
             </div>
-            <div>
-              {/* {photoUsers[photo.id].username} */}
+            <div className="photo-info">
+              {photo.user.username}
+              <h2>{photo.title}</h2>
+              <h2>{photo.caption}</h2>
             </div>
           </div>
         </div>

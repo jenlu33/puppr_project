@@ -263,7 +263,7 @@ var removeErrors = function removeErrors() {
 var receiveAllUsers = function receiveAllUsers(users) {
   return {
     type: RECEIVE_ALL_USERS,
-    users: users
+    payload: users
   };
 }; //creating a new session
 
@@ -467,10 +467,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     displayPhotos: function displayPhotos(photos) {
       return dispatch(Object(_actions_photo_actions__WEBPACK_IMPORTED_MODULE_2__["fetchPhotos"])(photos));
-    },
-    getAllUsers: function getAllUsers(users) {
-      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["fetchUsers"])(users));
-    }
+    } // getAllUsers: (users) => dispatch(fetchUsers(users))
+
   };
 };
 
@@ -496,8 +494,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    photo: state.entities.photos[ownProps.match.params.photoId] // photoUsers: Object.values(state.entities.users[ownProps.match.params.photoId])
-
+    currentUser: state.entities.users[state.session.id],
+    photo: state.entities.photos[ownProps.match.params.photoId]
   };
 };
 
@@ -722,6 +720,11 @@ var LoggedInHeader = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           logout = _this$props.logout,
           currentUser = _this$props.currentUser;
+      var lg = currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        onClick: logout,
+        className: "box-btn",
+        to: "/"
+      }, "Logout") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "auth-toolbar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -729,11 +732,7 @@ var LoggedInHeader = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/feed",
         className: "auth-puppr-h1"
-      }, "puppr"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        onClick: logout,
-        className: "box-btn",
-        to: "/"
-      }, "Logout"))));
+      }, "puppr"), lg)));
     }
   }]);
 
@@ -756,6 +755,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _logged_in_header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./logged_in_header */ "./frontend/components/logged_in_header.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -777,6 +777,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var PhotoShow = /*#__PURE__*/function (_React$Component) {
   _inherits(PhotoShow, _React$Component);
 
@@ -793,7 +794,7 @@ var PhotoShow = /*#__PURE__*/function (_React$Component) {
   _createClass(PhotoShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchPhoto(this.props.match.params.photoId);
+      this.props.fetchPhoto(this.props.match.params.photoId); // this.props.fetchUsers()
     }
   }, {
     key: "prevPage",
@@ -806,14 +807,14 @@ var PhotoShow = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           photo = _this$props.photo,
-          photoUsers = _this$props.photoUsers;
+          users = _this$props.users;
 
       if (!photo) {
         return null;
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "main-photo-show-div"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "a single pup"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_logged_in_header__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "photo-content-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           onClick: this.prevPage,
@@ -834,7 +835,9 @@ var PhotoShow = /*#__PURE__*/function (_React$Component) {
           className: "profile-pic",
           src: photo.photoUrl,
           alt: ""
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)));
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "photo-info"
+        }, photo.user.username, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, photo.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, photo.caption))));
       }
     }
   }]);
@@ -899,7 +902,6 @@ var PhotosIndex = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.displayPhotos();
-      this.props.getAllUsers();
     }
   }, {
     key: "viewPhoto",

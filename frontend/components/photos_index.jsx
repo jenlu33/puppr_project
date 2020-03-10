@@ -13,7 +13,6 @@ class PhotosIndex extends React.Component {
 
   componentDidMount() {
     this.props.displayPhotos();
-    this.props.getAllUsers();
   }
 
   viewPhoto(e) {

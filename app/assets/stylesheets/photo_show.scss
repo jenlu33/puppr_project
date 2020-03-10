@@ -23,10 +23,14 @@
   border: none;
   background-color: #212124;
   color: white;
-  font-size: 12px;
-  width: 150px;
+  font-size: 14px;
+  width: 200px;
   height: auto;
   padding: 5px;
+}
+
+.back-btn:hover {
+  cursor: pointer;
 }
 
 .single-photo-container {

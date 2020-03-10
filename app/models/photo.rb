@@ -12,7 +12,6 @@
 #
 class Photo < ApplicationRecord
   validates :title, presence: true
-  # validates :title, uniqueness: {scope: :user_id}
 
   has_one_attached :photo
 
