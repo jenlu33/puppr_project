@@ -34,6 +34,47 @@
   padding-left: 50px;
 }
 
+.header-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+}
+
+.you-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  border: 1px solid white;
+  border-radius: 4px;
+  padding-top: 1px;
+  height: 29px;
+  width: 40px;
+}
+
+.you-btn:hover {
+  opacity: 70%;
+}
+
+.upload-btn {
+  display: inline-block;
+  background: image-url('flickr-icons2.png');
+  background-size: 565px 545px;
+  background-repeat: no-repeat;
+  vertical-align: bottom;
+  overflow: hidden;
+  width: 32px;
+  height: 32px;
+  background-position: -385px -457px;
+  border: none;
+}
+
+.upload-btn:hover {
+  cursor: pointer;
+}
+
 //photo index main
 
 .photos-container {

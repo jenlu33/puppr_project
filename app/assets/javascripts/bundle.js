@@ -588,7 +588,8 @@ var Greeting = /*#__PURE__*/function (_React$Component) {
       var display = currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "loggedin-nav"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_logged_in_header__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        logout: logout
+        logout: logout,
+        currentUser: currentUser
       })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nav-bar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -686,7 +687,9 @@ var LoggedInHeader = /*#__PURE__*/function (_React$Component) {
   _createClass(LoggedInHeader, [{
     key: "render",
     value: function render() {
-      var logout = this.props.logout;
+      var _this$props = this.props,
+          logout = _this$props.logout,
+          currentUser = _this$props.currentUser;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "loggedin-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -696,7 +699,9 @@ var LoggedInHeader = /*#__PURE__*/function (_React$Component) {
         className: "auth-puppr-h1"
       }, "puppr"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "header-right"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "upload-btn"
+      }, "."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         onClick: logout,
         className: "box-btn",
         to: "/"
