@@ -343,7 +343,7 @@ var App = function App() {
     path: "/photos/:photoId",
     component: _containers_photo_show_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
-    path: "/photos/upload",
+    path: "/upload",
     component: _containers_create_photo_container__WEBPACK_IMPORTED_MODULE_7__["default"]
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
@@ -573,6 +573,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -595,17 +597,43 @@ var CreatePhoto = /*#__PURE__*/function (_React$Component) {
   _inherits(CreatePhoto, _React$Component);
 
   function CreatePhoto(props) {
+    var _this;
+
     _classCallCheck(this, CreatePhoto);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(CreatePhoto).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CreatePhoto).call(this, props));
+    _this.state = {
+      title: "",
+      caption: ""
+    };
+    return _this;
   }
 
   _createClass(CreatePhoto, [{
+    key: "update",
+    value: function update(field) {
+      var _this2 = this;
+
+      return function (e) {
+        return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
-      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-photo-form-div"
-      });
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "upload-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "upload-logo"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "pupp"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "r"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "upload-toolbar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "upload-tools-left"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "upload-form"
+      }));
     }
   }]);
 
@@ -799,7 +827,7 @@ var LoggedInHeader = /*#__PURE__*/function (_React$Component) {
         className: "header-right"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "upload-btn",
-        to: "/photos/upload"
+        to: "/upload"
       }, "."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         onClick: logout,
         className: "box-btn",

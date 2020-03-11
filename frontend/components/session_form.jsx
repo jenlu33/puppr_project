@@ -122,13 +122,11 @@ class SessionForm extends React.Component {
         </div>
 
         <div className="background">
-          {/* <img className="background-pic" src={window.authpup}/> */}
 
           <div className="main-session-container">
       
-
           <div className="option-container">
-          <div className="logo-container"></div>
+            <div className="logo-container"></div>
             <h3 className="option-head">{optionText}</h3>
             <form id="form" onSubmit={this.handleSubmit}>
 
@@ -168,11 +166,7 @@ class SessionForm extends React.Component {
           </div>
 
         </div>
-          {/* <div className="photo-cred">
-              <h3>tan chow-chow puppy on towel by Samuel Sng</h3>
-          </div> */}
       </div>
-
 
     </div>
     )
