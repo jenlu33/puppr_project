@@ -1,19 +1,50 @@
 //HEADER
 
 .upload-header {
-  border: 1px solid red;
+  // border: 1px solid red;
   width: 100%;
   // min-width: 600px;
   height: 43px;
   padding: 0 10px;
 }
 
+.upload-puppr {
+  text-decoration: none;
+}
+
 .upload-logo {
-  border: 1px solid blue;
+  // border: 1px solid blue;
   display: flex;
   align-items: center;
-  width: 200px;
+  width: 100px;
   height: 40px;
+  font-weight: 700;
+  font-size: 30px;
+  text-decoration: none;
+}
+
+#logo1 {
+  color: #0063dc;
+}
+
+#logo2 {
+  color: #ff0084;
+}
+
+//TOOLBAR
+.upload-toolbar {
+  // border: 1px solid blue;
+  background-color: rgb(221, 221, 221);
+  width: 100%;
+  min-width: 600px;
+  height: 41px;
 }
 
 //FORM
+
+.upload-form {
+  background-color: #212124;
+  width: 100%;
+  min-width: 600px;
+  height: 92vh;
+}
