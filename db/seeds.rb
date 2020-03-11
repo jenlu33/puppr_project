@@ -27,14 +27,14 @@ user1 = User.create!(username: 'jen', password: 'password')
 
 Photo.destroy_all
 
-photo1 = Photo.create!(user_id: user1.id, title: 'doggo', caption: 'a doggo!')
+photo1 = Photo.create!(user_id: user.id, title: 'Doggo', caption: 'a doggo!')
   file = open('https://puppr-seeds.s3-us-west-1.amazonaws.com/p2.jpg')
   photo1.photo.attach(io: file, filename:'p2.jpeg')
 
-photo2 = Photo.create!(user_id: user1.id, title: 'doggo2', caption: 'a doggo!')
+photo2 = Photo.create!(user_id: user.id, title: 'DOGGO!', caption: 'another doggo!')
   photo2.photo.attach(io: open('https://puppr-seeds.s3-us-west-1.amazonaws.com/p1.jpeg'), filename:'p1.jpeg')
-photo3 = Photo.create!(user_id: user1.id, title: 'doggo3', caption: 'a doggo!')
-  photo3.photo.attach(io: open('https://puppr-seeds.s3-us-west-1.amazonaws.com/p1.jpeg'), filename:'p1.jpeg')
-photo4 = Photo.create!(user_id: user1.id, title: 'doggo4', caption: 'a doggo!')
-  photo4.photo.attach(io: open('https://puppr-seeds.s3-us-west-1.amazonaws.com/p1.jpeg'), filename:'p1.jpeg')
+photo3 = Photo.create!(user_id: user1.id, title: 'doggo3', caption: 'Here is a doggo!')
+  photo3.photo.attach(io: open('https://puppr-seeds.s3-us-west-1.amazonaws.com/p2.jpg'), filename:'p2.jpeg')
+photo4 = Photo.create!(user_id: user1.id, title: 'doggo4', caption: 'Here is yet another doggo!')
+  photo4.photo.attach(io: open('https://puppr-seeds.s3-us-west-1.amazonaws.com/p2.jpg'), filename:'p2.jpeg')
 

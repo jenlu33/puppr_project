@@ -11,11 +11,15 @@
 // logged in header
 
 .loggedin-nav {
+  position: fixed;
+  top: 0;
   width: 100vw;
   min-width: 800px;
 }
 
 .loggedin-header {
+  position: fixed;
+  top: 0;
   background-color: #151517;
   width: 100%;
 }
