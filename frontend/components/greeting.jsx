@@ -21,10 +21,11 @@ class Greeting extends React.Component {
   }
 
   render() {
+    const {currentUser, photos, logout} = this.props
 
-    const display = this.props.currentUser ? (
+    const display = currentUser ? (
       <div className="loggedin-nav">
-        {<LoggedInHeader logout={this.props.logout}/>}
+        {<LoggedInHeader logout={logout}/>}
         {/* <h2>Welcome {this.props.currentUser.username}!</h2>
         <Link onClick={this.props.logout} className="box-btn" to="/">Logout</Link> */}
       </div>
@@ -55,7 +56,7 @@ class Greeting extends React.Component {
 
     const main = this.props.currentUser ? (
       <div className="logged-in">
-      
+        {<PhotosIndex {...this.props} />}
       </div>
     ) : (
         <div className = "content-container">

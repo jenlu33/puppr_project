@@ -19,7 +19,7 @@ class PhotosIndex extends React.Component {
   }
 
   render() {
-    const { photos, logout } = this.props;
+    const { photos } = this.props;
 
     return(
       <div className="main-photo-index-div">

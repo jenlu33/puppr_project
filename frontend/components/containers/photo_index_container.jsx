@@ -6,7 +6,7 @@ import { fetchUsers, log_out } from '../../actions/session_actions'
 const mapStateToProps = state => ({
   currentUser: state.entities.users[state.session.id],
   photos: Object.values(state.entities.photos),
-  // users: Object.values(state.entities.users)
+  pageType: 'index'
 
 })
 

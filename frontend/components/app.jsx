@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 import GreetingContainer from './containers/greeting_container';
@@ -16,7 +16,7 @@ const App = () => (
       <ProtectedRoute path="/photos/:photoId" component={PhotoContainer}/>
     </Switch>
       <Route exact path="/" component={GreetingContainer} />
-      <Route exact path="/" component={PhotoIndexContainer} />
+      {/* <Route exact path="/" component={PhotoIndexContainer} /> */}
   </div>
 )
 

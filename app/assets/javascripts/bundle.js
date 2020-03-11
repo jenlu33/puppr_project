@@ -346,10 +346,6 @@ var App = function App() {
     exact: true,
     path: "/",
     component: _containers_greeting_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    exact: true,
-    path: "/",
-    component: _containers_photo_index_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }));
 };
 
@@ -369,13 +365,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _greeting__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../greeting */ "./frontend/components/greeting.jsx");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_photo_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/photo_actions */ "./frontend/actions/photo_actions.js");
+
 
 
 
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id],
+    photos: Object.values(state.entities.photos)
   };
 };
 
@@ -384,9 +383,11 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     login: function login(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["log_in"])(user));
     },
-    // signup: (user) => dispatch(sign_up(user)),
     logout: function logout() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["log_out"])());
+    },
+    displayPhotos: function displayPhotos(photos) {
+      return dispatch(Object(_actions_photo_actions__WEBPACK_IMPORTED_MODULE_3__["fetchPhotos"])(photos));
     }
   };
 };
@@ -458,8 +459,8 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state) {
   return {
     currentUser: state.entities.users[state.session.id],
-    photos: Object.values(state.entities.photos) // users: Object.values(state.entities.users)
-
+    photos: Object.values(state.entities.photos),
+    pageType: 'index'
   };
 };
 
@@ -620,10 +621,14 @@ var Greeting = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var display = this.props.currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      var _this$props = this.props,
+          currentUser = _this$props.currentUser,
+          photos = _this$props.photos,
+          logout = _this$props.logout;
+      var display = currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "loggedin-nav"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_logged_in_header__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        logout: this.props.logout
+        logout: logout
       })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nav-bar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -649,7 +654,7 @@ var Greeting = /*#__PURE__*/function (_React$Component) {
       }, "Sign Up")))))));
       var main = this.props.currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "logged-in"
-      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_photos_index__WEBPACK_IMPORTED_MODULE_2__["default"], this.props)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "content-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-message"
@@ -929,9 +934,7 @@ var PhotosIndex = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var _this$props = this.props,
-          photos = _this$props.photos,
-          logout = _this$props.logout;
+      var photos = this.props.photos;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-photo-index-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
