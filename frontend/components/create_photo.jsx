@@ -6,7 +6,9 @@ class CreatePhoto extends React.Component {
   }
 
   render() {
+    <div className="main-photo-form-div">
 
+    </div>
   }
 }
 

@@ -15,7 +15,8 @@ class LoggedInHeader extends React.Component {
           <div className="loggedin-header-content">
             <Link to="/" className="auth-puppr-h1">puppr</Link>
             <div className="header-right">
-              <button className="upload-btn">.</button>
+              {/* <button className="upload-btn">.</button> */}
+              <Link className="upload-btn" to="/photos/upload">.</Link>
               {/* <Link className="you-btn" to={`/users/${currentUser.id}`}>You</Link> */}
               <Link onClick={logout} className="box-btn" to="/">Logout</Link>
             </div>
