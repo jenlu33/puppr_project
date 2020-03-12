@@ -34,12 +34,12 @@
   width: 100%;
   min-width: 600px;
   height: 41px;
-  padding-left: 20px;
 }
 
 .upload-tools-left {
   display: flex;
   align-items: center;
+  margin-left: 20px;
 }
 
 .fake-add-btn {
@@ -82,7 +82,7 @@
   left: 0;
 }
 
-//FORM
+//UPLOAD FALSE
 
 .upload-form {
   display: flex;
@@ -112,7 +112,6 @@
 }
 
 .photo-upload-btn {
-  // border: 1px solid red;
   position: absolute;
   width: 195px;
   padding: 10px;
@@ -123,4 +122,43 @@
 input[type=file] {
   opacity: 0;
   // cursor: pointer;
+}
+
+//UPLOAD TRUE
+
+.uploading-container {
+  position: absolute;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  background:#1e2020;
+  height: 85vh;
+  width: 210px;
+}
+
+.editing {
+  padding: 10px;
+  font-weight: 300;
+  color: lightgray;
+  margin-bottom: 10px;
+  border-bottom: 1px solid grey;
+}
+
+[class*="upload-photo"] {
+  // border: 1px solid red;
+  padding: 5px 5px;
+  margin: 10px 10px;
+  background-color: transparent;
+  color: white;
+  outline: none;
+  font-size: 12px;
+}
+
+.upload-photo-submit {
+  background-color: white;
+  color: black;
+}
+
+textarea {
+  resize: none;
 }

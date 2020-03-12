@@ -6,7 +6,8 @@ class CreatePhoto extends React.Component {
     super(props)
     this.state = {
       title: "",
-      caption: ""
+      caption: "",
+      upload: false
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,7 +36,8 @@ class CreatePhoto extends React.Component {
     fileReader.onloadend = () => {
       this.setState({
         photoFile: file,
-        photoUrl: fileReader.result
+        photoUrl: fileReader.result,
+        upload: true
       })
     };
     if (file) {
@@ -50,7 +52,31 @@ class CreatePhoto extends React.Component {
   render() {
     document.title = "Puppr | Upload"
 
-    
+    const main = this.state.upload ? (
+      <div className="uploading-container">
+        <p className="editing">Editing</p>
+        <input
+          type="text"
+          className="upload-photo-title"
+          placeholder="title"
+          onChange={this.update('title')} />
+        <textarea
+          rows="5"
+          className="upload-photo-caption"
+          onChange={this.update('caption')}
+          placeholder="add a caption" />
+
+        <input type="submit" className="upload-photo-submit" value="Upload photo" />
+      </div>
+    ) : (
+      <div className="fake-upload-btn">Choose photo to upload
+          <input
+          type="file"
+          onChange={this.handleFile}
+          className="photo-upload-btn"
+        />
+      </div>
+    )
 
     return (
       <div className="main-photo-form-div">
@@ -81,13 +107,10 @@ class CreatePhoto extends React.Component {
         </div>
 
         <form className="upload-form" onSubmit={this.handleSubmit}>
-          <div className="fake-upload-btn">Choose photo to upload
-            <input 
-              type="file"
-              onChange={this.handleFile}
-              className="photo-upload-btn"
-              />
-          </div>
+          {main}
+  
+
+
         </form>
       </div>
     )

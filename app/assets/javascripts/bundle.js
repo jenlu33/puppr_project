@@ -606,7 +606,8 @@ var CreatePhoto = /*#__PURE__*/function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CreatePhoto).call(this, props));
     _this.state = {
       title: "",
-      caption: ""
+      caption: "",
+      upload: false
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleFile = _this.handleFile.bind(_assertThisInitialized(_this));
@@ -643,7 +644,8 @@ var CreatePhoto = /*#__PURE__*/function (_React$Component) {
       fileReader.onloadend = function () {
         _this3.setState({
           photoFile: file,
-          photoUrl: fileReader.result
+          photoUrl: fileReader.result,
+          upload: true
         });
       };
 
@@ -658,6 +660,31 @@ var CreatePhoto = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       document.title = "Puppr | Upload";
+      var main = this.state.upload ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "uploading-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "editing"
+      }, "Editing"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "upload-photo-title",
+        placeholder: "title",
+        onChange: this.update('title')
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        rows: "5",
+        className: "upload-photo-caption",
+        onChange: this.update('caption'),
+        placeholder: "add a caption"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "submit",
+        className: "upload-photo-submit",
+        value: "Upload photo"
+      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "fake-upload-btn"
+      }, "Choose photo to upload", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "file",
+        onChange: this.handleFile,
+        className: "photo-upload-btn"
+      }));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-photo-form-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -688,13 +715,7 @@ var CreatePhoto = /*#__PURE__*/function (_React$Component) {
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "upload-form",
         onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "fake-upload-btn"
-      }, "Choose photo to upload", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "file",
-        onChange: this.handleFile,
-        className: "photo-upload-btn"
-      }))));
+      }, main));
     }
   }]);
 
