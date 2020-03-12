@@ -782,7 +782,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var error404 = function error404() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "404 Error"));
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "error404-div"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "ERROR"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "404"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "PAGE NOT FOUND"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (error404);

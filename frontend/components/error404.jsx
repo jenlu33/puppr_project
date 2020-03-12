@@ -2,8 +2,10 @@ import React from 'react';
 
 const error404 = () => {
   return (
-  <div>
-    <h1>404 Error</h1>
+  <div className="error404-div">
+    <h1>ERROR</h1>
+    <h1>404</h1>
+    <h1>PAGE NOT FOUND</h1>
   </div>
   )
 }
