@@ -137,9 +137,10 @@ var receivePhoto = function receivePhoto(photo) {
   };
 };
 
-var removePhoto = function removePhoto() {
+var removePhoto = function removePhoto(photoId) {
   return {
-    type: REMOVE_PHOTO
+    type: REMOVE_PHOTO,
+    photoId: photoId
   };
 };
 
@@ -323,6 +324,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _containers_login_form_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./containers/login_form_container */ "./frontend/components/containers/login_form_container.jsx");
 /* harmony import */ var _containers_photo_show_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./containers/photo_show_container */ "./frontend/components/containers/photo_show_container.jsx");
 /* harmony import */ var _containers_create_photo_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./containers/create_photo_container */ "./frontend/components/containers/create_photo_container.jsx");
+/* harmony import */ var _error404__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./error404 */ "./frontend/components/error404.jsx");
+
 
 
 
@@ -511,6 +514,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     fetchPhoto: function fetchPhoto(photoId) {
       return dispatch(Object(_actions_photo_actions__WEBPACK_IMPORTED_MODULE_2__["fetchPhoto"])(photoId));
     },
+    deletePhoto: function deletePhoto(photoId) {
+      return dispatch(Object(_actions_photo_actions__WEBPACK_IMPORTED_MODULE_2__["deletePhoto"])(photoId));
+    },
     logout: function logout() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["log_out"])());
     }
@@ -641,9 +647,12 @@ var CreatePhoto = /*#__PURE__*/function (_React$Component) {
 
       if (this.state.photoUrl) {
         formData.append('photo[photo]', this.state.photoFile);
-      }
+      } // if (this.props.createPhoto(formData)) {
+      //   this.props.history.push('/')
+      // }
 
-      this.props.createPhoto(formData).then(this.props.history.push('/'));
+
+      this.props.createPhoto(formData);
     }
   }, {
     key: "handleFile",
@@ -757,6 +766,22 @@ var CreatePhoto = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (CreatePhoto);
+
+/***/ }),
+
+/***/ "./frontend/components/error404.jsx":
+/*!******************************************!*\
+  !*** ./frontend/components/error404.jsx ***!
+  \******************************************/
+/*! exports provided: error404 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "error404", function() { return error404; });
+var error404 = function error404() {
+  return React.createElement("div", null, React.createElement("h1", null, "404 Error"));
+};
 
 /***/ }),
 
@@ -1005,6 +1030,7 @@ var PhotoShow = /*#__PURE__*/function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(PhotoShow).call(this, props));
     _this.prevPage = _this.prevPage.bind(_assertThisInitialized(_this));
+    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1020,9 +1046,23 @@ var PhotoShow = /*#__PURE__*/function (_React$Component) {
       this.props.history.push('/');
     }
   }, {
+    key: "handleDelete",
+    value: function handleDelete(e) {
+      e.preventDefault;
+      this.props.deletePhoto(this.props.photo.id).then(this.props.history.push('/'));
+    }
+  }, {
     key: "render",
     value: function render() {
-      var photo = this.props.photo;
+      var _this$props = this.props,
+          photo = _this$props.photo,
+          currentUser = _this$props.currentUser;
+      var removePhoto = photo && photo.user.id === currentUser.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "delete-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleDelete,
+        className: "delete-btn"
+      }, "Delete Photo")) : null;
 
       if (!photo) {
         return null;
@@ -1063,15 +1103,7 @@ var PhotoShow = /*#__PURE__*/function (_React$Component) {
           className: "title"
         }, photo.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
           className: "caption"
-        }, photo.caption)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "views"
-        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "comments-container"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "commenter-photo"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "image")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "comment"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Comments go here"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment")))), " ");
+        }, photo.caption))), removePhoto)), " ");
       }
     }
   }]);
@@ -1096,7 +1128,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _logged_in_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./logged_in_header */ "./frontend/components/logged_in_header.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _containers_photo_show_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./containers/photo_show_container */ "./frontend/components/containers/photo_show_container.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1119,7 +1150,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
 var PhotosIndex = /*#__PURE__*/function (_React$Component) {
   _inherits(PhotosIndex, _React$Component);
 
@@ -1137,6 +1167,16 @@ var PhotosIndex = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.displayPhotos();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      console.log(prevProps);
+      console.log(this.props);
+
+      if (prevProps.match.url !== this.props.match.url) {
+        this.props.displayPhotos();
+      }
     }
   }, {
     key: "viewPhoto",
@@ -1582,6 +1622,12 @@ var photosReducer = function photosReducer() {
     case _actions_photo_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PHOTO"]:
       return Object.assign({}, state, _defineProperty({}, action.photo.id, action.photo));
 
+    case _actions_photo_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_PHOTO"]:
+      debugger;
+      var newState = Object.assign({}, state);
+      delete newState[action.photoId];
+      return newState;
+
     default:
       return state;
   }
@@ -1811,6 +1857,7 @@ var updatePhoto = function updatePhoto(photo) {
 }; //delete photo
 
 var deletePhoto = function deletePhoto(photoId) {
+  // debugger
   return $.ajax({
     url: "api/photos/".concat(photoId),
     method: "DELETE"

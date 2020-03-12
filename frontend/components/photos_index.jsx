@@ -1,7 +1,6 @@
 import React from 'react';
 import LoggedInHeader from './logged_in_header';
 import { Link } from 'react-router-dom';
-import photo_show_container from './containers/photo_show_container';
 
 
 class PhotosIndex extends React.Component {
@@ -14,6 +13,14 @@ class PhotosIndex extends React.Component {
   componentDidMount() {
     this.props.displayPhotos();
   }
+
+  componentDidUpdate(prevProps) {
+    console.log(prevProps);
+    console.log(this.props);
+    if (prevProps.match.url !== this.props.match.url) {
+      this.props.displayPhotos();
+    }
+  } 
 
   viewPhoto(e) {
     this.props.history.push(`/photos/${e.currentTarget.id}`)

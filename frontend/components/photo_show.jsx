@@ -7,21 +7,34 @@ class PhotoShow extends React.Component {
     super(props)
 
     this.prevPage = this.prevPage.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchPhoto(this.props.match.params.photoId);
   }
 
+
   prevPage(e) {
     e.preventDefault();
     this.props.history.push('/');
   }
 
+  handleDelete(e) {
+    e.preventDefault;
+    this.props.deletePhoto(this.props.photo.id)
+      .then(this.props.history.push('/'))
+  }
+
   render() {
 
-    const { photo } = this.props;
-    
+    const { photo, currentUser } = this.props;
+
+    const removePhoto = photo && photo.user.id === currentUser.id ? (
+      <div className="delete-container">
+        <button onClick={this.handleDelete} className="delete-btn">Delete Photo</button>
+      </div>
+    ) : null
     
     if (!photo) {
       return null;
@@ -58,13 +71,14 @@ class PhotoShow extends React.Component {
                   <h2 className="caption">{photo.caption}</h2>
                 </div>
 
-                <div className="views"></div>
               </div>
+                {removePhoto}
             </div>
 
-              <div className="comments-container">
+              {/* <div className="comments-container">
                 <div className="commenter-photo">
                   <h2>image</h2>
+                  
                 </div>
 
                 <div className="comment">
@@ -74,7 +88,7 @@ class PhotoShow extends React.Component {
                     comment comment comment comment comment comment comment comment comment 
                     comment comment comment</h2>
                 </div>
-              </div>
+              </div> */}
 
           </div> {/*sub-photo-container */}
         </div>

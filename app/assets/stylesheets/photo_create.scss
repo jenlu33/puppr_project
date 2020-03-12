@@ -1,14 +1,12 @@
 //HEADER
 
 .upload-header {
-  // border: 1px solid green;
   background-color: white;
   height: 43px;
   padding-left: 10px;
 }
 
 .upload-logo {
-  // border: 1px solid blue;
   display: flex;
   align-items: center;
   width: 100px;
@@ -28,7 +26,6 @@
 
 //TOOLBAR
 .upload-toolbar {
-  // border: 1px solid blue;
   display: flex;
   align-items: center;
   background-color: rgb(221, 221, 221);
@@ -152,7 +149,6 @@ input[type=file] {
 }
 
 [class*="upload-photo"] {
-  // border: 1px solid red;
   border: none;
   padding: 5px 5px;
   margin: 10px 10px;
@@ -221,5 +217,4 @@ textarea {
   font-weight: 300;
   font-size: 13px;
   color: white;
-  // text-shadow: -1px 0px black;
 }

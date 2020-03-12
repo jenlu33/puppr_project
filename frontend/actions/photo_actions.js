@@ -24,8 +24,9 @@ const receivePhoto = (photo) => ({
   photo
 })
 
-const removePhoto = () => ({
+const removePhoto = (photoId) => ({
   type: REMOVE_PHOTO,
+  photoId
 })
 
 const receivePhotoErrors = (errors) => ({
