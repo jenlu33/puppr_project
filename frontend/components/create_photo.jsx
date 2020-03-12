@@ -37,11 +37,7 @@ class CreatePhoto extends React.Component {
       formData.append('photo[photo]', this.state.photoFile);
     }
 
-    // if (this.props.createPhoto(formData)) {
-    //   this.props.history.push('/')
-    // }
-
-    this.props.createPhoto(formData)
+    this.props.createPhoto(formData).then(this.props.history.push('/'))
   }
 
   handleFile(e) {

@@ -14,14 +14,6 @@ class PhotosIndex extends React.Component {
     this.props.displayPhotos();
   }
 
-  componentDidUpdate(prevProps) {
-    console.log(prevProps);
-    console.log(this.props);
-    if (prevProps.match.url !== this.props.match.url) {
-      this.props.displayPhotos();
-    }
-  } 
-
   viewPhoto(e) {
     this.props.history.push(`/photos/${e.currentTarget.id}`)
   }
@@ -30,8 +22,6 @@ class PhotosIndex extends React.Component {
     document.title = "Puppr | Feed"
 
     const { photos } = this.props;
-
-
 
     return(
       <div className="main-photo-index-div">

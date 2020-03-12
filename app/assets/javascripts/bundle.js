@@ -348,6 +348,8 @@ var App = function App() {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     path: "/upload",
     component: _containers_create_photo_container__WEBPACK_IMPORTED_MODULE_7__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    component: _error404__WEBPACK_IMPORTED_MODULE_8__["default"]
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/",
@@ -647,12 +649,9 @@ var CreatePhoto = /*#__PURE__*/function (_React$Component) {
 
       if (this.state.photoUrl) {
         formData.append('photo[photo]', this.state.photoFile);
-      } // if (this.props.createPhoto(formData)) {
-      //   this.props.history.push('/')
-      // }
+      }
 
-
-      this.props.createPhoto(formData);
+      this.props.createPhoto(formData).then(this.props.history.push('/'));
     }
   }, {
     key: "handleFile",
@@ -773,15 +772,20 @@ var CreatePhoto = /*#__PURE__*/function (_React$Component) {
 /*!******************************************!*\
   !*** ./frontend/components/error404.jsx ***!
   \******************************************/
-/*! exports provided: error404 */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "error404", function() { return error404; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
 var error404 = function error404() {
-  return React.createElement("div", null, React.createElement("h1", null, "404 Error"));
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "404 Error"));
 };
+
+/* harmony default export */ __webpack_exports__["default"] = (error404);
 
 /***/ }),
 
@@ -1167,16 +1171,6 @@ var PhotosIndex = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.displayPhotos();
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps) {
-      console.log(prevProps);
-      console.log(this.props);
-
-      if (prevProps.match.url !== this.props.match.url) {
-        this.props.displayPhotos();
-      }
     }
   }, {
     key: "viewPhoto",
