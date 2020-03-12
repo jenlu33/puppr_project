@@ -1,9 +1,5 @@
-.main-photo-index-div {
-  // border: 1px solid red;
-  width: 100%;
+body {
   background-color: #ebf7fd;
-  min-width: 800px;
-  height: 100%;
 }
 
 // logged in header
@@ -141,6 +137,8 @@
 
 .photo-title {
   font-size: 16px;
+  width: 250px;
+  height: 16px;
 }
 
 .photo-index-user-info {

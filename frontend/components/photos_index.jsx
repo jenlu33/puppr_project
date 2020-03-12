@@ -1,6 +1,7 @@
 import React from 'react';
 import LoggedInHeader from './logged_in_header';
 import { Link } from 'react-router-dom';
+import photo_show_container from './containers/photo_show_container';
 
 
 class PhotosIndex extends React.Component {
@@ -23,13 +24,15 @@ class PhotosIndex extends React.Component {
 
     const { photos } = this.props;
 
+
+
     return(
       <div className="main-photo-index-div">
 
         <div className="photos-container">
             <ul className="photos-ul">
               {
-                photos.map(photo => 
+                photos.reverse().map(photo => 
                   <div className="photo-box"
                       key={`${photo.id}`}>
 

@@ -628,7 +628,7 @@ var CreatePhoto = /*#__PURE__*/function (_React$Component) {
     key: "updateCaption",
     value: function updateCaption(e) {
       this.setState({
-        title: e.target.value
+        caption: e.target.value
       });
     }
   }, {
@@ -1023,11 +1023,11 @@ var PhotoShow = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var photo = this.props.photo;
-      document.title = "Puppr | ".concat(photo.title);
 
       if (!photo) {
         return null;
       } else {
+        document.title = "Puppr | ".concat(photo.title);
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "main-photo-show-div"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_logged_in_header__WEBPACK_IMPORTED_MODULE_2__["default"], this.props), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1096,6 +1096,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _logged_in_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./logged_in_header */ "./frontend/components/logged_in_header.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _containers_photo_show_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./containers/photo_show_container */ "./frontend/components/containers/photo_show_container.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1113,6 +1114,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -1154,7 +1156,7 @@ var PhotosIndex = /*#__PURE__*/function (_React$Component) {
         className: "photos-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "photos-ul"
-      }, photos.map(function (photo) {
+      }, photos.reverse().map(function (photo) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "photo-box",
           key: "".concat(photo.id)

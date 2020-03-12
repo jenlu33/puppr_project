@@ -24,7 +24,7 @@ class CreatePhoto extends React.Component {
 
   updateCaption(e) {
     this.setState({
-      title: e.target.value
+      caption: e.target.value
     })
   }
 

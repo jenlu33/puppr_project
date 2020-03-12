@@ -21,13 +21,13 @@ class PhotoShow extends React.Component {
   render() {
 
     const { photo } = this.props;
-    document.title = `Puppr | ${photo.title}`
-
-
+    
+    
     if (!photo) {
-      return null
+      return null;
     } else {
 
+      document.title = `Puppr | ${photo.title}`
       return (
         <div className="main-photo-show-div">
           
