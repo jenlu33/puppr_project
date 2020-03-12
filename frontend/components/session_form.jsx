@@ -47,7 +47,7 @@ class SessionForm extends React.Component {
           </li>
         ))}
       </ul>
-    )
+    );
   }
 
   componentWillUnmount() {

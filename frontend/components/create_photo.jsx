@@ -46,7 +46,15 @@ class CreatePhoto extends React.Component {
   }
 
   renderErrors() {
-
+    return (
+      <ul className="photo-error-list">
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
   }
 
   render() {
@@ -54,19 +62,29 @@ class CreatePhoto extends React.Component {
 
     const main = this.state.upload ? (
       <div className="uploading-container">
-        <p className="editing">Editing</p>
-        <input
-          type="text"
-          className="upload-photo-title"
-          placeholder="title"
-          onChange={this.update('title')} />
-        <textarea
-          rows="5"
-          className="upload-photo-caption"
-          onChange={this.update('caption')}
-          placeholder="add a caption" />
+        <div className="uploading-edit-container">
+          <p className="editing">Editing</p>
+          <input
+            type="text"
+            className="upload-photo-title"
+            placeholder="title"
+            onChange={this.update('title')} />
+          <textarea
+            rows="5"
+            className="upload-photo-caption"
+            onChange={this.update('caption')}
+            placeholder="add a caption" />
 
-        <input type="submit" className="upload-photo-submit" value="Upload photo" />
+          <input type="submit" className="upload-photo-submit" value="Upload photo" />
+        
+          <div className="photo-errors-container">
+            {this.renderErrors()}
+          </div>
+        </div>
+
+        <div className="photo-preview">
+          <img src={this.state.photoUrl} className="preview" />
+        </div>
       </div>
     ) : (
       <div className="fake-upload-btn">Choose photo to upload
@@ -108,8 +126,8 @@ class CreatePhoto extends React.Component {
 
         <form className="upload-form" onSubmit={this.handleSubmit}>
           {main}
-  
-
+          
+          
 
         </form>
       </div>

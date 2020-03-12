@@ -4,7 +4,7 @@ import CreatePhoto from '../create_photo';
 import { createPhoto } from '../../actions/photo_actions'
 
 const mapStateToProps = state => ({
-  errors: state.errors.photos
+  errors: state.errors.photoErrors
 })
 
 const mapDispatchToProps = dispatch => ({
