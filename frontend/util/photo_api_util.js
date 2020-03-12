@@ -25,15 +25,17 @@ export const fetchPhoto = (photoId) => (
 )
 
 //upload photo
-export const createPhoto = (formData) => (
-  $.ajax({
+export const createPhoto = (formData) => {
+  
+  return ($.ajax({
     url: "api/photos",
     method: "POST",
-    data: {formData},
+    data: formData,
     contentType: false,
     processData: false
   })
-)
+  )
+}
 
 //update photo
 export const updatePhoto = (photo) => (

@@ -113,7 +113,7 @@ var RECEIVE_ALL_PHOTOS = "RECEIVE_ALL_PHOTOS";
 var RECEIVE_ALL_USER_PHOTOS = "RECEIVE_ALL_USER_PHOTOS";
 var RECEIVE_PHOTO = "RECEIVE_PHOTO";
 var REMOVE_PHOTO = "REMOVE_PHOTO";
-var RECEIVE_PHOTO_ERRORS = "RECEIVE_ERRORS";
+var RECEIVE_PHOTO_ERRORS = "RECEIVE_PHOTO_ERRORS";
 var REMOVE_PHOTO_ERRORS = "REMOVE_ERRORS";
 
 var receivePhotos = function receivePhotos(photos) {
@@ -178,8 +178,8 @@ var fetchPhoto = function fetchPhoto(photoId) {
 
 var createPhoto = function createPhoto(photo) {
   return function (dispatch) {
-    return _util_photo_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchPhoto"](photo).then(function (photo) {
-      return dispatch(createPhoto(photo));
+    return _util_photo_api_util__WEBPACK_IMPORTED_MODULE_0__["createPhoto"](photo).then(function (photo) {
+      return dispatch(receivePhoto(photo));
     }, function (error) {
       return dispatch(receivePhotoErrors(error.responseJSON));
     });
@@ -385,6 +385,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     createPhoto: function createPhoto(photo) {
       return dispatch(Object(_actions_photo_actions__WEBPACK_IMPORTED_MODULE_3__["createPhoto"])(photo));
+    },
+    removeErrors: function removeErrors() {
+      return dispatch(Object(_actions_photo_actions__WEBPACK_IMPORTED_MODULE_3__["removePhotoErrors"])());
     }
   };
 };
@@ -574,8 +577,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -611,17 +612,24 @@ var CreatePhoto = /*#__PURE__*/function (_React$Component) {
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleFile = _this.handleFile.bind(_assertThisInitialized(_this));
+    _this.updateTitle = _this.updateTitle.bind(_assertThisInitialized(_this));
+    _this.updateCaption = _this.updateCaption.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(CreatePhoto, [{
-    key: "update",
-    value: function update(field) {
-      var _this2 = this;
-
-      return function (e) {
-        return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
-      };
+    key: "updateTitle",
+    value: function updateTitle(e) {
+      this.setState({
+        title: e.target.value
+      });
+    }
+  }, {
+    key: "updateCaption",
+    value: function updateCaption(e) {
+      this.setState({
+        title: e.target.value
+      });
     }
   }, {
     key: "handleSubmit",
@@ -630,19 +638,23 @@ var CreatePhoto = /*#__PURE__*/function (_React$Component) {
       var formData = new FormData();
       formData.append('photo[title]', this.state.title);
       formData.append('photo[caption]', this.state.caption);
-      formData.append('photo[photo]', this.state.photoFile);
-      this.props.createPhoto(formData);
+
+      if (this.state.photoUrl) {
+        formData.append('photo[photo]', this.state.photoFile);
+      }
+
+      this.props.createPhoto(formData).then(this.props.history.push('/'));
     }
   }, {
     key: "handleFile",
     value: function handleFile(e) {
-      var _this3 = this;
+      var _this2 = this;
 
       var file = e.currentTarget.files[0];
       var fileReader = new FileReader();
 
       fileReader.onloadend = function () {
-        _this3.setState({
+        _this2.setState({
           photoFile: file,
           photoUrl: fileReader.result,
           upload: true
@@ -665,6 +677,11 @@ var CreatePhoto = /*#__PURE__*/function (_React$Component) {
       }));
     }
   }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.props.removeErrors();
+    }
+  }, {
     key: "render",
     value: function render() {
       document.title = "Puppr | Upload";
@@ -678,15 +695,15 @@ var CreatePhoto = /*#__PURE__*/function (_React$Component) {
         type: "text",
         className: "upload-photo-title",
         placeholder: "title",
-        onChange: this.update('title')
+        onChange: this.updateTitle
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         rows: "5",
         className: "upload-photo-caption",
-        onChange: this.update('caption'),
+        onChange: this.updateCaption,
         placeholder: "add a caption"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
-        className: "upload-photo-submit",
+        className: "upload-submit",
         value: "Upload photo"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "photo-errors-container"
@@ -1775,9 +1792,7 @@ var createPhoto = function createPhoto(formData) {
   return $.ajax({
     url: "api/photos",
     method: "POST",
-    data: {
-      formData: formData
-    },
+    data: formData,
     contentType: false,
     processData: false
   });

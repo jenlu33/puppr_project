@@ -152,6 +152,7 @@ input[type=file] {
 
 [class*="upload-photo"] {
   // border: 1px solid red;
+  border: none;
   padding: 5px 5px;
   margin: 10px 10px;
   background-color: transparent;
@@ -160,9 +161,35 @@ input[type=file] {
   font-size: 12px;
 }
 
-.upload-photo-submit {
+[class*="upload-photo"]:hover {
+  background-color: #151616;
+}
+
+[class*="upload-photo"]:focus {
+  border: 1px solid grey;
+  border-radius: 2px;
+  background-color: #151616;
+}
+
+
+.upload-submit {
+  border: none;
+  padding: 5px 5px;
+  margin: 10px 10px;
   background-color: white;
   color: black;
+  border-radius: 4px;
+}
+
+.upload-submit:hover {
+  background-color: white;
+  opacity: 80%;
+  cursor: pointer;
+}
+
+.upload-submit:focus {
+  border-radius: 4px;
+  border-color: grey;
 }
 
 textarea {
@@ -181,4 +208,17 @@ textarea {
   height: 100%;
   object-fit: scale-down;
   border: none;
+}
+
+//ERRORS
+
+.photo-errors-container {
+  // border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+  font-weight: 300;
+  font-size: 13px;
+  color: white;
+  // text-shadow: -1px 0px black;
 }

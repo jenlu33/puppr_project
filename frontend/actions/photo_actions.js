@@ -5,7 +5,7 @@ export const RECEIVE_ALL_USER_PHOTOS = "RECEIVE_ALL_USER_PHOTOS"
 export const RECEIVE_PHOTO = "RECEIVE_PHOTO";
 export const REMOVE_PHOTO = "REMOVE_PHOTO";
 
-export const RECEIVE_PHOTO_ERRORS = "RECEIVE_ERRORS";
+export const RECEIVE_PHOTO_ERRORS = "RECEIVE_PHOTO_ERRORS";
 export const REMOVE_PHOTO_ERRORS = "REMOVE_ERRORS";
 
 
@@ -53,8 +53,8 @@ export const fetchPhoto = (photoId) => dispatch => (PhotoAPIUtil.fetchPhoto(phot
   .then(photo => dispatch(receivePhoto(photo))))
 
 //photo create
-export const createPhoto = (photo) => dispatch => (PhotoAPIUtil.fetchPhoto(photo)
-  .then(photo => dispatch(createPhoto(photo)),
+export const createPhoto = (photo) => dispatch => (PhotoAPIUtil.createPhoto(photo)
+  .then(photo => dispatch(receivePhoto(photo)),
         (error) => dispatch(receivePhotoErrors(error.responseJSON))))
 
 //photo update

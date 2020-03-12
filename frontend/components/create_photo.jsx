@@ -12,11 +12,19 @@ class CreatePhoto extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
+    this.updateTitle = this.updateTitle.bind(this);
+    this.updateCaption = this.updateCaption.bind(this);
   }
 
-  update(field) {
-    return e => this.setState({
-      [field]: e.currentTarget.value
+  updateTitle(e) {
+    this.setState({
+      title: e.target.value
+    })
+  }
+
+  updateCaption(e) {
+    this.setState({
+      title: e.target.value
     })
   }
 
@@ -25,9 +33,11 @@ class CreatePhoto extends React.Component {
     const formData = new FormData();
     formData.append('photo[title]', this.state.title);
     formData.append('photo[caption]', this.state.caption);
-    formData.append('photo[photo]', this.state.photoFile);
+    if (this.state.photoUrl) {
+      formData.append('photo[photo]', this.state.photoFile);
+    }
 
-    this.props.createPhoto(formData)
+    this.props.createPhoto(formData).then(this.props.history.push('/'))
   }
 
   handleFile(e) {
@@ -57,6 +67,10 @@ class CreatePhoto extends React.Component {
     );
   }
 
+  componentWillUnmount() {
+    this.props.removeErrors();
+  }
+
   render() {
     document.title = "Puppr | Upload"
 
@@ -68,14 +82,14 @@ class CreatePhoto extends React.Component {
             type="text"
             className="upload-photo-title"
             placeholder="title"
-            onChange={this.update('title')} />
+            onChange={this.updateTitle} />
           <textarea
             rows="5"
             className="upload-photo-caption"
-            onChange={this.update('caption')}
+            onChange={this.updateCaption}
             placeholder="add a caption" />
 
-          <input type="submit" className="upload-photo-submit" value="Upload photo" />
+          <input type="submit" className="upload-submit" value="Upload photo" />
         
           <div className="photo-errors-container">
             {this.renderErrors()}
@@ -126,9 +140,6 @@ class CreatePhoto extends React.Component {
 
         <form className="upload-form" onSubmit={this.handleSubmit}>
           {main}
-          
-          
-
         </form>
       </div>
     )
