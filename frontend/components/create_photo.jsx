@@ -8,6 +8,9 @@ class CreatePhoto extends React.Component {
       title: "",
       caption: ""
     }
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFile = this.handleFile.bind(this);
   }
 
   update(field) {
@@ -21,40 +24,70 @@ class CreatePhoto extends React.Component {
     const formData = new FormData();
     formData.append('photo[title]', this.state.title);
     formData.append('photo[caption]', this.state.caption);
-    if (this.state.photoFile) {
-      formData.append('photo[photo]', this.state.photoFile)
-    }
+    formData.append('photo[photo]', this.state.photoFile);
 
-    $.ajax({
-      url: 'api/photos',
-      method: 'POST',
-      data: formData,
-      contentType: false,
-      processData: false
-    })
+    this.props.createPhoto(formData)
+  }
+
+  handleFile(e) {
+    const file = e.currentTarget.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({
+        photoFile: file,
+        photoUrl: fileReader.result
+      })
+    };
+    if (file) {
+      fileReader.readAsDataURL(file);
+    }
+  }
+
+  renderErrors() {
 
   }
 
   render() {
+    document.title = "Puppr | Upload"
+
+    
+
     return (
       <div className="main-photo-form-div">
         <div className="upload-header">
-          <Link className="upload-puppr" to="/">
-            <div className="upload-logo">
+          <Link className="upload-logo" to="/">
               <p id="logo1">pupp</p>
               <p id="logo2">r</p>
-            </div>
           </Link>
         </div>
 
         <div className="upload-toolbar">
           <div className="upload-tools-left">
+            <div className="fake-add-btn">
 
+              <div className="fake-add-btn-wrapper">
+                <div className="add-btn-icon"></div>
+                <label className="upload-add">Add</label>
+              </div>
+
+              <input
+                type="file"
+                onChange={this.handleFile}
+                className="tool-photo-upload-btn"
+              />
+            </div>
+              
           </div>
         </div>
 
-        <form className="upload-form">
-
+        <form className="upload-form" onSubmit={this.handleSubmit}>
+          <div className="fake-upload-btn">Choose photo to upload
+            <input 
+              type="file"
+              onChange={this.handleFile}
+              className="photo-upload-btn"
+              />
+          </div>
         </form>
       </div>
     )

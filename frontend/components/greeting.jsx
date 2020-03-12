@@ -21,6 +21,8 @@ class Greeting extends React.Component {
   }
 
   render() {
+    document.title = "Puppr"
+
     const {currentUser, photos, logout} = this.props
 
     const display = currentUser ? (

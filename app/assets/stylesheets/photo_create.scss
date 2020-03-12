@@ -1,15 +1,9 @@
 //HEADER
 
 .upload-header {
-  // border: 1px solid red;
-  width: 100%;
-  // min-width: 600px;
+  // border: 1px solid green;
   height: 43px;
-  padding: 0 10px;
-}
-
-.upload-puppr {
-  text-decoration: none;
+  padding-left: 10px;
 }
 
 .upload-logo {
@@ -34,17 +28,99 @@
 //TOOLBAR
 .upload-toolbar {
   // border: 1px solid blue;
+  display: flex;
+  align-items: center;
   background-color: rgb(221, 221, 221);
   width: 100%;
   min-width: 600px;
   height: 41px;
+  padding-left: 20px;
+}
+
+.upload-tools-left {
+  display: flex;
+  align-items: center;
+}
+
+.fake-add-btn {
+  position: relative;
+  display: inline-block;
+}
+
+.fake-add-btn:hover {
+  box-shadow: 0px 0px 3px grey;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.fake-add-btn-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 4px;
+}
+
+.add-btn-icon{
+  background: image-url('add-icon.png');
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 15px;
+}
+
+.upload-add {
+  // border: 1px solid red;
+  margin-top: 2px;
+  margin-left: 2px;
+  font-size: 14px;
+}
+
+.tool-photo-upload-btn {
+  border: 1px solid blue;
+  font-size: 0;
+  position: absolute;
+  width: 50px;
+  top: 0;
+  left: 0;
 }
 
 //FORM
 
 .upload-form {
-  background-color: #212124;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #292b2c;
   width: 100%;
   min-width: 600px;
   height: 92vh;
+}
+
+.fake-upload-btn {
+  position: relative;
+  display: inline-block;
+  background-color: #0063dc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 18px;
+  text-shadow: -1px 1px 2px black;
+}
+
+.fake-upload-btn:hover {
+  opacity: 80%;
+  cursor: pointer;
+}
+
+.photo-upload-btn {
+  // border: 1px solid red;
+  position: absolute;
+  width: 195px;
+  padding: 10px;
+  top: 0;
+  left: 0;
+}
+
+input[type=file] {
+  opacity: 0;
+  // cursor: pointer;
 }

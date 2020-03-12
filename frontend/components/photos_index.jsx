@@ -19,6 +19,8 @@ class PhotosIndex extends React.Component {
   }
 
   render() {
+    document.title = "Puppr | Feed"
+
     const { photos } = this.props;
 
     return(

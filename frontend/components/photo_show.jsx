@@ -19,7 +19,10 @@ class PhotoShow extends React.Component {
   }
 
   render() {
+
     const { photo } = this.props;
+    document.title = `Puppr | ${photo.title}`
+
 
     if (!photo) {
       return null
@@ -28,7 +31,7 @@ class PhotoShow extends React.Component {
       return (
         <div className="main-photo-show-div">
           
-          {<LoggedInHeader />}
+          {<LoggedInHeader {...this.props} />}
 
           <div className="photo-content-container">
             <button onClick={this.prevPage} className="back-btn">← Back to activity feed</button>

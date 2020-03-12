@@ -584,9 +584,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -608,6 +608,8 @@ var CreatePhoto = /*#__PURE__*/function (_React$Component) {
       title: "",
       caption: ""
     };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleFile = _this.handleFile.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -627,42 +629,72 @@ var CreatePhoto = /*#__PURE__*/function (_React$Component) {
       var formData = new FormData();
       formData.append('photo[title]', this.state.title);
       formData.append('photo[caption]', this.state.caption);
-
-      if (this.state.photoFile) {
-        formData.append('photo[photo]', this.state.photoFile);
-      }
-
-      $.ajax({
-        url: 'api/photos',
-        method: 'POST',
-        data: formData,
-        contentType: false,
-        processData: false
-      });
+      formData.append('photo[photo]', this.state.photoFile);
+      this.props.createPhoto(formData);
     }
+  }, {
+    key: "handleFile",
+    value: function handleFile(e) {
+      var _this3 = this;
+
+      var file = e.currentTarget.files[0];
+      var fileReader = new FileReader();
+
+      fileReader.onloadend = function () {
+        _this3.setState({
+          photoFile: file,
+          photoUrl: fileReader.result
+        });
+      };
+
+      if (file) {
+        fileReader.readAsDataURL(file);
+      }
+    }
+  }, {
+    key: "renderErrors",
+    value: function renderErrors() {}
   }, {
     key: "render",
     value: function render() {
+      document.title = "Puppr | Upload";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-photo-form-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "upload-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        className: "upload-puppr",
+        className: "upload-logo",
         to: "/"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "upload-logo"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         id: "logo1"
       }, "pupp"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         id: "logo2"
-      }, "r")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "r"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "upload-toolbar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "upload-tools-left"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "upload-form"
-      }));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "fake-add-btn"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "fake-add-btn-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "add-btn-icon"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "upload-add"
+      }, "Add")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "file",
+        onChange: this.handleFile,
+        className: "tool-photo-upload-btn"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "upload-form",
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "fake-upload-btn"
+      }, "Choose photo to upload", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "file",
+        onChange: this.handleFile,
+        className: "photo-upload-btn"
+      }))));
     }
   }]);
 
@@ -736,6 +768,7 @@ var Greeting = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      document.title = "Puppr";
       var _this$props = this.props,
           currentUser = _this$props.currentUser,
           photos = _this$props.photos,
@@ -935,13 +968,14 @@ var PhotoShow = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var photo = this.props.photo;
+      document.title = "Puppr | ".concat(photo.title);
 
       if (!photo) {
         return null;
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "main-photo-show-div"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_logged_in_header__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_logged_in_header__WEBPACK_IMPORTED_MODULE_2__["default"], this.props), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "photo-content-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           onClick: this.prevPage,
@@ -1057,6 +1091,7 @@ var PhotosIndex = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      document.title = "Puppr | Feed";
       var photos = this.props.photos;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-photo-index-div"
@@ -1232,6 +1267,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      document.title = "Puppr";
       var formType = this.props.formType;
       var display = formType === 'log in' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "change-form"
@@ -1658,13 +1694,15 @@ var fetchPhoto = function fetchPhoto(photoId) {
   });
 }; //upload photo
 
-var createPhoto = function createPhoto(photo) {
+var createPhoto = function createPhoto(formData) {
   return $.ajax({
     url: "api/photos",
     method: "POST",
     data: {
-      photo: photo
-    }
+      formData: formData
+    },
+    contentType: false,
+    processData: false
   });
 }; //update photo
 

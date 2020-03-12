@@ -65,6 +65,8 @@ class SessionForm extends React.Component {
   }
 
   render() {
+    document.title = "Puppr"
+
     const { formType } = this.props;
     const display = formType === 'log in' ? (
       <div className="change-form">
