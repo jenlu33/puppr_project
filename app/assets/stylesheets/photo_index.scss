@@ -32,25 +32,26 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 200px;
+  width: 150px;
+  // border: 1px solid red;
 }
 
-.you-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-decoration: none;
-  border: 1px solid white;
-  border-radius: 4px;
-  padding-top: 1px;
-  height: 29px;
-  width: 40px;
-}
+// .you-btn {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   color: white;
+//   text-decoration: none;
+//   border: 1px solid white;
+//   border-radius: 4px;
+//   padding-top: 1px;
+//   height: 29px;
+//   width: 40px;
+// }
 
-.you-btn:hover {
-  opacity: 70%;
-}
+// .you-btn:hover {
+//   opacity: 70%;
+// }
 
 .upload-btn {
   display: inline-block;

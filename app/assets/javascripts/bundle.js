@@ -779,12 +779,21 @@ var CreatePhoto = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 var error404 = function error404() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "error404-div"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "ERROR"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "404"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "PAGE NOT FOUND"));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    className: "error-h1"
+  }, "ERROR"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "404"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "PAGE NOT FOUND"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.sad
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/",
+    className: "error-link"
+  }, "Back to Feed"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (error404);
