@@ -62,7 +62,7 @@ class PhotoShow extends React.Component {
 
               <div className="photo-info">
                 <div className="profile-pic-container">
-                  <img className="profile-pic" src={photo.photoUrl} alt=""/>
+                  <img className="profile-pic" src={window.prof} alt=""/>
                 </div>
               
                 <div className="user-photo-info">

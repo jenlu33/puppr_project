@@ -349,12 +349,12 @@ var App = function App() {
     path: "/upload",
     component: _containers_create_photo_container__WEBPACK_IMPORTED_MODULE_7__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    component: _error404__WEBPACK_IMPORTED_MODULE_8__["default"]
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/",
     component: _containers_greeting_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }));
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    component: _error404__WEBPACK_IMPORTED_MODULE_8__["default"]
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -1099,7 +1099,7 @@ var PhotoShow = /*#__PURE__*/function (_React$Component) {
           className: "profile-pic-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "profile-pic",
-          src: photo.photoUrl,
+          src: window.prof,
           alt: ""
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "user-photo-info"
