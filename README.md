@@ -1,7 +1,7 @@
 # puppr
 ![alt-text](readme_images/Puppr.png)
 
-Puppr is an image hosting site inspired by Flickr. It is build using the following technologies:
+Puppr is an image hosting site inspired by Flickr. It is built using the following technologies:
 
 * Backend: Ruby on Rails with PostgreSQL database
 * Frontend: React.js with Redux
