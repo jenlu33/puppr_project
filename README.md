@@ -1,4 +1,6 @@
 # puppr
+[Live Site](http://puppr-project.herokuapp.com/#/)
+
 ![alt-text](readme_images/Puppr1.png)
 
 Puppr is an image hosting site inspired by Flickr. It is built using the following technologies:
