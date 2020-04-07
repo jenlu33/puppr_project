@@ -1,5 +1,7 @@
 # puppr
-![alt-text](readme_images/Puppr.png)
+[Live Site](http://puppr-project.herokuapp.com/#/)
+
+![alt-text](readme_images/Puppr1.png)
 
 Puppr is an image hosting site inspired by Flickr. It is built using the following technologies:
 
@@ -12,8 +14,15 @@ Puppr is an image hosting site inspired by Flickr. It is built using the followi
 
 ### Current Features
 
-* User auth
-* Photo feed
+#### User auth
+![alt-text](readme_images/Puppr2.png)
+Users are required to login/signup before having access to the rest of the website using auth routes. If a user tries to access a page while not logged in, it will re-route to the login page. Errors are also rendered if forms are not properly filled.
+
+#### Photo feed
+![alt-text](readme_images/Puppr3.png)
+Once logged in, a user will see the photo feed and be able to access all other pages. The navigation bar changes accordingly and now shows an upload and logout button. Trying to access the login/signup pages from here will result in rerouting to the feed. Each photo displays the user's username and title. Clicking on a photo will lead to the show page where the photo's owner can delete the photo.
+
+#### Other
 * Photo show page
 * Upload photos
 * Delete own photos
