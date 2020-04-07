@@ -16,7 +16,7 @@ class Api::CommentsController < ApplicationController
     @comment.photo_id = params[:photo_id]
     
     if @comment.save
-      render :show
+      render 'api/comments/_comment'
     else
       render json: @comment.errors.full_messages, status: 422
     end
