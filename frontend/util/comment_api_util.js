@@ -11,7 +11,9 @@ export const createComment = (formData) => (
   $.ajax({
     url: "api/comments",
     method: "POST",
-    data: formData
+    data: formData,
+    contentType: false,
+    processData: false
   })
 );
 

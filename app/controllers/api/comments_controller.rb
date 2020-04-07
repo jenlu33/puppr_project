@@ -1,3 +1,4 @@
+require 'byebug'
 class Api::CommentsController < ApplicationController
   
   def index
@@ -13,8 +14,8 @@ class Api::CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
-    @comment.photo_id = params[:photo_id]
-    
+    # @comment.photo_id = params[:photo_id]
+    debugger
     if @comment.save
       render 'api/comments/_comment'
     else

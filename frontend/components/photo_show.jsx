@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LoggedInHeader from './logged_in_header';
+import Comments from './comments';
 
 class PhotoShow extends React.Component {
   constructor(props) {
@@ -75,22 +76,9 @@ class PhotoShow extends React.Component {
                 {removePhoto}
             </div>
 
-              {/* <div className="comments-container">
-                <div className="commenter-photo">
-                  <h2>image</h2>
-                  
-                </div>
+              {<Comments {...this.props}/>}
 
-                <div className="comment">
-
-                  <h2>Comments go here</h2>
-                  <h2>comment comment comment comment comment comment comment comment
-                    comment comment comment comment comment comment comment comment comment 
-                    comment comment comment</h2>
-                </div>
-              </div> */}
-
-          </div> {/*sub-photo-container */}
+          </div>
         </div>
       )
     }
