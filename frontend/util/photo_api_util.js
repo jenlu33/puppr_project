@@ -6,7 +6,7 @@ export const fetchPhotos = () => {
       method: "GET"
     })
   )
-}
+};
 
 //all photos of specified user
 // export const fetchAllUserPhotos = (userId) => (
@@ -22,7 +22,7 @@ export const fetchPhoto = (photoId) => (
     url: `/api/photos/${photoId}`,
     method: 'GET'
   })
-)
+);
 
 //upload photo
 export const createPhoto = (formData) => {
@@ -35,7 +35,7 @@ export const createPhoto = (formData) => {
     processData: false
   })
   )
-}
+};
 
 //update photo
 export const updatePhoto = (photo) => (
@@ -44,12 +44,11 @@ export const updatePhoto = (photo) => (
     method: "PATCH",
     data: {photo}
   })
-)
+);
 
 //delete photo
 export const deletePhoto = (photoId) => {
-  // debugger
   return $.ajax({
     url: `api/photos/${photoId}`,
     method: "DELETE"
-  })}
+  })};

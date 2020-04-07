@@ -1862,7 +1862,6 @@ var updatePhoto = function updatePhoto(photo) {
 }; //delete photo
 
 var deletePhoto = function deletePhoto(photoId) {
-  // debugger
   return $.ajax({
     url: "api/photos/".concat(photoId),
     method: "DELETE"
