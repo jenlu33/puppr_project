@@ -1,11 +1,22 @@
 class Api::CommentsController < ApplicationController
+  
+  def index
+    @comments = Comment.all
+    render :index
+  end
+
+  #def show
+  #  @comment = Comment.find(params[:id])
+  #  render :show
+  #end
+  
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     @comment.photo_id = params[:photo_id]
     
     if @comment.save
-      render @comment
+      render :show
     else
       render json: @comment.errors.full_messages, status: 422
     end

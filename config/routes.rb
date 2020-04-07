@@ -14,8 +14,11 @@ Rails.application.routes.draw do
 
     # resources :albums
 
-    resources :photos, except: [:new, :edit]
-    resource :comments
+    resources :photos, except: [:new, :edit] do
+      resources :comments, only: [:index]
+    end
+    
+    resources :comments, only: [:create, :update, :destroy]
     
   end
   
