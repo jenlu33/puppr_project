@@ -15,7 +15,6 @@ const photosReducer = (state = {}, action) => {
     case RECEIVE_PHOTO:
       return Object.assign({}, state, {[action.photo.id]: action.photo})
     case REMOVE_PHOTO:
-      debugger
       let newState = Object.assign({}, state);
       delete newState[action.photoId]
       return newState;
