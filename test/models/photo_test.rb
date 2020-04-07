@@ -4,7 +4,6 @@
 #
 #  id         :bigint           not null, primary key
 #  user_id    :integer          not null
-#  album_id   :integer          not null
 #  title      :string           not null
 #  caption    :string
 #  created_at :datetime         not null

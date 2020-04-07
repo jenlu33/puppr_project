@@ -4,7 +4,6 @@
 #
 #  id         :bigint           not null, primary key
 #  user_id    :integer          not null
-#  album_id   :integer          not null
 #  title      :string           not null
 #  caption    :string
 #  created_at :datetime         not null
@@ -18,6 +17,10 @@ class Photo < ApplicationRecord
   belongs_to :user,
     foreign_key: :user_id,
     class_name: :User
+  
+  has_many :comments,
+    foreign_key: :photo_id,
+    class_name: :Comment
 
   # belongs_to :album,
   #   foreign_key: :album_id,
