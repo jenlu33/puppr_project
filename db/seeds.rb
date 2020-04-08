@@ -23,8 +23,6 @@ user7 = User.create!(username: 'noobveen', password: 'password')
 
 Photo.destroy_all
 
-
-
 # user2's photos
 photo3 = Photo.create!(user_id: user2.id, title: 'Friendship pups', caption: 'Puppy friends!')
 photo3.photo.attach(io: open('https://puppr-seeds.s3-us-west-1.amazonaws.com/puppies.jpg'), filename:'user2.jpg')
@@ -93,3 +91,7 @@ file = open('https://puppr-seeds.s3-us-west-1.amazonaws.com/p2.jpg')
 photo1.photo.attach(io: file, filename:'p2.jpeg')
 photo2 = Photo.create!(user_id: demo.id, title: 'DOGGO!', caption: 'another doggo!')
 photo2.photo.attach(io: open('https://puppr-seeds.s3-us-west-1.amazonaws.com/p1.jpeg'), filename:'p1.jpeg')
+
+Comment.destroy_all
+
+comment1 = Comment.create!(user_id: user1.id, photo_id: photo4.id, body:'Great photo! I love it')

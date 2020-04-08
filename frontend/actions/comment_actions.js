@@ -41,8 +41,9 @@ export const fetchComments = () => dispatch => (
 //comment create
 export const createComment = (comment) => dispatch => (
   CommentAPIUtil.createComment(comment)
-    .then(comment => dispatch(receiveComment(comment)))
-);
+    .then(comment => dispatch(receiveComment(comment)),
+          (error) => dispatch(receiveCommentErrors(error.responseJSON))
+));
 
 //comment delete
 export const deleteComment = (commentId) => dispatch => (

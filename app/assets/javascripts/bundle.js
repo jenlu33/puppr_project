@@ -159,6 +159,8 @@ var createComment = function createComment(comment) {
   return function (dispatch) {
     return _util_comment_api_util__WEBPACK_IMPORTED_MODULE_0__["createComment"](comment).then(function (comment) {
       return dispatch(receiveComment(comment));
+    }, function (error) {
+      return dispatch(receiveCommentErrors(error.responseJSON));
     });
   };
 }; //comment delete

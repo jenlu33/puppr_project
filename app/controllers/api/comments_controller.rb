@@ -3,7 +3,6 @@ class Api::CommentsController < ApplicationController
   
   def index
     @comments = Comment.all
-    render :index
   end
 
   #def show
@@ -12,23 +11,21 @@ class Api::CommentsController < ApplicationController
   #end
   
   def create
-    debugger
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
-    debugger
+    @comment.photo_id = params[:photo_id]
+    # debugger
     if @comment.save
-      render 'api/comments/_comment'
+      render :index
     else
       render json: @comment.errors.full_messages, status: 422
     end
   end
 
-  def update
-  end
-
   def destroy
     @comment = Comment.find(params[:id])
     if @comment.destroy
+      render :index
     else
       render json @comment.errors.full_messages, status: 422
     end
@@ -37,6 +34,6 @@ class Api::CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body, :user_id, :photo_id)
+    params.require(:comment).permit(:body)
   end
 end
