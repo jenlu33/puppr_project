@@ -28,7 +28,7 @@ class Api::PhotosController < ApplicationController
     @photo = Photo.with_attached_photo.find(params[:id])
     if @photo.destroy
     else
-      render json @photo.errors.full_messages, status: 422
+      render json: @photo.errors.full_messages, status: 422
     end
   end
 
