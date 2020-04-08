@@ -147,9 +147,9 @@ var removeCommentErrors = function removeCommentErrors() {
   };
 }; //all comments
 
-var fetchComments = function fetchComments() {
+var fetchComments = function fetchComments(photoId) {
   return function (dispatch) {
-    return _util_comment_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchComments"]().then(function (comments) {
+    return _util_comment_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchComments"](photoId).then(function (comments) {
       return dispatch(receiveComments(comments));
     });
   };

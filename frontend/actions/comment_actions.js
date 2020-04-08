@@ -33,8 +33,8 @@ export const removeCommentErrors = () => ({
 });
 
 //all comments
-export const fetchComments = () => dispatch => (
-  CommentAPIUtil.fetchComments()
+export const fetchComments = (photoId) => dispatch => (
+  CommentAPIUtil.fetchComments(photoId)
     .then(comments => dispatch(receiveComments(comments)))
 );
 

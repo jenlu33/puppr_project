@@ -3,6 +3,11 @@ class Api::AlbumsController < ApplicationController
     @albums = Album.all
   end
 
+  def show
+    @album = Album.find(params[:id])
+    render :show
+  end
+
   def create
     @album = Album.new(album_params)
     @album.user_id = current_user.id

@@ -10,7 +10,7 @@
 #  updated_at :datetime         not null
 #
 class Comment < ApplicationRecord
-  validates :body, :user_id, :photo_id, presence: true
+  validates :body, presence: true
 
   belongs_to :user,
     foreign_key: :user_id,
