@@ -1,0 +1,48 @@
+.main-user-show-div {
+  margin-top: 48px;
+  min-width: 600px;
+}
+
+//USER'S COVER PHOTO
+
+.user-cover {
+  // border: 1px solid blue;
+  background: image-url('clouds.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.user-show-info {
+  // border: 1px solid blue;
+  display: flex;
+}
+
+.user-show-info > p {
+  // border: 1px solid red;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.show-username {
+  font-size: 30px;
+  // font-weight: 700;
+}
+
+//USER'S NAV BAR
+.user-nav-bar {
+  height: 40px;
+  background-color: rgb(221, 221, 221);
+}
+
+//USER'S PHOTOS
+
+.user-photos {
+  border: 1px solid red;
+  margin: 10px 5vw;
+}

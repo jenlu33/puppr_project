@@ -1741,7 +1741,17 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-user-show-div"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_logged_in_header__WEBPACK_IMPORTED_MODULE_1__["default"], this.props), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "HELLO THIS IS A USER")));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_logged_in_header__WEBPACK_IMPORTED_MODULE_1__["default"], this.props), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "user-cover"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "user-show-info"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "show-username"
+      }, "username here"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Photo count here ?"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "user-nav-bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "user nav bar stuff here")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "user-photos"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "THIS IS WHERE ALL USER'S PHOTOS GO")));
     }
   }]);
 

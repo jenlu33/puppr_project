@@ -11,12 +11,20 @@ class UserShow extends React.Component {
       
       <div className="main-user-show-div">
         {<LoggedInHeader {...this.props} />}
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-        <div>
-          <p>HELLO THIS IS A USER</p>
+      
+        <div className="user-cover">
+          <div className="user-show-info">
+            <p className="show-username">username here</p>
+            <p>Photo count here ?</p>
+          </div>
+        </div>
+
+        <div className="user-nav-bar">
+          <p>user nav bar stuff here</p>
+        </div>
+
+        <div className="user-photos">
+          <p>THIS IS WHERE ALL USER'S PHOTOS GO</p>
         </div>
         
       </div>
