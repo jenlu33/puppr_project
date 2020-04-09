@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
     resource :session, only: [:create, :destroy]
     resources :users, only: [:create, :show, :index] do
-      # resources :photos, only: [:index]
+      resources :photos, only: [:index]
       resources :albums, only: [:index]
     end
     resources :photos, except: [:new, :edit] do

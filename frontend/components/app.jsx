@@ -18,8 +18,6 @@ const App = () => (
       <ProtectedRoute path="/photos/:photoId" component={PhotoContainer}/>
       <ProtectedRoute path="/upload" component={CreatePhotoContainer} />
       <ProtectedRoute path="/users/:userId" component={UserShowContainer} />
-      {/* temporary user route for testing below */}
-      {/* <ProtectedRoute path="/user" component={UserShowContainer} /> */}
       <Route exact path="/" component={GreetingContainer} />
       <Route component={ErrorContainer} />
     </Switch>
