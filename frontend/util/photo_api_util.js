@@ -9,12 +9,12 @@ export const fetchPhotos = () => {
 };
 
 //all photos of specified user
-// export const fetchAllUserPhotos = (userId) => (
-//   $.ajax({
-//     url: `/api/users/${userId}/photos`,
-//     method: "GET"
-//   })
-// )
+export const fetchAllUserPhotos = (userId) => (
+  $.ajax({
+    url: `/api/users/${userId}/photos`,
+    method: "GET"
+  })
+)
 
 //show photo
 export const fetchPhoto = (photoId) => (

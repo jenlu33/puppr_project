@@ -6,6 +6,10 @@ class UserShow extends React.Component {
     super(props)
   }
 
+  componentDidMount() {
+    this.props.displayPhotos(this.props.match.params.userId)
+  }
+
   render() {
     return (
       
@@ -15,6 +19,7 @@ class UserShow extends React.Component {
         <div className="user-cover">
           <div className="user-show-info">
             <p className="show-username">username here</p>
+            {/* this.props.user.username ? */}
             <p>Photo count here ?</p>
           </div>
         </div>

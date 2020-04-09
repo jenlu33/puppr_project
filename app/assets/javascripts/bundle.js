@@ -179,7 +179,7 @@ var deleteComment = function deleteComment(commentId) {
 /*!*******************************************!*\
   !*** ./frontend/actions/photo_actions.js ***!
   \*******************************************/
-/*! exports provided: RECEIVE_ALL_PHOTOS, RECEIVE_ALL_USER_PHOTOS, RECEIVE_PHOTO, REMOVE_PHOTO, RECEIVE_PHOTO_ERRORS, REMOVE_PHOTO_ERRORS, removePhotoErrors, fetchPhotos, fetchPhoto, createPhoto, updatePhoto, deletePhoto */
+/*! exports provided: RECEIVE_ALL_PHOTOS, RECEIVE_ALL_USER_PHOTOS, RECEIVE_PHOTO, REMOVE_PHOTO, RECEIVE_PHOTO_ERRORS, REMOVE_PHOTO_ERRORS, removePhotoErrors, fetchPhotos, fetchUserPhotos, fetchPhoto, createPhoto, updatePhoto, deletePhoto */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -192,6 +192,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_PHOTO_ERRORS", function() { return REMOVE_PHOTO_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removePhotoErrors", function() { return removePhotoErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPhotos", function() { return fetchPhotos; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchUserPhotos", function() { return fetchUserPhotos; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPhoto", function() { return fetchPhoto; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPhoto", function() { return createPhoto; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updatePhoto", function() { return updatePhoto; });
@@ -212,10 +213,10 @@ var receivePhotos = function receivePhotos(photos) {
   };
 };
 
-var receiveAllUserPhotos = function receiveAllUserPhotos(userId) {
+var receiveAllUserPhotos = function receiveAllUserPhotos(photos) {
   return {
     type: RECEIVE_ALL_USER_PHOTOS,
-    userId: userId
+    photos: photos
   };
 };
 
@@ -254,9 +255,14 @@ var fetchPhotos = function fetchPhotos() {
     });
   };
 }; // user's photo index
-// export const fetchUserPhotos = () => dispatch => (PhotoAPIUtil.fetchAllUserPhotos()
-//   .then(photos => dispatch(receiveAllUserPhotos(photos))))
-//photo show
+
+var fetchUserPhotos = function fetchUserPhotos(userId) {
+  return function (dispatch) {
+    return _util_photo_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchAllUserPhotos"](userId).then(function (photos) {
+      return dispatch(receiveAllUserPhotos(photos));
+    });
+  };
+}; //photo show
 
 var fetchPhoto = function fetchPhoto(photoId) {
   return function (dispatch) {
@@ -440,7 +446,7 @@ var App = function App() {
     path: "/upload",
     component: _containers_create_photo_container__WEBPACK_IMPORTED_MODULE_7__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
-    path: "/user",
+    path: "/users/:userId",
     component: _containers_show_user_container__WEBPACK_IMPORTED_MODULE_8__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
@@ -740,14 +746,17 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
-/* harmony import */ var _user_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user_show */ "./frontend/components/user_show.jsx");
+/* harmony import */ var _actions_photo_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/photo_actions */ "./frontend/actions/photo_actions.js");
+/* harmony import */ var _user_show__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../user_show */ "./frontend/components/user_show.jsx");
 
 
 
 
-var mapStateToProps = function mapStateToProps(state) {
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id],
+    user: state.entities.users[ownProps.match.params.userId]
   };
 };
 
@@ -755,11 +764,14 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     logout: function logout() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["log_out"])());
+    },
+    displayPhotos: function displayPhotos(userId) {
+      return dispatch(Object(_actions_photo_actions__WEBPACK_IMPORTED_MODULE_2__["fetchUserPhotos"])(userId));
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_user_show__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_user_show__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -1214,7 +1226,10 @@ var LoggedInHeader = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/",
         className: "auth-puppr-h1"
-      }, "puppr"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "puppr"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "you-btn",
+        to: "/users/".concat(currentUser.id)
+      }, "You"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "header-right"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "upload-btn",
@@ -1737,6 +1752,11 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(UserShow, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.displayPhotos(this.props.match.params.userId);
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2008,6 +2028,9 @@ var photosReducer = function photosReducer() {
     case _actions_photo_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PHOTO"]:
       return Object.assign({}, state, _defineProperty({}, action.photo.id, action.photo));
 
+    case _actions_photo_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_USER_PHOTOS"]:
+      return Object.assign({}, state, action.photos);
+
     case _actions_photo_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_PHOTO"]:
       var newState = Object.assign({}, state);
       delete newState[action.photoId];
@@ -2228,12 +2251,13 @@ var deleteComment = function deleteComment(commentId) {
 /*!*****************************************!*\
   !*** ./frontend/util/photo_api_util.js ***!
   \*****************************************/
-/*! exports provided: fetchPhotos, fetchPhoto, createPhoto, updatePhoto, deletePhoto */
+/*! exports provided: fetchPhotos, fetchAllUserPhotos, fetchPhoto, createPhoto, updatePhoto, deletePhoto */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPhotos", function() { return fetchPhotos; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllUserPhotos", function() { return fetchAllUserPhotos; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPhoto", function() { return fetchPhoto; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPhoto", function() { return createPhoto; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updatePhoto", function() { return updatePhoto; });
@@ -2245,13 +2269,13 @@ var fetchPhotos = function fetchPhotos() {
     method: "GET"
   });
 }; //all photos of specified user
-// export const fetchAllUserPhotos = (userId) => (
-//   $.ajax({
-//     url: `/api/users/${userId}/photos`,
-//     method: "GET"
-//   })
-// )
-//show photo
+
+var fetchAllUserPhotos = function fetchAllUserPhotos(userId) {
+  return $.ajax({
+    url: "/api/users/".concat(userId, "/photos"),
+    method: "GET"
+  });
+}; //show photo
 
 var fetchPhoto = function fetchPhoto(photoId) {
   return $.ajax({

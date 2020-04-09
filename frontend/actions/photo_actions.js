@@ -14,9 +14,9 @@ const receivePhotos = (photos) => ({
   photos
 })
 
-const receiveAllUserPhotos = (userId) => ({
+const receiveAllUserPhotos = (photos) => ({
   type: RECEIVE_ALL_USER_PHOTOS,
-  userId
+  photos
 })
 
 const receivePhoto = (photo) => ({
@@ -46,8 +46,8 @@ export const fetchPhotos = () => dispatch => {
 }
 
 // user's photo index
-// export const fetchUserPhotos = () => dispatch => (PhotoAPIUtil.fetchAllUserPhotos()
-//   .then(photos => dispatch(receiveAllUserPhotos(photos))))
+export const fetchUserPhotos = (userId) => dispatch => (PhotoAPIUtil.fetchAllUserPhotos(userId)
+  .then(photos => dispatch(receiveAllUserPhotos(photos))))
 
 //photo show
 export const fetchPhoto = (photoId) => dispatch => (PhotoAPIUtil.fetchPhoto(photoId)
