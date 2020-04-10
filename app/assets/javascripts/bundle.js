@@ -1501,6 +1501,7 @@ var PhotosIndex = /*#__PURE__*/function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "photo-index-user-info"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          className: "photo-index-username",
           to: "/users/".concat(photo.user.id)
         }, photo.user.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
           className: "featured"

@@ -3,7 +3,6 @@ body {
 }
 
 .photos-container {
-  // border: 1px solid red;
   display: flex;
   height: 100vh;
   margin-left: calc(100vw - 94vw);
@@ -40,7 +39,6 @@ body {
 }
 
 .photo-index-item {
-  // border: 1px solid red;
   height: 300px;
   width: 360px;
   min-width: 300px;
@@ -52,7 +50,6 @@ body {
   object-fit: cover;
   height: 100%;
   width: 100%;
-  // overflow: hidden;
 }
 
 .index-photo:hover {
@@ -74,12 +71,17 @@ body {
 }
 
 .photo-index-user-info {
-  // border: 1px solid red;
   display: flex;
   flex-direction: column;
   width: 100%;
   padding-left: 25px;
   padding-bottom: 8px;
+}
+
+.photo-index-username {
+  width: 100px;
+  text-decoration: none;
+  color: black;
 }
 
 .featured {

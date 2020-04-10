@@ -34,8 +34,11 @@ class PhotosIndex extends React.Component {
                       key={`${photo.id}`}>
 
                     <div className="photo-index-user-info">
-                      <Link to={`/users/${photo.user.id}`}>{photo.user.username}</Link>
-                      {/* <h2>{photo.user.username}</h2> */}
+                      <Link 
+                        className="photo-index-username"
+                        to={`/users/${photo.user.id}`}>
+                          {photo.user.username}
+                      </Link>
                       <h2 className="featured">Featured</h2>
                     </div>
 
