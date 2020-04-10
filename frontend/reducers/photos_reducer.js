@@ -2,8 +2,7 @@ import {
   RECEIVE_ALL_PHOTOS, 
   RECEIVE_ALL_USER_PHOTOS, 
   RECEIVE_PHOTO, 
-  REMOVE_PHOTO,
-  REMOVE_PHOTO_ERRORS
+  REMOVE_PHOTO
 } from '../actions/photo_actions';
 
 const photosReducer = (state = {}, action) => {
@@ -15,7 +14,7 @@ const photosReducer = (state = {}, action) => {
     case RECEIVE_PHOTO:
       return Object.assign({}, state, {[action.photo.id]: action.photo})
     case RECEIVE_ALL_USER_PHOTOS:
-      return Object.assign({}, state, action.photos )
+      return Object.assign({}, state, action.photos)
     case REMOVE_PHOTO:
       let newState = Object.assign({}, state);
       delete newState[action.photoId]

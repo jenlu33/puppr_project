@@ -4,13 +4,26 @@ import LoggedInHeader from './logged_in_header';
 class UserShow extends React.Component {
   constructor(props) {
     super(props)
-  }
+  };
 
   componentDidMount() {
-    this.props.displayPhotos(this.props.match.params.userId)
+    this.props.displayPhotos(this.props.match.params.userId);
+    this.props.fetchUser(this.props.match.params.userId);
+    console.log(this.props.match.params);
+    // console.log(this.ownProps.match.params);
+    // console.log(this.props.fetchUser(this.props.match.params.userId).user);
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.match.params.userId !== this.props.match.params.userId) {
+      this.props.fetchUser(this.props.match.userId)
+    }
   }
 
   render() {
+    // const userId = this.props.fetchUser(this.props.match.params.userId);
+    if (this.props.user) return null;
+    
     return (
       
       <div className="main-user-show-div">
@@ -18,7 +31,7 @@ class UserShow extends React.Component {
       
         <div className="user-cover">
           <div className="user-show-info">
-            <p className="show-username">username here</p>
+            {/* <p className="show-username">{this.props.user.id}</p> */}
             {/* this.props.user.username ? */}
             <p>Photo count here ?</p>
           </div>
@@ -34,7 +47,7 @@ class UserShow extends React.Component {
         
       </div>
     )
-  }
-}
+  };
+};
 
 export default UserShow;
