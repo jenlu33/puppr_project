@@ -8,7 +8,7 @@ class UserShow extends React.Component {
 
   componentDidMount() {
     this.props.displayPhotos(this.props.match.params.userId);
-    // this.props.fetchUser(this.props.match.params.userId);
+    this.props.fetchUser(this.props.match.params.userId);
     // console.log(this.props.match.params);
     // console.log(this.ownProps.match.params);
     // console.log(this.props.fetchUser(this.props.match.params.userId).user);
@@ -42,7 +42,16 @@ class UserShow extends React.Component {
         </div>
 
         <div className="user-photos">
-          <p>THIS IS WHERE ALL USER'S PHOTOS GO</p>
+          <ul className="user-photos-ul">
+            {
+              this.props.photos.map(photo =>
+                photo.user_id == this.props.showUser.id ? (
+                <div key={`${photo.id}`}>
+                  <img className="user-show-photo" src={photo.photoUrl}/>
+                </div>) : (null)
+                )
+            }
+          </ul>
         </div>
         
       </div>

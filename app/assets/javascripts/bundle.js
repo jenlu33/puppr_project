@@ -1800,8 +1800,8 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
   _createClass(UserShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.displayPhotos(this.props.match.params.userId); // this.props.fetchUser(this.props.match.params.userId);
-      // console.log(this.props.match.params);
+      this.props.displayPhotos(this.props.match.params.userId);
+      this.props.fetchUser(this.props.match.params.userId); // console.log(this.props.match.params);
       // console.log(this.ownProps.match.params);
       // console.log(this.props.fetchUser(this.props.match.params.userId).user);
     }
@@ -1815,6 +1815,8 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this = this;
+
       // const userId = this.props.fetchUser(this.props.match.params.userId);
       if (!this.props.showUser) return null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1829,7 +1831,16 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
         className: "user-nav-bar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "user nav bar stuff here")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-photos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "THIS IS WHERE ALL USER'S PHOTOS GO")));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "user-photos-ul"
+      }, this.props.photos.map(function (photo) {
+        return photo.user_id == _this.props.showUser.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: "".concat(photo.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "user-show-photo",
+          src: photo.photoUrl
+        })) : null;
+      }))));
     }
   }]);
 

@@ -45,4 +45,13 @@
 .user-photos {
   border: 1px solid red;
   margin: 10px 5vw;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.user-show-photo {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+  
 }
