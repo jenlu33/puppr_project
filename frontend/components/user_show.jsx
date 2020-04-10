@@ -4,26 +4,27 @@ import LoggedInHeader from './logged_in_header';
 class UserShow extends React.Component {
   constructor(props) {
     super(props)
+    this.viewPhoto = this.viewPhoto.bind(this);
   };
 
   componentDidMount() {
     this.props.displayPhotos(this.props.match.params.userId);
     this.props.fetchUser(this.props.match.params.userId);
-    // console.log(this.props.match.params);
-    // console.log(this.ownProps.match.params);
-    // console.log(this.props.fetchUser(this.props.match.params.userId).user);
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (prevProps.match.params.userId !== this.props.match.params.userId) {
       this.props.fetchUser(this.props.match.userId)
     }
   }
 
+  viewPhoto(e) {
+    this.props.history.push(`/photos/${e.currentTarget.id}`)
+  }
+
   render() {
     const {photos, showUser} = this.props;
     if (!showUser) return null;
-
 
     let count = 0;
     for (let i = 0; i < photos.length; i++) {
@@ -39,7 +40,7 @@ class UserShow extends React.Component {
       
         <div className="user-cover">
           <div className="user-show-info">
-            <p className="show-username">{this.props.showUser.username}</p>
+            <p className="show-username">{showUser.username}</p>
            
             <p>Photos: {count}</p>
           </div>
@@ -51,10 +52,14 @@ class UserShow extends React.Component {
         <div className="user-photos">
           <ul className="user-photos-ul">
             {
-              this.props.photos.map(photo =>
-                photo.user_id == this.props.showUser.id ? (
+              photos.map(photo =>
+                photo.user_id == showUser.id ? (
                 <div key={`${photo.id}`}>
-                  <img className="user-show-photo" src={photo.photoUrl}/>
+                    <img 
+                      id={`${photo.id}`}
+                      className="user-show-photo" 
+                      src={photo.photoUrl}
+                      onClick={this.viewPhoto}/>
                 </div>) : (null)
                 )
             }

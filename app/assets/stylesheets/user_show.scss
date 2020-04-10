@@ -45,18 +45,23 @@
 //USER'S PHOTOS
 
 .user-photos {
-  border: 1px solid red;
   margin: 10px 5vw;
 }
 
 .user-photos-ul {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .user-show-photo {
   width: 300px;
   height: 300px;
-  object-fit: contain;
-  
+  margin: 5px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.user-show-photo:hover {
+  opacity: 80%;
 }

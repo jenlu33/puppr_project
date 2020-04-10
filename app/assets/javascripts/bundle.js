@@ -1777,9 +1777,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -1792,30 +1792,37 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
   _inherits(UserShow, _React$Component);
 
   function UserShow(props) {
+    var _this;
+
     _classCallCheck(this, UserShow);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(UserShow).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(UserShow).call(this, props));
+    _this.viewPhoto = _this.viewPhoto.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(UserShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.displayPhotos(this.props.match.params.userId);
-      this.props.fetchUser(this.props.match.params.userId); // console.log(this.props.match.params);
-      // console.log(this.ownProps.match.params);
-      // console.log(this.props.fetchUser(this.props.match.params.userId).user);
+      this.props.fetchUser(this.props.match.params.userId);
     }
   }, {
     key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps, prevState) {
+    value: function componentDidUpdate(prevProps) {
       if (prevProps.match.params.userId !== this.props.match.params.userId) {
         this.props.fetchUser(this.props.match.userId);
       }
     }
   }, {
+    key: "viewPhoto",
+    value: function viewPhoto(e) {
+      this.props.history.push("/photos/".concat(e.currentTarget.id));
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this2 = this;
 
       var _this$props = this.props,
           photos = _this$props.photos,
@@ -1839,18 +1846,20 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
         className: "user-show-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "show-username"
-      }, this.props.showUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Photos: ", count))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, showUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Photos: ", count))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-nav-bar"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-photos"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "user-photos-ul"
-      }, this.props.photos.map(function (photo) {
-        return photo.user_id == _this.props.showUser.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, photos.map(function (photo) {
+        return photo.user_id == showUser.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: "".concat(photo.id)
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          id: "".concat(photo.id),
           className: "user-show-photo",
-          src: photo.photoUrl
+          src: photo.photoUrl,
+          onClick: _this2.viewPhoto
         })) : null;
       }))));
     }
