@@ -41,12 +41,12 @@ class UserShow extends React.Component {
         <div className="user-cover">
           <div className="user-show-info">
             <p className="show-username">{showUser.username}</p>
-           
-            <p>Photos: {count}</p>
           </div>
         </div>
 
         <div className="user-nav-bar">
+          <p>Photos: {count}</p>
+          <p>Albums: COMING SOON</p>
         </div>
 
         <div className="user-photos">
