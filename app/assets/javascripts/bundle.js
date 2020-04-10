@@ -1407,12 +1407,13 @@ var PhotoShow = /*#__PURE__*/function (_React$Component) {
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "user-photo-info"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          className: "photo-show-username",
           to: "/users/".concat(photo.user.id)
         }, photo.user.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-          className: "title"
+          className: "photo-show-title"
         }, photo.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-          className: "caption"
-        }, photo.caption))), removePhoto), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments__WEBPACK_IMPORTED_MODULE_3__["default"], this.props)));
+          className: "photo-show-caption"
+        }, photo.caption)), removePhoto)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments__WEBPACK_IMPORTED_MODULE_3__["default"], this.props)));
       }
     }
   }]);

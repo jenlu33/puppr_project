@@ -67,13 +67,17 @@ class PhotoShow extends React.Component {
                 </div>
               
                 <div className="user-photo-info">
-                  <Link to={`/users/${photo.user.id}`}>{photo.user.username}</Link>
-                  <h2 className="title">{photo.title}</h2>
-                  <h2 className="caption">{photo.caption}</h2>
+                  <Link
+                    className="photo-show-username" 
+                    to={`/users/${photo.user.id}`}>
+                      {photo.user.username}
+                  </Link>
+                  <h2 className="photo-show-title">{photo.title}</h2>
+                  <h2 className="photo-show-caption">{photo.caption}</h2>
                 </div>
+                {removePhoto}
 
               </div>
-                {removePhoto}
             </div>
 
               {<Comments {...this.props}/>}
