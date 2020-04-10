@@ -8,8 +8,8 @@ class UserShow extends React.Component {
 
   componentDidMount() {
     this.props.displayPhotos(this.props.match.params.userId);
-    this.props.fetchUser(this.props.match.params.userId);
-    console.log(this.props.match.params);
+    // this.props.fetchUser(this.props.match.params.userId);
+    // console.log(this.props.match.params);
     // console.log(this.ownProps.match.params);
     // console.log(this.props.fetchUser(this.props.match.params.userId).user);
   };

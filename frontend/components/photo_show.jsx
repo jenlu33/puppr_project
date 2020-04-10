@@ -67,7 +67,7 @@ class PhotoShow extends React.Component {
                 </div>
               
                 <div className="user-photo-info">
-                  <h2 className="username">{photo.user.username}</h2>
+                  <Link to={`/users/${photo.user.id}`}>{photo.user.username}</Link>
                   <h2 className="title">{photo.title}</h2>
                   <h2 className="caption">{photo.caption}</h2>
                 </div>

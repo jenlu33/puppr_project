@@ -1404,8 +1404,8 @@ var PhotoShow = /*#__PURE__*/function (_React$Component) {
           alt: ""
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "user-photo-info"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-          className: "username"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/users/".concat(photo.user.id)
         }, photo.user.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
           className: "title"
         }, photo.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
@@ -1796,9 +1796,9 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
   _createClass(UserShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.displayPhotos(this.props.match.params.userId);
-      this.props.fetchUser(this.props.match.params.userId);
-      console.log(this.props.match.params); // console.log(this.ownProps.match.params);
+      this.props.displayPhotos(this.props.match.params.userId); // this.props.fetchUser(this.props.match.params.userId);
+      // console.log(this.props.match.params);
+      // console.log(this.ownProps.match.params);
       // console.log(this.props.fetchUser(this.props.match.params.userId).user);
     }
   }, {
