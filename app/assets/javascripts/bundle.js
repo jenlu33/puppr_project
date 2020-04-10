@@ -1175,7 +1175,8 @@ var CreatePhoto = /*#__PURE__*/function (_React$Component) {
         formData.append('photo[photo]', this.state.photoFile);
       }
 
-      this.props.createPhoto(formData).then(this.props.history.push('/'));
+      ;
+      this.props.createPhoto(formData); // .then(this.props.history.push('/'));
     }
   }, {
     key: "handleFile",
@@ -1196,6 +1197,8 @@ var CreatePhoto = /*#__PURE__*/function (_React$Component) {
       if (file) {
         fileReader.readAsDataURL(file);
       }
+
+      ;
     }
   }, {
     key: "renderErrors",
@@ -1288,6 +1291,7 @@ var CreatePhoto = /*#__PURE__*/function (_React$Component) {
   return CreatePhoto;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
+;
 /* harmony default export */ __webpack_exports__["default"] = (CreatePhoto);
 
 /***/ }),

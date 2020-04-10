@@ -8,7 +8,6 @@
 #  caption    :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  album_id   :integer
 #
 
 # This model initially had no columns defined. If you add columns to the

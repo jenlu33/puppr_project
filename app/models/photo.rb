@@ -8,7 +8,6 @@
 #  caption    :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  album_id   :integer
 #
 class Photo < ApplicationRecord
   validates :title, presence: true
@@ -23,7 +22,4 @@ class Photo < ApplicationRecord
     foreign_key: :photo_id,
     class_name: :Comment
 
-  belongs_to :album,
-    foreign_key: :album_id,
-    class_name: :Album
 end

@@ -14,19 +14,19 @@ class CreatePhoto extends React.Component {
     this.handleFile = this.handleFile.bind(this);
     this.updateTitle = this.updateTitle.bind(this);
     this.updateCaption = this.updateCaption.bind(this);
-  }
+  };
 
   updateTitle(e) {
     this.setState({
       title: e.target.value
     })
-  }
+  };
 
   updateCaption(e) {
     this.setState({
       caption: e.target.value
-    })
-  }
+    });
+  };
 
   handleSubmit(e) {
     e.preventDefault();
@@ -35,10 +35,11 @@ class CreatePhoto extends React.Component {
     formData.append('photo[caption]', this.state.caption);
     if (this.state.photoUrl) {
       formData.append('photo[photo]', this.state.photoFile);
-    }
+    };
 
-    this.props.createPhoto(formData).then(this.props.history.push('/'))
-  }
+    this.props.createPhoto(formData)
+      // .then(this.props.history.push('/'));
+  };
 
   handleFile(e) {
     const file = e.currentTarget.files[0];
@@ -48,12 +49,12 @@ class CreatePhoto extends React.Component {
         photoFile: file,
         photoUrl: fileReader.result,
         upload: true
-      })
+      });
     };
     if (file) {
       fileReader.readAsDataURL(file);
-    }
-  }
+    };
+  };
 
   renderErrors() {
     return (
@@ -65,14 +66,14 @@ class CreatePhoto extends React.Component {
         ))}
       </ul>
     );
-  }
+  };
 
   componentWillUnmount() {
     this.props.removeErrors();
-  }
+  };
 
   render() {
-    document.title = "Puppr | Upload"
+    document.title = "Puppr | Upload";
 
     const main = this.state.upload ? (
       <div className="uploading-container">
@@ -142,8 +143,8 @@ class CreatePhoto extends React.Component {
           {main}
         </form>
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
 export default CreatePhoto;
