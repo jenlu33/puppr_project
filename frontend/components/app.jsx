@@ -6,7 +6,7 @@ import GreetingContainer from './containers/greeting_container';
 import SignupContainer from './containers/signup_form_container';
 import LoginContainer from './containers/login_form_container';
 import PhotoContainer from './containers/photo_show_container';
-import CreatePhotoContainer from './containers/create_photo_container';
+import CreatePhotoContainer from './containers/photo_create_container';
 import UserShowContainer from './containers/show_user_container';
 import ErrorContainer from './error404'
 

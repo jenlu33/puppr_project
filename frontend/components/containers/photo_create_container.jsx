@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CreatePhoto from '../create_photo';
+import CreatePhoto from '../photo_create';
 import { createPhoto, removePhotoErrors } from '../../actions/photo_actions'
 
 const mapStateToProps = state => ({
