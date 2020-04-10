@@ -1264,15 +1264,17 @@ var LoggedInHeader = /*#__PURE__*/function (_React$Component) {
         className: "loggedin-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "loggedin-header-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "header-left"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/",
         className: "auth-puppr-h1"
-      }, "puppr"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        className: "you-btn",
-        to: "/users/".concat(currentUser.id)
-      }, "You"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "puppr")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "header-right"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "you-btn",
+        to: "/users/".concat(currentUser.id)
+      }, "You"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "upload-btn",
         to: "/upload"
       }, "."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
