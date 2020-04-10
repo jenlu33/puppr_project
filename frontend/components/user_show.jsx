@@ -41,6 +41,7 @@ class UserShow extends React.Component {
         <div className="user-cover">
           <div className="user-show-info">
             <p className="show-username">{showUser.username}</p>
+            <p>User Since {showUser.created_at.slice(0,4)}</p>
           </div>
         </div>
 

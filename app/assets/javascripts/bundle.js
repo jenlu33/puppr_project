@@ -1846,7 +1846,7 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
         className: "user-show-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "show-username"
-      }, showUser.username))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, showUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "User Since ", showUser.created_at.slice(0, 4)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-nav-bar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Photos: ", count), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Albums: COMING SOON")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-photos"

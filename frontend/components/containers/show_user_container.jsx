@@ -7,6 +7,7 @@ import UserShow from '../user_show';
 const mapStateToProps = (state, ownProps) => ({
   currentUser: state.entities.users[state.session.id],
   showUser: state.entities.users[ownProps.match.params.userId],
+  
   photos: Object.values(state.entities.photos)
 });
 
