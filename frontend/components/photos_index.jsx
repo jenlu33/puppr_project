@@ -1,5 +1,4 @@
 import React from 'react';
-import LoggedInHeader from './logged_in_header';
 import { Link } from 'react-router-dom';
 
 
@@ -12,6 +11,7 @@ class PhotosIndex extends React.Component {
 
   componentDidMount() {
     this.props.displayPhotos();
+    this.props.fetchUsers();
   }
 
   viewPhoto(e) {
@@ -34,7 +34,8 @@ class PhotosIndex extends React.Component {
                       key={`${photo.id}`}>
 
                     <div className="photo-index-user-info">
-                      <h2>{photo.user.username}</h2>
+                      <Link to={`/users/${photo.user.id}`}>{photo.user.username}</Link>
+                      {/* <h2>{photo.user.username}</h2> */}
                       <h2 className="featured">Featured</h2>
                     </div>
 

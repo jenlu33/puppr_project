@@ -359,7 +359,7 @@ var removeErrors = function removeErrors() {
 var receiveAllUsers = function receiveAllUsers(users) {
   return {
     type: RECEIVE_ALL_USERS,
-    payload: users
+    users: users
   };
 }; //creating a new session
 
@@ -666,6 +666,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     displayPhotos: function displayPhotos(photos) {
       return dispatch(Object(_actions_photo_actions__WEBPACK_IMPORTED_MODULE_3__["fetchPhotos"])(photos));
+    },
+    fetchUsers: function fetchUsers() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["fetchUsers"])());
     }
   };
 };
@@ -1430,8 +1433,7 @@ var PhotoShow = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _logged_in_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./logged_in_header */ "./frontend/components/logged_in_header.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1453,7 +1455,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
 var PhotosIndex = /*#__PURE__*/function (_React$Component) {
   _inherits(PhotosIndex, _React$Component);
 
@@ -1471,6 +1472,7 @@ var PhotosIndex = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.displayPhotos();
+      this.props.fetchUsers();
     }
   }, {
     key: "viewPhoto",
@@ -1496,7 +1498,9 @@ var PhotosIndex = /*#__PURE__*/function (_React$Component) {
           key: "".concat(photo.id)
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "photo-index-user-info"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, photo.user.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/users/".concat(photo.user.id)
+        }, photo.user.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
           className: "featured"
         }, "Featured")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           className: "photo-index-item",
@@ -1808,14 +1812,16 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       // const userId = this.props.fetchUser(this.props.match.params.userId);
-      if (this.props.user) return null;
+      if (!this.props.showUser) return null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-user-show-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_logged_in_header__WEBPACK_IMPORTED_MODULE_1__["default"], this.props), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-cover"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-show-info"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Photo count here ?"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "show-username"
+      }, this.props.showUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Photo count here ?"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-nav-bar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "user nav bar stuff here")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-photos"

@@ -22,7 +22,7 @@ class UserShow extends React.Component {
 
   render() {
     // const userId = this.props.fetchUser(this.props.match.params.userId);
-    if (this.props.user) return null;
+    if (!this.props.showUser) return null;
     
     return (
       
@@ -31,7 +31,7 @@ class UserShow extends React.Component {
       
         <div className="user-cover">
           <div className="user-show-info">
-            {/* <p className="show-username">{this.props.user.id}</p> */}
+            <p className="show-username">{this.props.showUser.username}</p>
             {/* this.props.user.username ? */}
             <p>Photo count here ?</p>
           </div>

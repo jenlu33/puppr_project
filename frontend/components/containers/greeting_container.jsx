@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import Greeting from '../greeting';
-import { log_in, log_out } from '../../actions/session_actions';
-import {fetchPhotos} from '../../actions/photo_actions'
+import { log_in, log_out, fetchUsers } from '../../actions/session_actions';
+import {fetchPhotos} from '../../actions/photo_actions';
+
 
 const mapStateToProps = state => ({
   currentUser: state.entities.users[state.session.id],
@@ -11,7 +12,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   login: (user) => dispatch(log_in(user)),
   logout: () => dispatch(log_out()),
-  displayPhotos: (photos) => dispatch(fetchPhotos(photos))
+  displayPhotos: (photos) => dispatch(fetchPhotos(photos)),
+  fetchUsers: () => dispatch(fetchUsers())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Greeting)

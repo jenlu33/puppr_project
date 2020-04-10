@@ -27,7 +27,7 @@ export const removeErrors = () => ({
 
 const receiveAllUsers = (users) =>  ({
   type: RECEIVE_ALL_USERS,
-  payload: users
+  users
 })
 
 
