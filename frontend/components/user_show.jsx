@@ -21,9 +21,9 @@ class UserShow extends React.Component {
   }
 
   render() {
-    if (!this.props.showUser) return null;
-
     const {photos, showUser} = this.props;
+    if (!showUser) return null;
+
 
     let count = 0;
     for (let i = 0; i < photos.length; i++) {
@@ -46,7 +46,6 @@ class UserShow extends React.Component {
         </div>
 
         <div className="user-nav-bar">
-          {/* <p>Photos: {count}</p> */}
         </div>
 
         <div className="user-photos">

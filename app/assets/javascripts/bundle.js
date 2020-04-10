@@ -1817,10 +1817,10 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this = this;
 
-      if (!this.props.showUser) return null;
       var _this$props = this.props,
           photos = _this$props.photos,
           showUser = _this$props.showUser;
+      if (!showUser) return null;
       var count = 0;
 
       for (var i = 0; i < photos.length; i++) {
@@ -2237,6 +2237,8 @@ var sessionReducer = function sessionReducer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/user_actions */ "./frontend/actions/user_actions.js");
+
 
 
 var usersReducer = function usersReducer() {
@@ -2247,6 +2249,10 @@ var usersReducer = function usersReducer() {
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
+      newState[action.user.id] = action.user;
+      return newState;
+
+    case _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_USER"]:
       newState[action.user.id] = action.user;
       return newState;
 
