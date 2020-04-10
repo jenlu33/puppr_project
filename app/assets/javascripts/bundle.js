@@ -1817,8 +1817,20 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this = this;
 
-      // const userId = this.props.fetchUser(this.props.match.params.userId);
       if (!this.props.showUser) return null;
+      var _this$props = this.props,
+          photos = _this$props.photos,
+          showUser = _this$props.showUser;
+      var count = 0;
+
+      for (var i = 0; i < photos.length; i++) {
+        if (photos[i].user_id == showUser.id) {
+          count += 1;
+        }
+
+        ;
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-user-show-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_logged_in_header__WEBPACK_IMPORTED_MODULE_1__["default"], this.props), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1827,9 +1839,9 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
         className: "user-show-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "show-username"
-      }, this.props.showUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Photo count here ?"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.showUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Photos: ", count))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-nav-bar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "user nav bar stuff here")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-photos"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "user-photos-ul"

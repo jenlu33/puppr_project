@@ -21,8 +21,16 @@ class UserShow extends React.Component {
   }
 
   render() {
-    // const userId = this.props.fetchUser(this.props.match.params.userId);
     if (!this.props.showUser) return null;
+
+    const {photos, showUser} = this.props;
+
+    let count = 0;
+    for (let i = 0; i < photos.length; i++) {
+      if (photos[i].user_id == showUser.id) {
+        count += 1;
+      };
+    }
     
     return (
       
@@ -32,13 +40,13 @@ class UserShow extends React.Component {
         <div className="user-cover">
           <div className="user-show-info">
             <p className="show-username">{this.props.showUser.username}</p>
-            {/* this.props.user.username ? */}
-            <p>Photo count here ?</p>
+           
+            <p>Photos: {count}</p>
           </div>
         </div>
 
         <div className="user-nav-bar">
-          <p>user nav bar stuff here</p>
+          {/* <p>Photos: {count}</p> */}
         </div>
 
         <div className="user-photos">
