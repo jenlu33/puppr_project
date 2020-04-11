@@ -8,13 +8,13 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :users, only: [:create, :show, :index] do
       resources :photos, only: [:index]
-      resources :albums, only: [:index]
+      # resources :albums, only: [:index]
     end
     resources :photos, except: [:new, :edit] do
-      resources :comments, only: [:index]
+      resources :comments, only: [:index, :create, :destroy]
     end
-    resources :comments, only: [:create, :destroy]
-    resources :albums, only: [:create, :show, :destroy]
+    # resources :comments, only: [:index, :create, :destroy]
+    # resources :albums, only: [:create, :show, :destroy]
     
   end
   

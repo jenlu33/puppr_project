@@ -7,21 +7,24 @@ export const fetchComments = (photoId) => (
 );
 
 //create comment
-export const createComment = (formData) => (
-  $.ajax({
-    url: "api/comments",
-    method: "POST",
-    data: formData,
-    contentType: false,
-    processData: false
-  })
-);
+export const createComment = (formData) => {
+  const photoId = formData.get(`photo_id`);
+  return (
+    $.ajax({
+      url: `/api/photos/${photoId}/comments`,
+      method: "POST",
+      data: formData,
+      contentType: false,
+      processData: false
+    })
+  );
+};
 
 
 //delete comment
-export const deleteComment = (commentId) => (
+export const deleteComment = (photoId, commentId) => (
   $.ajax({
-    url: `api/comments/${commentId}`,
+    url: `/api/photos/${photoId}/comments/${commentId}`,
     method: "DELETE"
   })
 );

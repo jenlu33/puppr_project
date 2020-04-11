@@ -2,7 +2,7 @@ require 'byebug'
 class Api::CommentsController < ApplicationController
   
   def index
-    @comments = Comment.all
+    @comments = Comment.where(photo_id: params[:photo_id])
   end
 
   #def show
@@ -34,6 +34,6 @@ class Api::CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:body, :photo_id, :user_id)
   end
 end

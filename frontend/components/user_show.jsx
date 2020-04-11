@@ -26,12 +26,15 @@ class UserShow extends React.Component {
     const {photos, showUser} = this.props;
     if (!showUser) return null;
 
-    let count = 0;
+    let photoCount = 0;
     for (let i = 0; i < photos.length; i++) {
       if (photos[i].user_id == showUser.id) {
-        count += 1;
+        photoCount += 1;
       };
     }
+
+    // const created = showUser.created_at.slice(0,4);
+    // if (!created) return null;
     
     return (
       
@@ -41,12 +44,12 @@ class UserShow extends React.Component {
         <div className="user-cover">
           <div className="user-show-info">
             <p className="show-username">{showUser.username}</p>
-            <p>User Since {showUser.created_at.slice(0,4)}</p>
+            {/* <p>User Since {created}</p> */}
           </div>
         </div>
 
         <div className="user-nav-bar">
-          <p>Photos: {count}</p>
+          <p>Photos: {photoCount}</p>
           <p>Albums: COMING SOON</p>
         </div>
 
@@ -65,8 +68,7 @@ class UserShow extends React.Component {
                 )
             }
           </ul>
-        </div>
-        
+        </div> 
       </div>
     )
   };

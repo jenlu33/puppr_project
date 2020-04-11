@@ -1832,15 +1832,17 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
           photos = _this$props.photos,
           showUser = _this$props.showUser;
       if (!showUser) return null;
-      var count = 0;
+      var photoCount = 0;
 
       for (var i = 0; i < photos.length; i++) {
         if (photos[i].user_id == showUser.id) {
-          count += 1;
+          photoCount += 1;
         }
 
         ;
-      }
+      } // const created = showUser.created_at.slice(0,4);
+      // if (!created) return null;
+
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-user-show-div"
@@ -1850,9 +1852,9 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
         className: "user-show-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "show-username"
-      }, showUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "User Since ", showUser.created_at.slice(0, 4)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, showUser.username))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-nav-bar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Photos: ", count), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Albums: COMING SOON")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Photos: ", photoCount), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Albums: COMING SOON")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-photos"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "user-photos-ul"
@@ -2330,8 +2332,9 @@ var fetchComments = function fetchComments(photoId) {
 }; //create comment
 
 var createComment = function createComment(formData) {
+  var photoId = formData.get("photo_id");
   return $.ajax({
-    url: "api/comments",
+    url: "/api/photos/".concat(photoId, "/comments"),
     method: "POST",
     data: formData,
     contentType: false,
@@ -2339,9 +2342,9 @@ var createComment = function createComment(formData) {
   });
 }; //delete comment
 
-var deleteComment = function deleteComment(commentId) {
+var deleteComment = function deleteComment(photoId, commentId) {
   return $.ajax({
-    url: "api/comments/".concat(commentId),
+    url: "/api/photos/".concat(photoId, "/comments/").concat(commentId),
     method: "DELETE"
   });
 };
