@@ -18,16 +18,11 @@ class Comments extends React.Component {
   updateBody(e) {
     this.setState({
       body: e.target.value,
-      // photo_id: this.props.photo.id
     });
   };
 
   handleSubmit(e) {
     e.preventDefault();
-    // const formData = new FormData();
-    // formData.append('comment[body]', this.state.body);
-    // formData.append('comment[photo_id]', this.props.photo.id);
-    // this.props.createComment(formData);
 
     const photoId = this.props.match.params.photoId;
     const comment = Object.assign( {},
@@ -35,16 +30,20 @@ class Comments extends React.Component {
         body: this.state.body,
         photo_id: photoId
       });
-    this.props.createComment(comment).then(this.setState({body:""}));
+    this.props.createComment(comment);
   };
 
+  // componentDidUpdate() {
+  //   this.props.displayComments(this.props.match.params.photoId)
+  // }
+
   render() {
+    const { comments } = this.props;
     return (
       <div className="main-comments-div">
-        <p>Here is where comments go</p>
 
         <form className="comments-form" onSubmit={this.handleSubmit}>
-          <textarea 
+          <textarea
             onChange={this.updateBody}
             className="comment-text" 
             placeholder="add a comment"
@@ -54,9 +53,18 @@ class Comments extends React.Component {
           <input type="submit" className="comment-submit" value="Comment"/>
         </form>
 
-        <br/>
-        <br/>
-        <br/>
+      <div className="all-comments">
+        <ul className="comments-ul">
+          {
+            comments.map(comment =>
+              <li key={`${comment.id}`}>
+                {/* <p>{this.props.user[comment.body.user_id]}</p> */}
+                <p>{comment.body}</p>
+              </li> 
+          )}
+        </ul>
+      </div>
+        
       </div>
     )
   };

@@ -551,33 +551,30 @@ var Comments = /*#__PURE__*/function (_React$Component) {
     key: "updateBody",
     value: function updateBody(e) {
       this.setState({
-        body: e.target.value // photo_id: this.props.photo.id
-
+        body: e.target.value
       });
     }
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      e.preventDefault(); // const formData = new FormData();
-      // formData.append('comment[body]', this.state.body);
-      // formData.append('comment[photo_id]', this.props.photo.id);
-      // this.props.createComment(formData);
-
+      e.preventDefault();
       var photoId = this.props.match.params.photoId;
       var comment = Object.assign({}, this.state, {
         body: this.state.body,
         photo_id: photoId
       });
-      this.props.createComment(comment).then(this.setState({
-        body: ""
-      }));
+      this.props.createComment(comment);
     }
   }, {
     key: "render",
+    // componentDidUpdate() {
+    //   this.props.displayComments(this.props.match.params.photoId)
+    // }
     value: function render() {
+      var comments = this.props.comments;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-comments-div"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Here is where comments go"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "comments-form",
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
@@ -590,7 +587,15 @@ var Comments = /*#__PURE__*/function (_React$Component) {
         type: "submit",
         className: "comment-submit",
         value: "Comment"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "all-comments"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "comments-ul"
+      }, comments.map(function (comment) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: "".concat(comment.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, comment.body));
+      }))));
     }
   }]);
 
@@ -753,7 +758,8 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     currentUser: state.entities.users[state.session.id],
-    photo: state.entities.photos[ownProps.match.params.photoId]
+    photo: state.entities.photos[ownProps.match.params.photoId],
+    comments: Object.values(state.entities.comments)
   };
 };
 

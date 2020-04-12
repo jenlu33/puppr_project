@@ -6,7 +6,8 @@ import {fetchComments, createComment} from '../../actions/comment_actions'
 
 const mapStateToProps = (state, ownProps) => ({
   currentUser: state.entities.users[state.session.id],
-  photo: state.entities.photos[ownProps.match.params.photoId], 
+  photo: state.entities.photos[ownProps.match.params.photoId],
+  comments: Object.values(state.entities.comments) 
 })
 
 const mapDispatchToProps = dispatch => ({
