@@ -504,6 +504,7 @@ var App = function App() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _containers_photo_show_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./containers/photo_show_container */ "./frontend/components/containers/photo_show_container.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -521,6 +522,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -567,11 +569,10 @@ var Comments = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "render",
-    // componentDidUpdate() {
-    //   this.props.displayComments(this.props.match.params.photoId)
-    // }
     value: function render() {
-      var comments = this.props.comments;
+      var _this$props = this.props,
+          comments = _this$props.comments,
+          photo = _this$props.photo;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-comments-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -592,9 +593,9 @@ var Comments = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "comments-ul"
       }, comments.map(function (comment) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        return comment.photo_id == photo.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: "".concat(comment.id)
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, comment.body));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, comment.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, comment.body)) : null;
       }))));
     }
   }]);

@@ -1,4 +1,5 @@
 import React from 'react';
+import photo_show_container from './containers/photo_show_container';
 
 class Comments extends React.Component {
   constructor(props) {
@@ -33,12 +34,8 @@ class Comments extends React.Component {
     this.props.createComment(comment);
   };
 
-  // componentDidUpdate() {
-  //   this.props.displayComments(this.props.match.params.photoId)
-  // }
-
   render() {
-    const { comments } = this.props;
+    const { comments, photo } = this.props;
     return (
       <div className="main-comments-div">
 
@@ -57,10 +54,12 @@ class Comments extends React.Component {
         <ul className="comments-ul">
           {
             comments.map(comment =>
+              comment.photo_id == photo.id ? (
               <li key={`${comment.id}`}>
-                {/* <p>{this.props.user[comment.body.user_id]}</p> */}
+                <p>{comment.username}</p>
                 <p>{comment.body}</p>
-              </li> 
+              </li>
+              ) : (null)
           )}
         </ul>
       </div>
