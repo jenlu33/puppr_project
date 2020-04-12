@@ -2,19 +2,13 @@ require 'byebug'
 class Api::CommentsController < ApplicationController
   
   def index
-    @comments = Comment.where(photo_id: params[:photo_id])
+    @comments = Comment.all
   end
-
-  #def show
-  #  @comment = Comment.find(params[:id])
-  #  render :show
-  #end
   
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     @comment.photo_id = params[:photo_id]
-    # debugger
     if @comment.save
       render 'api/comments/_comment'
     else
