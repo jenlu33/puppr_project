@@ -4,28 +4,38 @@ class Comments extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      body: ""
+      body: "",
+      photo_id: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateBody = this.updateBody.bind(this);
   };
 
   componentDidMount() {
-    this.props.displayComments();
+    this.props.displayComments();  
   };
 
   updateBody(e) {
     this.setState({
-      body: e.target.value
+      body: e.target.value,
+      // photo_id: this.props.photo.id
     });
   };
 
   handleSubmit(e) {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append('comment[body]', this.state.body);
-    formData.append('comment[photo_id]', this.props.photo.id);
-    this.props.createComment(formData);
+    // const formData = new FormData();
+    // formData.append('comment[body]', this.state.body);
+    // formData.append('comment[photo_id]', this.props.photo.id);
+    // this.props.createComment(formData);
+
+    const photoId = this.props.match.params.photoId;
+    const comment = Object.assign( {},
+      this.state, {
+        body: this.state.body,
+        photo_id: photoId
+      });
+    this.props.createComment(comment).then(this.setState({body:""}));
   };
 
   render() {

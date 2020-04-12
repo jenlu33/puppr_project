@@ -7,15 +7,13 @@ export const fetchComments = (photoId) => (
 );
 
 //create comment
-export const createComment = (formData) => {
-  const photoId = formData.get(`photo_id`);
+export const createComment = (comment) => {
+  const photoId = comment.photo_id;
   return (
     $.ajax({
       url: `/api/photos/${photoId}/comments`,
       method: "POST",
-      data: formData,
-      contentType: false,
-      processData: false
+      data: {comment},
     })
   );
 };

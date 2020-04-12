@@ -534,7 +534,8 @@ var Comments = /*#__PURE__*/function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Comments).call(this, props));
     _this.state = {
-      body: ""
+      body: "",
+      photo_id: ""
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.updateBody = _this.updateBody.bind(_assertThisInitialized(_this));
@@ -550,17 +551,26 @@ var Comments = /*#__PURE__*/function (_React$Component) {
     key: "updateBody",
     value: function updateBody(e) {
       this.setState({
-        body: e.target.value
+        body: e.target.value // photo_id: this.props.photo.id
+
       });
     }
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      e.preventDefault();
-      var formData = new FormData();
-      formData.append('comment[body]', this.state.body);
-      formData.append('comment[photo_id]', this.props.photo.id);
-      this.props.createComment(formData);
+      e.preventDefault(); // const formData = new FormData();
+      // formData.append('comment[body]', this.state.body);
+      // formData.append('comment[photo_id]', this.props.photo.id);
+      // this.props.createComment(formData);
+
+      var photoId = this.props.match.params.photoId;
+      var comment = Object.assign({}, this.state, {
+        body: this.state.body,
+        photo_id: photoId
+      });
+      this.props.createComment(comment).then(this.setState({
+        body: ""
+      }));
     }
   }, {
     key: "render",
@@ -2332,14 +2342,14 @@ var fetchComments = function fetchComments(photoId) {
   });
 }; //create comment
 
-var createComment = function createComment(formData) {
-  var photoId = formData.get("photo_id");
+var createComment = function createComment(comment) {
+  var photoId = comment.photo_id;
   return $.ajax({
     url: "/api/photos/".concat(photoId, "/comments"),
     method: "POST",
-    data: formData,
-    contentType: false,
-    processData: false
+    data: {
+      comment: comment
+    }
   });
 }; //delete comment
 
