@@ -24,6 +24,7 @@ class Comments extends React.Component {
     e.preventDefault();
     const formData = new FormData();
     formData.append('comment[body]', this.state.body);
+    formData.append('comment[photo_id]', this.props.photo.id);
     this.props.createComment(formData);
   };
 

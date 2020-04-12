@@ -559,6 +559,7 @@ var Comments = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       var formData = new FormData();
       formData.append('comment[body]', this.state.body);
+      formData.append('comment[photo_id]', this.props.photo.id);
       this.props.createComment(formData);
     }
   }, {
