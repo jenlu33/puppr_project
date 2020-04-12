@@ -1,0 +1,20 @@
+.all-comments {
+  // border: 1px solid blue;
+  margin: 25px 0;
+}
+
+.comments-li {
+  // border: 1px solid red;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comment-body {
+  width: 70%;
+}
+
+.comments-li > p {
+  // border: 1px solid orange;
+}

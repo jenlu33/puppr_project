@@ -541,13 +541,14 @@ var Comments = /*#__PURE__*/function (_React$Component) {
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.updateBody = _this.updateBody.bind(_assertThisInitialized(_this));
+    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Comments, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.displayComments();
+      this.props.displayComments(this.props.match.params.photoId); // console.log(this.props);
     }
   }, {
     key: "updateBody",
@@ -568,11 +569,21 @@ var Comments = /*#__PURE__*/function (_React$Component) {
       this.props.createComment(comment);
     }
   }, {
+    key: "handleDelete",
+    value: function handleDelete(e) {
+      e.preventDefault;
+      this.props.deleteComment(e.target.id);
+      console.log(e.target.id);
+      console.log(e.currentTarget);
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var _this$props = this.props,
           comments = _this$props.comments,
-          photo = _this$props.photo;
+          currentUser = _this$props.currentUser;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-comments-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -593,9 +604,17 @@ var Comments = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "comments-ul"
       }, comments.map(function (comment) {
-        return comment.photo_id == photo.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: "".concat(comment.id)
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, comment.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, comment.body)) : null;
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: "".concat(comment.id),
+          className: "comments-li"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "comment-username"
+        }, comment.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "comment-body"
+        }, comment.body), currentUser.id == comment.user_id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          id: comment.id,
+          onClick: _this2.handleDelete
+        }, "x") : null);
       }))));
     }
   }]);
@@ -777,6 +796,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     createComment: function createComment(comment) {
       return dispatch(Object(_actions_comment_actions__WEBPACK_IMPORTED_MODULE_4__["createComment"])(comment));
+    },
+    deleteComment: function deleteComment(commentId) {
+      return dispatch(Object(_actions_comment_actions__WEBPACK_IMPORTED_MODULE_4__["deleteComment"])(commentId));
     },
     logout: function logout() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["log_out"])());
@@ -2360,9 +2382,9 @@ var createComment = function createComment(comment) {
   });
 }; //delete comment
 
-var deleteComment = function deleteComment(photoId, commentId) {
+var deleteComment = function deleteComment(commentId) {
   return $.ajax({
-    url: "/api/photos/".concat(photoId, "/comments/").concat(commentId),
+    url: "/api/comments/".concat(commentId),
     method: "DELETE"
   });
 };

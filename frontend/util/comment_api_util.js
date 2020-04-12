@@ -20,9 +20,9 @@ export const createComment = (comment) => {
 
 
 //delete comment
-export const deleteComment = (photoId, commentId) => (
+export const deleteComment = (commentId) => (
   $.ajax({
-    url: `/api/photos/${photoId}/comments/${commentId}`,
+    url: `/api/comments/${commentId}`,
     method: "DELETE"
   })
 );

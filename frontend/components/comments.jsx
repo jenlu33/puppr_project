@@ -10,10 +10,13 @@ class Comments extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateBody = this.updateBody.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   };
 
   componentDidMount() {
-    this.props.displayComments();  
+    this.props.displayComments(this.props.match.params.photoId);  
+    // console.log(this.props);
+    
   };
 
   updateBody(e) {
@@ -34,8 +37,17 @@ class Comments extends React.Component {
     this.props.createComment(comment);
   };
 
+  handleDelete(e) {
+    e.preventDefault;
+    this.props.deleteComment(e.target.id);
+    console.log(e.target.id);
+    console.log(e.currentTarget);
+    
+  }
+
   render() {
-    const { comments, photo } = this.props;
+    const { comments, currentUser } = this.props;
+
     return (
       <div className="main-comments-div">
 
@@ -54,12 +66,15 @@ class Comments extends React.Component {
         <ul className="comments-ul">
           {
             comments.map(comment =>
-              comment.photo_id == photo.id ? (
-              <li key={`${comment.id}`}>
-                <p>{comment.username}</p>
-                <p>{comment.body}</p>
+            
+              <li key={`${comment.id}`} className="comments-li">
+                <p className="comment-username">{comment.username}</p>
+                <p className="comment-body">{comment.body}</p>
+                {currentUser.id == comment.user_id ? (
+                  <button id={comment.id} onClick={this.handleDelete}>x</button>
+                ) : (null)}
               </li>
-              ) : (null)
+            
           )}
         </ul>
       </div>

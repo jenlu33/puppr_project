@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import PhotoShow from '../photo_show';
 import { fetchPhoto, deletePhoto } from '../../actions/photo_actions'
 import { log_out } from '../../actions/session_actions';
-import {fetchComments, createComment} from '../../actions/comment_actions'
+import {fetchComments, createComment, deleteComment} from '../../actions/comment_actions'
 
 const mapStateToProps = (state, ownProps) => ({
   currentUser: state.entities.users[state.session.id],
@@ -15,6 +15,7 @@ const mapDispatchToProps = dispatch => ({
   deletePhoto: (photoId) => dispatch(deletePhoto(photoId)),
   displayComments: (comments) => dispatch(fetchComments(comments)),
   createComment: (comment) => dispatch(createComment(comment)),
+  deleteComment: (commentId) => dispatch(deleteComment(commentId)),
   logout: () => dispatch(log_out())
 })
 
