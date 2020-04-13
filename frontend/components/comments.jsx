@@ -63,10 +63,17 @@ class Comments extends React.Component {
             comments.map(comment =>
             
               <li key={`${comment.id}`} className="comments-li">
-                <p className="comment-username">{comment.username}</p>
-                <p className="comment-body">{comment.body}</p>
+                <div className="individual-comment-container">
+                  <p className="comment-username">{comment.username}</p>
+                  <p className="comment-body">{comment.body}</p>
+                </div>
                 {currentUser.id == comment.user_id ? (
-                  <button id={comment.id} onClick={this.handleDelete}>x</button>
+                  <button 
+                    id={comment.id} 
+                    onClick={this.handleDelete}
+                    className="delete-comment-btn">
+                      delete
+                  </button>
                 ) : (null)}
               </li>
             

@@ -605,14 +605,17 @@ var Comments = /*#__PURE__*/function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: "".concat(comment.id),
           className: "comments-li"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "individual-comment-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "comment-username"
         }, comment.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "comment-body"
-        }, comment.body), currentUser.id == comment.user_id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }, comment.body)), currentUser.id == comment.user_id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           id: comment.id,
-          onClick: _this2.handleDelete
-        }, "x") : null);
+          onClick: _this2.handleDelete,
+          className: "delete-comment-btn"
+        }, "delete") : null);
       }))));
     }
   }]);
