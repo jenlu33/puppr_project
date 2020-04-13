@@ -13,7 +13,22 @@ class Api::AlbumsController < ApplicationController
     @album = Album.new(album_params)
     @album.user_id = current_user.id
 
+    photo_ids = params[:album][:photo_ids]
+    # puts params to see what this is exactly?
+
     if @album.save
+      photo_ids.each do |id|
+        AlbumPhoto.create(photo_id: id, album_id: @album.id)
+      end
+      render :show
+    else
+      render json: @album.errors.full_messages, status: 422
+    end
+  end
+
+  def update
+    @album = Album.find(params[:id])
+    if @album.update(album_params)
       render :show
     else
       render json: @album.errors.full_messages, status: 422
@@ -32,6 +47,6 @@ class Api::AlbumsController < ApplicationController
   private
 
   def album_params
-    params.require(:album).permit(:title)
+    params.require(:album).permit(:title, :photo_ids: [])
   end
 end
