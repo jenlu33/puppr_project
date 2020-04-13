@@ -1,5 +1,5 @@
 import React from 'react';
-import photo_show_container from './containers/photo_show_container';
+import { Link } from 'react-router-dom';
 
 class Comments extends React.Component {
   constructor(props) {
@@ -41,7 +41,7 @@ class Comments extends React.Component {
   }
 
   render() {
-    const { comments, currentUser } = this.props;
+    const { comments, currentUser, photo } = this.props;
 
     return (
       <div className="main-comments-div">
@@ -64,7 +64,11 @@ class Comments extends React.Component {
             
               <li key={`${comment.id}`} className="comments-li">
                 <div className="individual-comment-container">
-                  <p className="comment-username">{comment.username}</p>
+                  <Link 
+                    className="comment-username" 
+                    to={`/users/${photo.user.id}`}>
+                      {comment.username}
+                  </Link>
                   <p className="comment-body">{comment.body}</p>
                 </div>
                 {currentUser.id == comment.user_id ? (

@@ -504,7 +504,7 @@ var App = function App() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _containers_photo_show_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./containers/photo_show_container */ "./frontend/components/containers/photo_show_container.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -581,7 +581,8 @@ var Comments = /*#__PURE__*/function (_React$Component) {
 
       var _this$props = this.props,
           comments = _this$props.comments,
-          currentUser = _this$props.currentUser;
+          currentUser = _this$props.currentUser,
+          photo = _this$props.photo;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-comments-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -607,8 +608,9 @@ var Comments = /*#__PURE__*/function (_React$Component) {
           className: "comments-li"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "individual-comment-container"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "comment-username"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          className: "comment-username",
+          to: "/users/".concat(photo.user.id)
         }, comment.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "comment-body"
         }, comment.body)), currentUser.id == comment.user_id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
