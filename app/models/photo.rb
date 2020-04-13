@@ -18,7 +18,7 @@ class Photo < ApplicationRecord
     foreign_key: :user_id,
     class_name: :User
   
-  has_many :comments,
+  has_many :comments, dependent: :destroy,
     foreign_key: :photo_id,
     class_name: :Comment
 
