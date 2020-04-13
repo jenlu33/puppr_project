@@ -35,7 +35,7 @@ class PhotoShow extends React.Component {
       <div className="delete-container">
         <button onClick={this.handleDelete} className="delete-btn">Delete Photo</button>
       </div>
-    ) : null
+    ) : (null)
     
     if (!photo) {
       return null;

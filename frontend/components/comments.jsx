@@ -15,8 +15,6 @@ class Comments extends React.Component {
 
   componentDidMount() {
     this.props.displayComments(this.props.match.params.photoId);  
-    // console.log(this.props);
-    
   };
 
   updateBody(e) {
@@ -40,9 +38,6 @@ class Comments extends React.Component {
   handleDelete(e) {
     e.preventDefault;
     this.props.deleteComment(e.target.id);
-    console.log(e.target.id);
-    console.log(e.currentTarget);
-    
   }
 
   render() {

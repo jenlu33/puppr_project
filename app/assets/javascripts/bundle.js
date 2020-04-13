@@ -548,7 +548,7 @@ var Comments = /*#__PURE__*/function (_React$Component) {
   _createClass(Comments, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.displayComments(this.props.match.params.photoId); // console.log(this.props);
+      this.props.displayComments(this.props.match.params.photoId);
     }
   }, {
     key: "updateBody",
@@ -573,8 +573,6 @@ var Comments = /*#__PURE__*/function (_React$Component) {
     value: function handleDelete(e) {
       e.preventDefault;
       this.props.deleteComment(e.target.id);
-      console.log(e.target.id);
-      console.log(e.currentTarget);
     }
   }, {
     key: "render",
@@ -779,7 +777,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     currentUser: state.entities.users[state.session.id],
     photo: state.entities.photos[ownProps.match.params.photoId],
-    comments: Object.values(state.entities.comments)
+    comments: Object.values(state.entities.comments).reverse()
   };
 };
 
