@@ -1,6 +1,7 @@
 class Api::AlbumsController < ApplicationController
   def index
     @albums = Album.where(user_id: params[:user_id])
+    render :index
   end
 
   def show
@@ -22,6 +23,7 @@ class Api::AlbumsController < ApplicationController
   def destroy
     @album = Album.find(params[:id])
     if @comment.destroy
+      # render: index
     else
       render json: @album.errors.full_messages, status: 422
     end
