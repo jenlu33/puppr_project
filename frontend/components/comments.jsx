@@ -51,8 +51,7 @@ class Comments extends React.Component {
             onChange={this.updateBody}
             className="comment-text" 
             placeholder="add a comment"
-            cols="50" 
-            rows="7"/>
+            rows="6"/>
 
           <input type="submit" className="comment-submit" value="Comment"/>
         </form>

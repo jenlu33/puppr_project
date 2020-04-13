@@ -592,8 +592,7 @@ var Comments = /*#__PURE__*/function (_React$Component) {
         onChange: this.updateBody,
         className: "comment-text",
         placeholder: "add a comment",
-        cols: "50",
-        rows: "7"
+        rows: "6"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         className: "comment-submit",
