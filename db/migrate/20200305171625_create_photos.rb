@@ -8,8 +8,5 @@ class CreatePhotos < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-
-    add_index :photos, :user_id, unique: true
-    add_index :photos, :album_id
   end
 end

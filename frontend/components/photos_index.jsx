@@ -14,6 +14,10 @@ class PhotosIndex extends React.Component {
     this.props.fetchUsers();
   }
 
+  // componentWillUnmount() {
+  //   this.props.displayComments();
+  // }
+
   viewPhoto(e) {
     this.props.history.push(`/photos/${e.currentTarget.id}`)
   }

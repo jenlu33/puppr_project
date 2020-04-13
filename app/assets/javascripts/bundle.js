@@ -1522,7 +1522,10 @@ var PhotosIndex = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       this.props.displayPhotos();
       this.props.fetchUsers();
-    }
+    } // componentWillUnmount() {
+    //   this.props.displayComments();
+    // }
+
   }, {
     key: "viewPhoto",
     value: function viewPhoto(e) {
