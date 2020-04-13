@@ -1,5 +1,4 @@
 .main-comments-div {
-  // border: 1px solid red;
   width: 50vw;
   min-width: 350px;
   margin-top: 15px;
@@ -46,14 +45,10 @@
 //MAPPED COMMENTS
 
 .all-comments {
-  // border: 1px solid blue;
   margin: 25px 0 100px 0;
 }
 
 .comments-li {
-  // border: 1px solid red;
-  // border-bottom: 1px solid lightgray;
-  // margin: 5px 0;
   padding: 5px 15px;
   display: flex;
   align-items: flex-end;
@@ -68,7 +63,6 @@
 }
 
 .individual-comment-container {
-  // border: 1px solid red;
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -81,7 +75,6 @@
 }
 
 .comment-body {
-  // border: 1px solid orange;
   width: 100%;
   text-align: justify;
   font-weight: 300;
