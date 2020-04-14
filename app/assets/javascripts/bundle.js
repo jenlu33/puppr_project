@@ -86,6 +86,110 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/actions/album_actions.js":
+/*!*******************************************!*\
+  !*** ./frontend/actions/album_actions.js ***!
+  \*******************************************/
+/*! exports provided: RECEIVE_ALL_ALBUMS, RECEIVE_ALBUM, REMOVE_ALBUM, RECEIVE_ALBUM_ERRORS, REMOVE_ALBUM_ERRORS, removeAlbumErrors, fetchAlbums, fetchAlbum, createAlbum, updateAlbum, deleteAlbum */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_ALBUMS", function() { return RECEIVE_ALL_ALBUMS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALBUM", function() { return RECEIVE_ALBUM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_ALBUM", function() { return REMOVE_ALBUM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALBUM_ERRORS", function() { return RECEIVE_ALBUM_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_ALBUM_ERRORS", function() { return REMOVE_ALBUM_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeAlbumErrors", function() { return removeAlbumErrors; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAlbums", function() { return fetchAlbums; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAlbum", function() { return fetchAlbum; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createAlbum", function() { return createAlbum; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateAlbum", function() { return updateAlbum; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteAlbum", function() { return deleteAlbum; });
+/* harmony import */ var _util_album_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/album_api_util */ "./frontend/util/album_api_util.js");
+
+var RECEIVE_ALL_ALBUMS = "RECEIVE_ALL_ALBUMS";
+var RECEIVE_ALBUM = "RECEIVE_ALBUM";
+var REMOVE_ALBUM = "REMOVE_ALBUM";
+var RECEIVE_ALBUM_ERRORS = "RECEIVE_ALBUM_ERRORS";
+var REMOVE_ALBUM_ERRORS = "REMOVE_ALBUM_ERRORS";
+
+var receiveAlbums = function receiveAlbums(albums) {
+  return {
+    type: RECEIVE_ALL_ALBUMS,
+    albums: albums
+  };
+};
+
+var receiveAlbum = function receiveAlbum(album) {
+  return {
+    type: RECEIVE_ALBUM,
+    album: album
+  };
+};
+
+var removeAlbum = function removeAlbum(albumId) {
+  return {
+    type: REMOVE_ALBUM,
+    albumId: albumId
+  };
+};
+
+var receiveAlbumErrors = function receiveAlbumErrors(errors) {
+  return {
+    type: RECEIVE_ALBUM_ERRORS,
+    errors: errors
+  };
+};
+
+var removeAlbumErrors = function removeAlbumErrors() {
+  return {
+    type: REMOVE_ALBUM_ERRORS,
+    errors: []
+  };
+};
+var fetchAlbums = function fetchAlbums(userId) {
+  return function (dispatch) {
+    return _util_album_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchAlbums"](userId).then(function (albums) {
+      return dispatch(receiveAlbums(albums));
+    });
+  };
+};
+var fetchAlbum = function fetchAlbum(albumId) {
+  return function (dispatch) {
+    return _util_album_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchAlbum"](albumId).then(function (album) {
+      return dispatch(receiveAlbum(album));
+    });
+  };
+};
+var createAlbum = function createAlbum(album) {
+  return function (dispatch) {
+    return _util_album_api_util__WEBPACK_IMPORTED_MODULE_0__["createAlbum"](album).then(function (album) {
+      return dispatch(receiveAlbum(album));
+    }, function (error) {
+      return dispatch(receiveAlbumErrors(error));
+    });
+  };
+};
+var updateAlbum = function updateAlbum(album) {
+  return function (dispatch) {
+    return _util_album_api_util__WEBPACK_IMPORTED_MODULE_0__["updateAlbum"](album).then(function (album) {
+      return dispatch(receiveAlbum(album));
+    }, function (error) {
+      return dispatch(receiveAlbumErrors(error));
+    });
+  };
+};
+var deleteAlbum = function deleteAlbum(albumId) {
+  return function (dispatch) {
+    return _util_album_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteAlbum"](albumId).then(function () {
+      return dispatch(removeAlbum(albumId));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/comment_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/comment_actions.js ***!
@@ -433,6 +537,52 @@ var fetchUser = function fetchUser(userId) {
 
 /***/ }),
 
+/***/ "./frontend/components/albums_index.jsx":
+/*!**********************************************!*\
+  !*** ./frontend/components/albums_index.jsx ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var AlbumsIndex = /*#__PURE__*/function (_React$Component) {
+  _inherits(AlbumsIndex, _React$Component);
+
+  function AlbumsIndex(props) {
+    _classCallCheck(this, AlbumsIndex);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(AlbumsIndex).call(this, props));
+  }
+
+  _createClass(AlbumsIndex, [{
+    key: "render",
+    value: function render() {
+      return React.createElement("div", null);
+    }
+  }]);
+
+  return AlbumsIndex;
+}(React.Component);
+
+/***/ }),
+
 /***/ "./frontend/components/app.jsx":
 /*!*************************************!*\
   !*** ./frontend/components/app.jsx ***!
@@ -452,7 +602,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _containers_photo_show_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./containers/photo_show_container */ "./frontend/components/containers/photo_show_container.jsx");
 /* harmony import */ var _containers_photo_create_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./containers/photo_create_container */ "./frontend/components/containers/photo_create_container.jsx");
 /* harmony import */ var _containers_show_user_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./containers/show_user_container */ "./frontend/components/containers/show_user_container.jsx");
-/* harmony import */ var _error404__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./error404 */ "./frontend/components/error404.jsx");
+/* harmony import */ var _containers_albums_index_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./containers/albums_index_container */ "./frontend/components/containers/albums_index_container.jsx");
+/* harmony import */ var _error404__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./error404 */ "./frontend/components/error404.jsx");
+
 
 
 
@@ -480,12 +632,15 @@ var App = function App() {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     path: "/users/:userId",
     component: _containers_show_user_container__WEBPACK_IMPORTED_MODULE_8__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
+    path: "/albums",
+    component: _containers_show_user_container__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/",
     component: _containers_greeting_container__WEBPACK_IMPORTED_MODULE_3__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    component: _error404__WEBPACK_IMPORTED_MODULE_9__["default"]
+    component: _error404__WEBPACK_IMPORTED_MODULE_10__["default"]
   })));
 };
 
@@ -626,6 +781,42 @@ var Comments = /*#__PURE__*/function (_React$Component) {
 
 ;
 /* harmony default export */ __webpack_exports__["default"] = (Comments);
+
+/***/ }),
+
+/***/ "./frontend/components/containers/albums_index_container.jsx":
+/*!*******************************************************************!*\
+  !*** ./frontend/components/containers/albums_index_container.jsx ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _albums_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../albums_index */ "./frontend/components/albums_index.jsx");
+/* harmony import */ var _albums_index__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_albums_index__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _actions_album_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/album_actions */ "./frontend/actions/album_actions.js");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    currentUser: state.entities.users[state.session.id],
+    albums: Object.values(state.entities.albums)
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    displayAlbums: function displayAlbums(userId) {
+      return dispatch(Object(_actions_album_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAlbums"])(userId));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_albums_index__WEBPACK_IMPORTED_MODULE_1___default.a));
 
 /***/ }),
 
@@ -2353,6 +2544,67 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
+
+/***/ }),
+
+/***/ "./frontend/util/album_api_util.js":
+/*!*****************************************!*\
+  !*** ./frontend/util/album_api_util.js ***!
+  \*****************************************/
+/*! exports provided: fetchAlbums, fetchAlbum, createAlbum, updateAlbum, deleteAlbum */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAlbums", function() { return fetchAlbums; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAlbum", function() { return fetchAlbum; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createAlbum", function() { return createAlbum; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateAlbum", function() { return updateAlbum; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteAlbum", function() { return deleteAlbum; });
+// all albums of specific user
+var fetchAlbums = function fetchAlbums(userId) {
+  return $.ajax({
+    url: "/api/users/".concat(userId, "/albums"),
+    method: "GET"
+  });
+}; //show album
+
+var fetchAlbum = function fetchAlbum(albumId) {
+  return $.ajax({
+    url: "/api/albums/".concat(albumId),
+    method: "GET"
+  });
+}; //create album
+
+var createAlbum = function createAlbum(album) {
+  var userId = album.user_id;
+  return $.ajax({
+    url: "/api/users/".concat(userId, "/albums"),
+    method: "POST",
+    data: {
+      album: album
+    }
+  });
+}; //update album
+
+var updateAlbum = function updateAlbum(album) {
+  var userId = album.user_id;
+  var albumId = album.id;
+  return $.ajax({
+    url: "api/users/".concat(userId, "/albums/").concat(albumId),
+    method: "PATCH",
+    data: {
+      album: album
+    }
+  });
+}; //delete album
+
+var deleteAlbum = function deleteAlbum(albumId) {
+  return $.ajax({
+    url: "api/albums/".concat(albumId),
+    method: "DELETE"
+  });
+};
 
 /***/ }),
 

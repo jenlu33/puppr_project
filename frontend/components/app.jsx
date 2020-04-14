@@ -8,6 +8,8 @@ import LoginContainer from './containers/login_form_container';
 import PhotoContainer from './containers/photo_show_container';
 import CreatePhotoContainer from './containers/photo_create_container';
 import UserShowContainer from './containers/show_user_container';
+import AlbumIndexContainer from './containers/albums_index_container';
+
 import ErrorContainer from './error404'
 
 const App = () => (
@@ -18,6 +20,10 @@ const App = () => (
       <ProtectedRoute path="/photos/:photoId" component={PhotoContainer}/>
       <ProtectedRoute path="/upload" component={CreatePhotoContainer} />
       <ProtectedRoute path="/users/:userId" component={UserShowContainer} />
+      {/* <ProtectedRoute path="/users/:userId/albums" component={UserShowContainer} /> */}
+      
+      <ProtectedRoute path="/albums" component={UserShowContainer} /> {/* temp test route for albums */}
+
       <Route exact path="/" component={GreetingContainer} />
       <Route component={ErrorContainer} />
     </Switch>
