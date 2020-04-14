@@ -19,11 +19,8 @@ const App = () => (
       <AuthRoute path="/signup" component={SignupContainer} />
       <ProtectedRoute path="/photos/:photoId" component={PhotoContainer}/>
       <ProtectedRoute path="/upload" component={CreatePhotoContainer} />
-      <ProtectedRoute path="/users/:userId" component={UserShowContainer} />
-      {/* <ProtectedRoute path="/users/:userId/albums" component={UserShowContainer} /> */}
-      
-      <ProtectedRoute path="/albums" component={UserShowContainer} /> {/* temp test route for albums */}
-
+      <ProtectedRoute exact path="/users/:userId/albums" component={AlbumIndexContainer} />
+      <ProtectedRoute exact path="/users/:userId" component={UserShowContainer} />
       <Route exact path="/" component={GreetingContainer} />
       <Route component={ErrorContainer} />
     </Switch>

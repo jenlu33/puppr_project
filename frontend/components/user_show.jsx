@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import LoggedInHeader from './logged_in_header';
+import UserShowCover from './user_show_cover';
 
 class UserShow extends React.Component {
   constructor(props) {
@@ -32,25 +34,21 @@ class UserShow extends React.Component {
         photoCount += 1;
       };
     }
-
-    // const created = showUser.created_at.slice(0,4);
-    // if (!created) return null;
     
     return (
       
       <div className="main-user-show-div">
         {<LoggedInHeader {...this.props} />}
-      
-        <div className="user-cover">
-          <div className="user-show-info">
-            <p className="show-username">{showUser.username}</p>
-            {/* <p>User Since {created}</p> */}
-          </div>
-        </div>
+
+        {<UserShowCover showUser={showUser} pageType={this.props.pageType}/>}
 
         <div className="user-nav-bar">
-          <p>Photos: {photoCount}</p>
-          <p>Albums: COMING SOON</p>
+          <p>Photos</p>
+          <Link 
+            to={`/users/${showUser.id}/albums`}
+            className="nav-user-albums">
+              Albums
+          </Link>
         </div>
 
         <div className="user-photos">
