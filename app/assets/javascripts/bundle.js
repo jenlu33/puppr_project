@@ -601,7 +601,10 @@ var AlbumsIndex = /*#__PURE__*/function (_React$Component) {
         pageType: this.props.pageType
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "album-nav"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Create New Album")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/album",
+        className: "new-album-link"
+      }, "Create New Album")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-albums"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null)));
     }
