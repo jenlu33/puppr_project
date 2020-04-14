@@ -560,9 +560,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -576,20 +576,70 @@ var AlbumCreate = /*#__PURE__*/function (_React$Component) {
   _inherits(AlbumCreate, _React$Component);
 
   function AlbumCreate(props) {
+    var _this;
+
     _classCallCheck(this, AlbumCreate);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(AlbumCreate).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(AlbumCreate).call(this, props));
+    _this.state = {
+      title: "",
+      photoIds: []
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.updateTitle = _this.updateTitle.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(AlbumCreate, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.displayPhotos(this.props.match.params.userId);
+      this.props.displayPhotos(this.props.currentUser.id);
+    }
+  }, {
+    key: "updateTitle",
+    value: function updateTitle(e) {
+      this.setState({
+        title: e.target.value
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var album = Object.assign({}, this.state, {
+        title: this.state.title,
+        photo_ids: Object.values(this.state.photo_ids)
+      });
+      this.props.createAlbum(album);
     }
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_logged_in_header__WEBPACK_IMPORTED_MODULE_2__["default"], this.props), "CREATE NEW ALBUM HERE");
+      if (!this.props.photos) return null;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_logged_in_header__WEBPACK_IMPORTED_MODULE_2__["default"], this.props), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "create-album-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "create-album-form",
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "create-album-title",
+        placeholder: "title",
+        onChange: this.updateTitle
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "submit",
+        className: "album-submit-btn",
+        value: "create album"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "select-album-photos"
+      }, this.props.photos.map(function (photo) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          key: photo.id,
+          id: photo.id,
+          className: "select-album-image",
+          src: photo.photoUrl
+        });
+      })))));
     }
   }]);
 
@@ -656,7 +706,9 @@ var AlbumsIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var showUser = this.props.showUser;
+      var _this$props = this.props,
+          showUser = _this$props.showUser,
+          currentUser = _this$props.currentUser;
       if (!showUser) return null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-album-index-div"
@@ -665,10 +717,10 @@ var AlbumsIndex = /*#__PURE__*/function (_React$Component) {
         pageType: this.props.pageType
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "album-nav"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, showUser.id === currentUser.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/album/new",
         className: "new-album-link"
-      }, "Create New Album")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Create New Album") : null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-albums"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null)));
     }
@@ -902,12 +954,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _album_create__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../album_create */ "./frontend/components/album_create.jsx");
 /* harmony import */ var _actions_album_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/album_actions */ "./frontend/actions/album_actions.js");
 /* harmony import */ var _actions_photo_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/photo_actions */ "./frontend/actions/photo_actions.js");
+/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/user_actions */ "./frontend/actions/user_actions.js");
 
 
 
 
 
-var mapStateToProps = function mapStateToProps(state) {
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     currentUser: state.entities.users[state.session.id],
     photos: Object.values(state.entities.photos)

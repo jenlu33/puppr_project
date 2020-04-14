@@ -14,7 +14,7 @@ class AlbumsIndex extends React.Component {
   };
 
   render() {
-    const {showUser} = this.props;
+    const {showUser, currentUser} = this.props;
     if (!showUser) return null;
     return (
       <div className="main-album-index-div">
@@ -22,11 +22,14 @@ class AlbumsIndex extends React.Component {
    
        {<UserShowCover showUser={showUser} pageType={this.props.pageType}/>}
         <div className="album-nav">
-          <Link 
+          {showUser.id === currentUser.id ? (
+             <Link 
             to={`/album/new`}
             className="new-album-link">
             Create New Album
           </Link>
+          ): (null)}
+         
         </div>
 
 

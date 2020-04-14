@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 import AlbumCreate from '../album_create';
 import { createAlbum } from '../../actions/album_actions';
 import { fetchUserPhotos } from '../../actions/photo_actions';
+import { fetchUser } from '../../actions/user_actions';
 
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, ownProps) => ({
   currentUser: state.entities.users[state.session.id],
   photos: Object.values(state.entities.photos)
 });
