@@ -7,8 +7,8 @@ import { fetchUser } from '../../actions/user_actions';
 const mapStateToProps = (state, ownProps) => ({
   currentUser: state.entities.users[state.session.id],
   showUser: state.entities.users[ownProps.match.params.userId],
+  albums: Object.values(state.entities.albums),
   pageType: "albums"
-  // albums: Object.values(state.entities.albums),
 });
 
 const mapDispatchToProps = dispatch => ({
