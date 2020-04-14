@@ -46,14 +46,13 @@ class UserShow extends React.Component {
           <ul className="user-photos-ul">
             {
               photos.map(photo =>
-                photo.user_id == showUser.id ? (
                 <div key={`${photo.id}`}>
                     <img 
                       id={`${photo.id}`}
                       className="user-show-photo" 
                       src={photo.photoUrl}
                       onClick={this.viewPhoto}/>
-                </div>) : (null)
+                </div>
                 )
             }
           </ul>

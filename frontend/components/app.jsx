@@ -9,6 +9,7 @@ import PhotoContainer from './containers/photo_show_container';
 import CreatePhotoContainer from './containers/photo_create_container';
 import UserShowContainer from './containers/show_user_container';
 import AlbumIndexContainer from './containers/albums_index_container';
+import AlbumCreateContainer from './containers/album_create_container';
 
 import ErrorContainer from './error404'
 
@@ -19,8 +20,9 @@ const App = () => (
       <AuthRoute path="/signup" component={SignupContainer} />
       <ProtectedRoute path="/photos/:photoId" component={PhotoContainer}/>
       <ProtectedRoute path="/upload" component={CreatePhotoContainer} />
-      <ProtectedRoute exact path="/users/:userId/albums" component={AlbumIndexContainer} />
       <ProtectedRoute exact path="/users/:userId" component={UserShowContainer} />
+      <ProtectedRoute exact path="/users/:userId/albums" component={AlbumIndexContainer} />
+      <ProtectedRoute path="/album/new" component={AlbumCreateContainer} />
       <Route exact path="/" component={GreetingContainer} />
       <Route component={ErrorContainer} />
     </Switch>

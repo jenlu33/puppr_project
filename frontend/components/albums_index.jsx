@@ -23,7 +23,7 @@ class AlbumsIndex extends React.Component {
        {<UserShowCover showUser={showUser} pageType={this.props.pageType}/>}
         <div className="album-nav">
           <Link 
-            to={`/album`}
+            to={`/album/new`}
             className="new-album-link">
             Create New Album
           </Link>
