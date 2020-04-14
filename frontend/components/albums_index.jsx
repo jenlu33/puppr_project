@@ -22,14 +22,7 @@ class AlbumsIndex extends React.Component {
    
        {<UserShowCover showUser={showUser} pageType={this.props.pageType}/>}
       
-        <div className="user-nav-bar">
-          <Link
-            to={`/users/${showUser.id}`}
-            className="nav-user-photos">
-              Photos
-          </Link>
-          <p>Albums</p>
-        </div>
+
 
         <div className="user-albums">
           <ul>

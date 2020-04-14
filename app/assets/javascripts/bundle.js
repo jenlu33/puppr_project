@@ -600,11 +600,6 @@ var AlbumsIndex = /*#__PURE__*/function (_React$Component) {
         showUser: showUser,
         pageType: this.props.pageType
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "user-nav-bar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/users/".concat(showUser.id),
-        className: "nav-user-photos"
-      }, "Photos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Albums")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-albums"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null)));
     }
@@ -2136,11 +2131,6 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
         showUser: showUser,
         pageType: this.props.pageType
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "user-nav-bar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Photos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/users/".concat(showUser.id, "/albums"),
-        className: "nav-user-albums"
-      }, "Albums")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-photos"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "user-photos-ul"
@@ -2176,16 +2166,26 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 var UserShowCover = function UserShowCover(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "user-cover"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "user-show-info"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "show-username"
-  }, props.showUser.username, "'s ", props.pageType)));
+  }, props.showUser.username, "'s ", props.pageType))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "user-nav-bar"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/users/".concat(props.showUser.id),
+    className: "nav-user-photos"
+  }, "Photos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/users/".concat(props.showUser.id, "/albums"),
+    className: "nav-user-albums"
+  }, "Albums")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (UserShowCover);

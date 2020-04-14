@@ -1,0 +1,40 @@
+//USER'S COVER PHOTO
+
+.user-cover {
+  // border: 1px solid blue;
+  background: image-url('clouds.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.user-show-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 45px;
+}
+
+.user-show-info > p {
+  padding: 15px 0;
+  display: flex;
+  align-items: center;
+}
+
+.show-username {
+  font-size: 40px;
+}
+
+//USER'S NAV BAR
+
+.user-nav-bar {
+  height: 40px;
+  padding: 0 40px;
+  background-color: rgb(221, 221, 221);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}

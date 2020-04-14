@@ -42,15 +42,6 @@ class UserShow extends React.Component {
 
         {<UserShowCover showUser={showUser} pageType={this.props.pageType}/>}
 
-        <div className="user-nav-bar">
-          <p>Photos</p>
-          <Link 
-            to={`/users/${showUser.id}/albums`}
-            className="nav-user-albums">
-              Albums
-          </Link>
-        </div>
-
         <div className="user-photos">
           <ul className="user-photos-ul">
             {
