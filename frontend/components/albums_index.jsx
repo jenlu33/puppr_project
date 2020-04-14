@@ -21,7 +21,9 @@ class AlbumsIndex extends React.Component {
         {<LoggedInHeader {...this.props} />}
    
        {<UserShowCover showUser={showUser} pageType={this.props.pageType}/>}
-      
+        <div className="album-nav">
+          <p>Create New Album</p>
+        </div>
 
 
         <div className="user-albums">

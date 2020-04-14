@@ -38,3 +38,12 @@
   align-items: center;
   justify-content: space-evenly;
 }
+
+.nav-user-photos, .nav-user-albums {
+  text-decoration: none;
+  color: black;
+}
+
+.nav-user-photos:focus, .nav-user-albums:focus {
+  opacity: 50%;
+}

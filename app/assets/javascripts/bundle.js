@@ -600,6 +600,8 @@ var AlbumsIndex = /*#__PURE__*/function (_React$Component) {
         showUser: showUser,
         pageType: this.props.pageType
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "album-nav"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Create New Album")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-albums"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null)));
     }
