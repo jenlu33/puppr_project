@@ -167,7 +167,7 @@ var createAlbum = function createAlbum(album) {
     return _util_album_api_util__WEBPACK_IMPORTED_MODULE_0__["createAlbum"](album).then(function (album) {
       return dispatch(receiveAlbum(album));
     }, function (error) {
-      return dispatch(receiveAlbumErrors(error));
+      return dispatch(receiveAlbumErrors(error.responseJSON));
     });
   };
 };
@@ -176,7 +176,7 @@ var updateAlbum = function updateAlbum(album) {
     return _util_album_api_util__WEBPACK_IMPORTED_MODULE_0__["updateAlbum"](album).then(function (album) {
       return dispatch(receiveAlbum(album));
     }, function (error) {
-      return dispatch(receiveAlbumErrors(error));
+      return dispatch(receiveAlbumErrors(error.responseJSON));
     });
   };
 };
@@ -583,8 +583,8 @@ var AlbumCreate = /*#__PURE__*/function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(AlbumCreate).call(this, props));
     _this.state = {
       title: "",
-      photo_ids: [],
-      user_id: ""
+      photo_ids: [] // user_id: ""
+
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.updateTitle = _this.updateTitle.bind(_assertThisInitialized(_this));
@@ -610,7 +610,7 @@ var AlbumCreate = /*#__PURE__*/function (_React$Component) {
     value: function handleSelect(e) {
       e.preventDefault();
       var newIds = this.state.photo_ids;
-      var photoId = e.currentTarget.id;
+      var photoId = e.target.id;
 
       if (newIds.includes(photoId)) {
         newIds.splice(newIds.indexOf(photoId), 1);
@@ -620,7 +620,8 @@ var AlbumCreate = /*#__PURE__*/function (_React$Component) {
 
       this.setState({
         photo_ids: newIds
-      });
+      }); // console.log(this.state);
+      // console.log(newIds);
     }
   }, {
     key: "handleSubmit",
@@ -628,8 +629,8 @@ var AlbumCreate = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       var album = Object.assign({}, this.state = {
         title: this.state.title,
-        photo_ids: this.state.photo_ids,
-        user_id: this.props.currentUser.id
+        photo_ids: this.state.photo_ids // user_id: this.props.currentUser.id
+
       });
       this.props.createAlbum(album).then(this.props.history.push("/users/".concat(this.props.currentUser.id, "/albums")));
     }
@@ -2950,7 +2951,8 @@ var fetchAlbum = function fetchAlbum(albumId) {
 }; //create album
 
 var createAlbum = function createAlbum(album) {
-  var userId = album.user_id;
+  var userId = album.user_id; // debugger
+
   return $.ajax({
     url: "/api/users/".concat(userId, "/albums"),
     method: "POST",

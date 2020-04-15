@@ -46,13 +46,13 @@ export const fetchAlbum = (albumId) => dispatch => (
 export const createAlbum = (album) => dispatch => (
   AlbumAPIUtil.createAlbum(album)
     .then(album => dispatch(receiveAlbum(album)),
-          (error) => dispatch(receiveAlbumErrors(error))
+          (error) => dispatch(receiveAlbumErrors(error.responseJSON))
 ));
 
 export const updateAlbum = (album) => dispatch => (
   AlbumAPIUtil.updateAlbum(album)
     .then(album => dispatch(receiveAlbum(album)),
-          (error) => dispatch(receiveAlbumErrors(error))
+          (error) => dispatch(receiveAlbumErrors(error.responseJSON))
 ));
 
 export const deleteAlbum = (albumId) => dispatch => (
