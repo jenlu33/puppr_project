@@ -12,6 +12,8 @@ class AlbumCreate extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateTitle = this.updateTitle.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
+    this.toggleSelect = this.toggleSelect.bind(this);
   };
 
   componentDidMount() {
@@ -29,14 +31,38 @@ class AlbumCreate extends React.Component {
     const album = Object.assign({},
       this.state, {
         title: this.state.title,
-        photo_ids: Object.values(this.state.photo_ids)
+        photoIds: Object.values(this.state.photoIds)
       }
     );
-    this.props.createAlbum(album);
+    this.props.createAlbum(album)
+      .then(this.props.history.push(`/users/${this.props.currentUser.id}`));
+  };
+
+  handleSelect(e) {
+    e.preventDefault();
+    const newIds = this.state.photoIds;
+    const photoId = e.currentTarget.id;
+    if (newIds.includes(photoId)) {
+      newIds.splice(newIds.indexOf(photoId), 1);
+    } else {
+      newIds.push(photoId)
+    }
+
+    this.setState({
+      photoIds: newIds
+    });
+  };
+
+  toggleSelect(e) {
+    e.preventDefault();
+    const photoId = e.currentTarget.id;
+    const element = document.getElementById(photoId);
+    element.classList.toggle("selected");
   };
 
   render() {
     if (!this.props.photos) return null;
+
     return (
       <div>
         {<LoggedInHeader {...this.props}/>}
@@ -54,11 +80,17 @@ class AlbumCreate extends React.Component {
             <div className="select-album-photos">
               {
                 this.props.photos.map(photo =>
-                  <img 
+                  <div
                     key={photo.id} 
-                    id={photo.id} 
-                    className="select-album-image"
-                    src={photo.photoUrl}/>
+                    onClick={this.handleSelect}>
+
+                    <img
+                      id={photo.id}
+                      className="click-photo"
+                      src={photo.photoUrl}
+                      onClick={this.toggleSelect}
+                      />
+                  </div>
                 )
               }
             </div>

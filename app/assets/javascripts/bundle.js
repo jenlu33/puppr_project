@@ -587,6 +587,8 @@ var AlbumCreate = /*#__PURE__*/function (_React$Component) {
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.updateTitle = _this.updateTitle.bind(_assertThisInitialized(_this));
+    _this.handleSelect = _this.handleSelect.bind(_assertThisInitialized(_this));
+    _this.toggleSelect = _this.toggleSelect.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -608,13 +610,40 @@ var AlbumCreate = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       var album = Object.assign({}, this.state, {
         title: this.state.title,
-        photo_ids: Object.values(this.state.photo_ids)
+        photoIds: Object.values(this.state.photoIds)
       });
-      this.props.createAlbum(album);
+      this.props.createAlbum(album).then(this.props.history.push("/users/".concat(this.props.currentUser.id)));
+    }
+  }, {
+    key: "handleSelect",
+    value: function handleSelect(e) {
+      e.preventDefault();
+      var newIds = this.state.photoIds;
+      var photoId = e.currentTarget.id;
+
+      if (newIds.includes(photoId)) {
+        newIds.splice(newIds.indexOf(photoId), 1);
+      } else {
+        newIds.push(photoId);
+      }
+
+      this.setState({
+        photoIds: newIds
+      });
+    }
+  }, {
+    key: "toggleSelect",
+    value: function toggleSelect(e) {
+      e.preventDefault();
+      var photoId = e.currentTarget.id;
+      var element = document.getElementById(photoId);
+      element.classList.toggle("selected");
     }
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       if (!this.props.photos) return null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_logged_in_header__WEBPACK_IMPORTED_MODULE_2__["default"], this.props), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "create-album-div"
@@ -633,12 +662,15 @@ var AlbumCreate = /*#__PURE__*/function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "select-album-photos"
       }, this.props.photos.map(function (photo) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: photo.id,
+          onClick: _this2.handleSelect
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           id: photo.id,
-          className: "select-album-image",
-          src: photo.photoUrl
-        });
+          className: "click-photo",
+          src: photo.photoUrl,
+          onClick: _this2.toggleSelect
+        }));
       })))));
     }
   }]);
@@ -961,7 +993,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(state, ownProps) {
+var mapStateToProps = function mapStateToProps(state) {
   return {
     currentUser: state.entities.users[state.session.id],
     photos: Object.values(state.entities.photos)

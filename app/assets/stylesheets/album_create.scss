@@ -1,9 +1,20 @@
 .create-album-div {
   // border: 1px solid red;
   margin-top: 48px;
+  padding: 0 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.select-album-photos {
+  // border: 1px solid red;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .select-album-image {
+  cursor: pointer;
   margin: 5px;
   width: 200px;
   height: 200px;
@@ -13,4 +24,23 @@
 
 .select-album-image:hover {
   opacity: 100%;
+}
+
+.click-photo {
+  cursor: pointer;
+  border: 2px solid rgba(0, 0, 0, 0);
+  margin: 2px;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  opacity: 80%;
+}
+
+.click-photo:hover {
+  opacity: 100%;
+  transition-duration: 0.4s;
+}
+
+[class*="selected"] {
+  border: 2px solid black;
 }
