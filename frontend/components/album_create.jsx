@@ -7,7 +7,7 @@ class AlbumCreate extends React.Component {
     super(props);
     this.state = {
       title: "",
-      photoIds: []
+      photo_ids: []
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,7 +31,7 @@ class AlbumCreate extends React.Component {
     const album = Object.assign({},
       this.state, {
         title: this.state.title,
-        photoIds: Object.values(this.state.photoIds)
+        photo_ids: Object.values(this.state.photo_ids)
       }
     );
     this.props.createAlbum(album)
@@ -40,7 +40,7 @@ class AlbumCreate extends React.Component {
 
   handleSelect(e) {
     e.preventDefault();
-    const newIds = this.state.photoIds;
+    const newIds = this.state.photo_ids;
     const photoId = e.currentTarget.id;
     if (newIds.includes(photoId)) {
       newIds.splice(newIds.indexOf(photoId), 1);
@@ -49,7 +49,7 @@ class AlbumCreate extends React.Component {
     }
 
     this.setState({
-      photoIds: newIds
+      photo_ids: newIds
     });
   };
 

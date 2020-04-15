@@ -583,7 +583,7 @@ var AlbumCreate = /*#__PURE__*/function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(AlbumCreate).call(this, props));
     _this.state = {
       title: "",
-      photoIds: []
+      photo_ids: []
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.updateTitle = _this.updateTitle.bind(_assertThisInitialized(_this));
@@ -610,7 +610,7 @@ var AlbumCreate = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       var album = Object.assign({}, this.state, {
         title: this.state.title,
-        photoIds: Object.values(this.state.photoIds)
+        photo_ids: Object.values(this.state.photo_ids)
       });
       this.props.createAlbum(album).then(this.props.history.push("/users/".concat(this.props.currentUser.id)));
     }
@@ -618,7 +618,7 @@ var AlbumCreate = /*#__PURE__*/function (_React$Component) {
     key: "handleSelect",
     value: function handleSelect(e) {
       e.preventDefault();
-      var newIds = this.state.photoIds;
+      var newIds = this.state.photo_ids;
       var photoId = e.currentTarget.id;
 
       if (newIds.includes(photoId)) {
@@ -628,7 +628,7 @@ var AlbumCreate = /*#__PURE__*/function (_React$Component) {
       }
 
       this.setState({
-        photoIds: newIds
+        photo_ids: newIds
       });
     }
   }, {
