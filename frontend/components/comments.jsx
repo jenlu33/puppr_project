@@ -38,13 +38,29 @@ class Comments extends React.Component {
   handleDelete(e) {
     e.preventDefault;
     this.props.deleteComment(e.target.id);
-  }
+  };
+
+  renderErrors() {
+    return (
+      <ul className="comment-errors">
+        {this.props.commentErrors.map((error, i) => 
+        <li key={`error-${i}`}>
+          {error}
+        </li>
+        )}
+      </ul>
+    );
+  };
 
   render() {
     const { comments, currentUser, photo } = this.props;
 
     return (
       <div className="main-comments-div">
+
+        <div className="comment-errors-container">
+          {this.renderErrors()}
+        </div>
 
         <form className="comments-form" onSubmit={this.handleSubmit}>
           <textarea

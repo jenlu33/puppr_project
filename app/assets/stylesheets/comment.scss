@@ -86,3 +86,18 @@
   color: grey;
   cursor: pointer;
 }
+
+//COMMENT ERRORS
+
+.comment-errors-container {
+  height: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.comment-errors {
+  color: rgb(184, 0, 0);
+  font-size: 14px;
+}
+
+

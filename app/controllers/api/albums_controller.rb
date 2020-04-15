@@ -15,8 +15,8 @@ class Api::AlbumsController < ApplicationController
     @album.user_id = current_user.id
     
     photo_ids = params[:album][:photo_ids]
-    
-    if photo_ids != nil && @album.save
+    # debugger
+    if @album.save
       photo_ids.each do |id|
         PhotoAlbum.create(photo_id: id.to_i, album_id: @album.id)
       end
@@ -24,6 +24,7 @@ class Api::AlbumsController < ApplicationController
     else
       render json: @album.errors.full_messages, status: 422
     end
+  
   end
 
   def update

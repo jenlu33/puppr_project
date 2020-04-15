@@ -26,7 +26,7 @@ class Photo < ApplicationRecord
     foreign_key: :photo_id,
     class_name: :PhotoAlbum
 
-  has_one :album, #might change to has_many?
+  has_many :albums, #has one?
     through: :photo_albums,
     source: :album
 
