@@ -2453,6 +2453,42 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /***/ }),
 
+/***/ "./frontend/reducers/album_errors_reducer.js":
+/*!***************************************************!*\
+  !*** ./frontend/reducers/album_errors_reducer.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_album_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/album_actions */ "./frontend/actions/album_actions.js");
+
+
+var albumErrorsReducer = function albumErrorsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_album_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALBUM_ERRORS"]:
+      return action.errors;
+
+    case _actions_album_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALBUM"]:
+      return state;
+
+    case _actions_album_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_ALBUM_ERRORS"]:
+      return state;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (albumErrorsReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/albums_reducer.js":
 /*!*********************************************!*\
   !*** ./frontend/reducers/albums_reducer.js ***!
@@ -2613,6 +2649,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./session_errors_reducer */ "./frontend/reducers/session_errors_reducer.js");
 /* harmony import */ var _photo_errors_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./photo_errors_reducer */ "./frontend/reducers/photo_errors_reducer.js");
 /* harmony import */ var _comment_errors_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./comment_errors_reducer */ "./frontend/reducers/comment_errors_reducer.js");
+/* harmony import */ var _album_errors_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./album_errors_reducer */ "./frontend/reducers/album_errors_reducer.js");
+
 
 
 
@@ -2620,7 +2658,8 @@ __webpack_require__.r(__webpack_exports__);
 var errorsReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   sessionErrors: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   photoErrors: _photo_errors_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  commentErrors: _comment_errors_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+  commentErrors: _comment_errors_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  albumErrors: _album_errors_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (errorsReducer);
 
