@@ -1,3 +1,4 @@
+require 'byebug'
 class Api::AlbumsController < ApplicationController
   def index
     @albums = Album.where(user_id: params[:user_id])
@@ -12,17 +13,20 @@ class Api::AlbumsController < ApplicationController
   def create
     @album = Album.new(album_params)
     @album.user_id = current_user.id
-
+    debugger
     photo_ids = params[:album][:photo_ids]
-    # puts params to see what this is exactly?
-
-    if @album.save
+    debugger
+    # if @album.save
+    if @album != nil
+      debugger
       photo_ids.each do |id|
-        AlbumPhoto.create(photo_id: id, album_id: @album.id)
+        PhotoAlbum.create(photo_id: id, album_id: @album.id)
       end
+      # debugger
       render :show
     else
-      render json: @album.errors.full_messages, status: 422
+      # render json: @album.errors.full_messages, status: 422
+      render json: ["Could not create album"], status: 422
     end
   end
 
@@ -47,6 +51,6 @@ class Api::AlbumsController < ApplicationController
   private
 
   def album_params
-    params.require(:album).permit(:title, photo_ids: [])
+    params.require(:album).permit(:title, :user_id, photo_ids: [])
   end
 end

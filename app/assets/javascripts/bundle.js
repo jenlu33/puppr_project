@@ -583,7 +583,8 @@ var AlbumCreate = /*#__PURE__*/function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(AlbumCreate).call(this, props));
     _this.state = {
       title: "",
-      photo_ids: []
+      photo_ids: [],
+      user_id: ""
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.updateTitle = _this.updateTitle.bind(_assertThisInitialized(_this));
@@ -605,16 +606,6 @@ var AlbumCreate = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      e.preventDefault();
-      var album = Object.assign({}, this.state, {
-        title: this.state.title,
-        photo_ids: Object.values(this.state.photo_ids)
-      });
-      this.props.createAlbum(album).then(this.props.history.push("/users/".concat(this.props.currentUser.id)));
-    }
-  }, {
     key: "handleSelect",
     value: function handleSelect(e) {
       e.preventDefault();
@@ -630,6 +621,17 @@ var AlbumCreate = /*#__PURE__*/function (_React$Component) {
       this.setState({
         photo_ids: newIds
       });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var album = Object.assign({}, this.state = {
+        title: this.state.title,
+        photo_ids: this.state.photo_ids,
+        user_id: this.props.currentUser.id
+      });
+      this.props.createAlbum(album).then(this.props.history.push("/users/".concat(this.props.currentUser.id, "/albums")));
     }
   }, {
     key: "toggleSelect",
@@ -740,7 +742,8 @@ var AlbumsIndex = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           showUser = _this$props.showUser,
-          currentUser = _this$props.currentUser;
+          currentUser = _this$props.currentUser,
+          albums = _this$props.albums;
       if (!showUser) return null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-album-index-div"
@@ -754,7 +757,11 @@ var AlbumsIndex = /*#__PURE__*/function (_React$Component) {
         className: "new-album-link"
       }, "Create New Album") : null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-albums"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null)));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, albums.map(function (album) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: album.id
+        }, album.title);
+      }))));
     }
   }]);
 
@@ -2510,7 +2517,7 @@ var albumsReducer = function albumsReducer() {
 
   switch (action.type) {
     case _actions_album_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_ALBUMS"]:
-      return Object.assign({}, state, action.state);
+      return Object.assign({}, state, action.albums);
 
     case _actions_album_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALBUM"]:
       return Object.assign({}, state, _defineProperty({}, action.album.id, action.album));

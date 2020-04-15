@@ -9,7 +9,7 @@ const albumsReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_ALL_ALBUMS:
-      return Object.assign({}, state, action.state);
+      return Object.assign({}, state, action.albums);
     case RECEIVE_ALBUM:
       return Object.assign({}, state, {[action.album.id]: action.album});
     case REMOVE_ALBUM:

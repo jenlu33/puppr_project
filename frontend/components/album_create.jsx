@@ -7,7 +7,8 @@ class AlbumCreate extends React.Component {
     super(props);
     this.state = {
       title: "",
-      photo_ids: []
+      photo_ids: [],
+      user_id: ""
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,18 +27,6 @@ class AlbumCreate extends React.Component {
     });
   };
 
-  handleSubmit(e) {
-    e.preventDefault();
-    const album = Object.assign({},
-      this.state, {
-        title: this.state.title,
-        photo_ids: Object.values(this.state.photo_ids)
-      }
-    );
-    this.props.createAlbum(album)
-      .then(this.props.history.push(`/users/${this.props.currentUser.id}`));
-  };
-
   handleSelect(e) {
     e.preventDefault();
     const newIds = this.state.photo_ids;
@@ -51,6 +40,19 @@ class AlbumCreate extends React.Component {
     this.setState({
       photo_ids: newIds
     });
+  };
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const album = Object.assign({},
+      this.state = {
+        title: this.state.title,
+        photo_ids: this.state.photo_ids,
+        user_id: this.props.currentUser.id
+      }
+    );
+    this.props.createAlbum(album)
+      .then(this.props.history.push(`/users/${this.props.currentUser.id}/albums`));
   };
 
   toggleSelect(e) {

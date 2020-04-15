@@ -14,13 +14,13 @@ class AlbumsIndex extends React.Component {
   };
 
   render() {
-    const {showUser, currentUser} = this.props;
+    const {showUser, currentUser, albums} = this.props;
     if (!showUser) return null;
     return (
       <div className="main-album-index-div">
         {<LoggedInHeader {...this.props} />}
    
-       {<UserShowCover showUser={showUser} pageType={this.props.pageType}/>}
+        {<UserShowCover showUser={showUser} pageType={this.props.pageType}/>}
         <div className="album-nav">
           {showUser.id === currentUser.id ? (
              <Link 
@@ -35,7 +35,11 @@ class AlbumsIndex extends React.Component {
 
         <div className="user-albums">
           <ul>
-            
+            { albums.map(album => 
+              <div key={album.id}>
+                {album.title}
+              </div>
+              )}
           </ul>
         </div>
       </div>
