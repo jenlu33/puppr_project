@@ -6,7 +6,7 @@ import {fetchPhotos} from '../../actions/photo_actions';
 
 const mapStateToProps = state => ({
   currentUser: state.entities.users[state.session.id],
-  photos: Object.values(state.entities.photos)
+  photos: Object.values(state.entities.photos).reverse()
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -28,8 +28,6 @@ class Greeting extends React.Component {
     const display = currentUser ? (
       <div className="loggedin-nav">
         {<LoggedInHeader logout={logout} currentUser={currentUser}/>}
-        {/* <h2>Welcome {this.props.currentUser.username}!</h2>
-        <Link onClick={this.props.logout} className="box-btn" to="/">Logout</Link> */}
       </div>
     ) : (
       <div className="nav-bar">

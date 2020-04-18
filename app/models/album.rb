@@ -9,7 +9,6 @@
 #  updated_at :datetime         not null
 #
 
-require 'byebug'
 class Album < ApplicationRecord
   validates :title, presence: true
   
@@ -17,12 +16,13 @@ class Album < ApplicationRecord
     foreign_key: :user_id,
     class_name: :User
 
-  has_many :photo_albums,
+  has_many :album_photos,
+    primary_key: :id,
     foreign_key: :album_id,
     class_name: :PhotoAlbum
 
   has_many :photos,
-    through: :photo_albums,
+    through: :album_photos,
     source: :photo
   
 end

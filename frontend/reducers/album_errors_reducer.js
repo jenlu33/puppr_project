@@ -4,9 +4,13 @@ import {
   REMOVE_ALBUM_ERRORS
 } from '../actions/album_actions';
 
+// let _nullState = {
+//   errors: []
+// };
+
 const albumErrorsReducer = (state = [], action) => {
   Object.freeze(state);
-
+  // debugger
   switch (action.type) {
     case RECEIVE_ALBUM_ERRORS:
       return action.errors;

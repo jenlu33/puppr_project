@@ -33,7 +33,7 @@ class PhotosIndex extends React.Component {
         <div className="photos-container">
             <ul className="photos-ul">
               {
-                photos.reverse().map(photo => 
+                photos.map(photo => 
                   <div className="photo-box"
                       key={`${photo.id}`}>
 

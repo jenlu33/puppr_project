@@ -17,7 +17,6 @@ export const fetchAlbum = (albumId) => (
 //create album
 export const createAlbum = (album) => {
   const userId = album.user_id;
-  // debugger
   return (
     $.ajax({
       url: `/api/users/${userId}/albums`,

@@ -22,12 +22,13 @@ class Photo < ApplicationRecord
     foreign_key: :photo_id,
     class_name: :Comment
 
-  has_many :photo_albums,
+  has_many :album_photos,
+    primary_key: :id, 
     foreign_key: :photo_id,
     class_name: :PhotoAlbum
 
-  has_many :albums, #has one?
-    through: :photo_albums,
+  has_many :albums,
+    through: :album_photos,
     source: :album
 
 end

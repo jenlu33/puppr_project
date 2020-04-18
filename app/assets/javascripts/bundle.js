@@ -161,7 +161,14 @@ var fetchAlbum = function fetchAlbum(albumId) {
       return dispatch(receiveAlbum(album));
     });
   };
-};
+}; // export const createAlbum = (album) => dispatch => {
+//   debugger
+//   return (
+//     AlbumAPIUtil.createAlbum(album)
+//       .then(album => dispatch(receiveAlbum(album)),
+//             (error) => dispatch(receiveAlbumErrors(error)))
+//   )};
+
 var createAlbum = function createAlbum(album) {
   return function (dispatch) {
     return _util_album_api_util__WEBPACK_IMPORTED_MODULE_0__["createAlbum"](album).then(function (album) {
@@ -583,8 +590,8 @@ var AlbumCreate = /*#__PURE__*/function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(AlbumCreate).call(this, props));
     _this.state = {
       title: "",
-      photo_ids: [] // user_id: ""
-
+      photo_ids: [],
+      user_id: ""
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.updateTitle = _this.updateTitle.bind(_assertThisInitialized(_this));
@@ -627,11 +634,12 @@ var AlbumCreate = /*#__PURE__*/function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      var album = Object.assign({}, this.state = {
+      var album = Object.assign({}, {
         title: this.state.title,
-        photo_ids: this.state.photo_ids // user_id: this.props.currentUser.id
+        photo_ids: this.state.photo_ids,
+        user_id: this.props.currentUser.id
+      }); // debugger
 
-      });
       this.props.createAlbum(album).then(this.props.history.push("/users/".concat(this.props.currentUser.id, "/albums")));
     }
   }, {
@@ -1104,7 +1112,7 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state) {
   return {
     currentUser: state.entities.users[state.session.id],
-    photos: Object.values(state.entities.photos)
+    photos: Object.values(state.entities.photos).reverse()
   };
 };
 
@@ -2009,7 +2017,7 @@ var PhotosIndex = /*#__PURE__*/function (_React$Component) {
         className: "photos-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "photos-ul"
-      }, photos.reverse().map(function (photo) {
+      }, photos.map(function (photo) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "photo-box",
           key: "".concat(photo.id)
@@ -2489,12 +2497,14 @@ document.addEventListener("DOMContentLoaded", function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_album_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/album_actions */ "./frontend/actions/album_actions.js");
-
+ // let _nullState = {
+//   errors: []
+// };
 
 var albumErrorsReducer = function albumErrorsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(state);
+  Object.freeze(state); // debugger
 
   switch (action.type) {
     case _actions_album_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALBUM_ERRORS"]:
@@ -2969,8 +2979,7 @@ var fetchAlbum = function fetchAlbum(albumId) {
 }; //create album
 
 var createAlbum = function createAlbum(album) {
-  var userId = album.user_id; // debugger
-
+  var userId = album.user_id;
   return $.ajax({
     url: "/api/users/".concat(userId, "/albums"),
     method: "POST",

@@ -16,7 +16,7 @@ body {
 .photos-ul {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
+  // flex-direction: row-reverse;
   align-items: center;
   justify-content: center;
 }
