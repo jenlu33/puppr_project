@@ -17,7 +17,6 @@ class Album < ApplicationRecord
     class_name: :User
 
   has_many :album_photos,
-    primary_key: :id,
     foreign_key: :album_id,
     class_name: :AlbumPhoto
 

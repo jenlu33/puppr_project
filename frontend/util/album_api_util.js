@@ -16,10 +16,10 @@ export const fetchAlbum = (albumId) => (
 
 //create album
 export const createAlbum = (album) => {
-  const userId = album.user_id;
+  // const userId = album.user_id;
   return (
     $.ajax({
-      url: `/api/users/${userId}/albums`,
+      url: `/api/albums`,
       method: "POST",
       data: {album}
     })

@@ -40,7 +40,7 @@ class Api::AlbumsController < ApplicationController
     @album.user_id = current_user.id
     
     photo_ids = album_params[:photo_ids]
-    # debugger
+    debugger
     if photo_ids && !photo_ids.nil? && @album.save
       photo_ids.each do |id|
         AlbumPhoto.create(photo_id: id.to_i, album_id: @album.id)
