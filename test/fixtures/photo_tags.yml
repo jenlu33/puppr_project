@@ -1,10 +1,10 @@
 # == Schema Information
 #
-# Table name: tags
+# Table name: photo_tags
 #
 #  id         :bigint           not null, primary key
-#  user_id    :integer          not null
-#  name       :string           not null
+#  tag_id     :integer
+#  photo_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

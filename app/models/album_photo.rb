@@ -3,19 +3,19 @@
 # Table name: album_photos
 #
 #  id         :bigint           not null, primary key
-#  photo_id   :integer
 #  album_id   :integer
+#  photo_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 class AlbumPhoto < ApplicationRecord
-  validates :photo_id, :album_id, presence: true
-  
-  belongs_to :photo,
-    foreign_key: :photo_id,
-    class_name: :Photo
+  validates :album_id, :photo_id, presence: true
 
   belongs_to :album,
     foreign_key: :album_id,
     class_name: :Album
+
+  belongs_to :photo,
+    foreign_key: :photo_id,
+    class_name: :Photo
 end

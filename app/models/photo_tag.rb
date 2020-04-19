@@ -1,17 +1,12 @@
 # == Schema Information
 #
-# Table name: album_photos
+# Table name: photo_tags
 #
 #  id         :bigint           not null, primary key
-#  album_id   :integer
+#  tag_id     :integer
 #  photo_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-require 'test_helper'
-
-class AlbumPhotoTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+class PhotoTag < ApplicationRecord
 end
