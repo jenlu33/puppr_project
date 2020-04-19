@@ -9,7 +9,8 @@
 #  updated_at :datetime         not null
 #
 class AlbumPhoto < ApplicationRecord
-
+  validates :photo_id, :album_id, presence: true
+  
   belongs_to :photo,
     foreign_key: :photo_id,
     class_name: :Photo
