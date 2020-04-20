@@ -687,6 +687,61 @@ var AlbumCreate = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
+/***/ "./frontend/components/album_edit.jsx":
+/*!********************************************!*\
+  !*** ./frontend/components/album_edit.jsx ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var AlbumEdit = /*#__PURE__*/function (_React$Component) {
+  _inherits(AlbumEdit, _React$Component);
+
+  function AlbumEdit(props) {
+    _classCallCheck(this, AlbumEdit);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(AlbumEdit).call(this, props));
+  }
+
+  _createClass(AlbumEdit, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "ALBUM EDIT PAGE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "ALBUM EDIT"));
+    }
+  }]);
+
+  return AlbumEdit;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+;
+/* harmony default export */ __webpack_exports__["default"] = (AlbumEdit);
+
+/***/ }),
+
 /***/ "./frontend/components/album_show.jsx":
 /*!********************************************!*\
   !*** ./frontend/components/album_show.jsx ***!
@@ -750,17 +805,26 @@ var AlbumShow = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var album = this.props.album;
+      var _this$props = this.props,
+          album = _this$props.album,
+          currentUser = _this$props.currentUser;
       if (!album) return null;
+      console.log(album.id);
       var photos = album.photos;
+      var editAlbum = album.user_id === currentUser.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/albums/".concat(album.id, "/edit"),
+        className: "edit-album"
+      }, "Edit") : null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_logged_in_header__WEBPACK_IMPORTED_MODULE_2__["default"], this.props), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-album-show-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/users/".concat(album.user_id, "/albums"),
         className: "all-albums-link"
-      }, "\u2190\xA0See All Albums"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, "\u2190\xA0See All Albums"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "album-show-info"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "album-show-title"
-      }, this.props.album.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.album.title), editAlbum), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "album-show-photos"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "album-show-ul"
@@ -921,7 +985,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _containers_albums_index_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./containers/albums_index_container */ "./frontend/components/containers/albums_index_container.jsx");
 /* harmony import */ var _containers_album_create_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./containers/album_create_container */ "./frontend/components/containers/album_create_container.jsx");
 /* harmony import */ var _containers_album_show_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./containers/album_show_container */ "./frontend/components/containers/album_show_container.jsx");
-/* harmony import */ var _error404__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./error404 */ "./frontend/components/error404.jsx");
+/* harmony import */ var _containers_album_edit_container__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./containers/album_edit_container */ "./frontend/components/containers/album_edit_container.jsx");
+/* harmony import */ var _error404__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./error404 */ "./frontend/components/error404.jsx");
+
 
 
 
@@ -961,6 +1027,9 @@ var App = function App() {
     path: "/album/new",
     component: _containers_album_create_container__WEBPACK_IMPORTED_MODULE_10__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
+    path: "/albums/:albumId/edit",
+    component: _containers_album_edit_container__WEBPACK_IMPORTED_MODULE_12__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     path: "/albums/:albumId",
     component: _containers_album_show_container__WEBPACK_IMPORTED_MODULE_11__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
@@ -968,7 +1037,7 @@ var App = function App() {
     path: "/",
     component: _containers_greeting_container__WEBPACK_IMPORTED_MODULE_3__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    component: _error404__WEBPACK_IMPORTED_MODULE_12__["default"]
+    component: _error404__WEBPACK_IMPORTED_MODULE_13__["default"]
   })));
 };
 
@@ -1164,6 +1233,40 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_album_create__WEBPACK_IMPORTED_MODULE_1__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/containers/album_edit_container.jsx":
+/*!*****************************************************************!*\
+  !*** ./frontend/components/containers/album_edit_container.jsx ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _album_edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../album_edit */ "./frontend/components/album_edit.jsx");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    currentUser: state.entities.users[state.session.id]
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    logout: function logout() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["log_out"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_album_edit__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
@@ -3152,10 +3255,9 @@ var createAlbum = function createAlbum(album) {
 }; //update album
 
 var updateAlbum = function updateAlbum(album) {
-  var userId = album.user_id;
   var albumId = album.id;
   return $.ajax({
-    url: "api/users/".concat(userId, "/albums/").concat(albumId),
+    url: "api/albums/".concat(albumId),
     method: "PATCH",
     data: {
       album: album

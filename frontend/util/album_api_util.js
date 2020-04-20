@@ -27,11 +27,10 @@ export const createAlbum = (album) => {
 
 //update album
 export const updateAlbum = (album) => {
-  const userId = album.user_id;
   const albumId = album.id;
   return (
     $.ajax({
-      url: `api/users/${userId}/albums/${albumId}`,
+      url: `api/albums/${albumId}`,
       method: "PATCH",
       data: {album}
     })

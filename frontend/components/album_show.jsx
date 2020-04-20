@@ -18,11 +18,15 @@ class AlbumShow extends React.Component {
   }
 
   render() {
-    const { album } = this.props;
+    const { album, currentUser } = this.props;
 
     if (!album) return null;
-
+    console.log(album.id);
+    
     const photos = album.photos;
+    const editAlbum = album.user_id === currentUser.id ? (
+      <Link to={`/albums/${album.id}/edit`} className="edit-album">Edit</Link>
+    ):(null)
     
     return(
       <div>
@@ -34,7 +38,10 @@ class AlbumShow extends React.Component {
             className="all-albums-link"> 
             ← See All Albums
           </Link>
-          <p className="album-show-title">{this.props.album.title}</p>
+          <div className="album-show-info">
+            <p className="album-show-title">{this.props.album.title}</p>
+            {editAlbum}
+          </div>
 
           <div className="album-show-photos">
             <ul className="album-show-ul">
