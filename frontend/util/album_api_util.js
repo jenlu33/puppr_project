@@ -26,16 +26,16 @@ export const createAlbum = (album) => {
 };
 
 //update album
-export const updateAlbum = (album) => {
-  const albumId = album.id;
-  return (
-    $.ajax({
-      url: `api/albums/${albumId}`,
-      method: "PATCH",
-      data: {album}
-    })
-  );
-};
+// export const updateAlbum = (album) => {
+//   const albumId = album.id;
+//   return (
+//     $.ajax({
+//       url: `api/albums/${albumId}`,
+//       method: "PATCH",
+//       data: {album}
+//     })
+//   );
+// };
 
 //delete album
 export const deleteAlbum = (albumId) => (

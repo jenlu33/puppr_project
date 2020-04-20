@@ -3231,7 +3231,7 @@ var configureStore = function configureStore() {
 /*!*****************************************!*\
   !*** ./frontend/util/album_api_util.js ***!
   \*****************************************/
-/*! exports provided: fetchAlbums, fetchAlbum, createAlbum, updateAlbum, deleteAlbum */
+/*! exports provided: fetchAlbums, fetchAlbum, createAlbum, deleteAlbum */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3239,7 +3239,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAlbums", function() { return fetchAlbums; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAlbum", function() { return fetchAlbum; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createAlbum", function() { return createAlbum; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateAlbum", function() { return updateAlbum; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteAlbum", function() { return deleteAlbum; });
 // all albums of specific user
 var fetchAlbums = function fetchAlbums(userId) {
@@ -3265,17 +3264,17 @@ var createAlbum = function createAlbum(album) {
     }
   });
 }; //update album
-
-var updateAlbum = function updateAlbum(album) {
-  var albumId = album.id;
-  return $.ajax({
-    url: "api/albums/".concat(albumId),
-    method: "PATCH",
-    data: {
-      album: album
-    }
-  });
-}; //delete album
+// export const updateAlbum = (album) => {
+//   const albumId = album.id;
+//   return (
+//     $.ajax({
+//       url: `api/albums/${albumId}`,
+//       method: "PATCH",
+//       data: {album}
+//     })
+//   );
+// };
+//delete album
 
 var deleteAlbum = function deleteAlbum(albumId) {
   return $.ajax({
