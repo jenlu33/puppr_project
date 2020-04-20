@@ -9,4 +9,12 @@
 #  updated_at :datetime         not null
 #
 class PhotoTag < ApplicationRecord
+
+  belongs_to :tag,
+    foreign_key: :tag_id,
+    class_name: :Tag
+
+  belongs_to :photo,
+    foreign_key: :photo_id,
+    class_name: :Photo
 end

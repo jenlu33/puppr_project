@@ -9,4 +9,17 @@
 #  updated_at :datetime         not null
 #
 class Tag < ApplicationRecord
+  validates: :name, presence: true
+
+  belongs_to :user,
+    foreign_key: :user_id,
+    class_name: :User
+
+  has_many :photo_tags,
+    foreign_key: :tag_id,
+    class_name: :PhotoTag
+
+  has_many :photos,
+    through: :photo_tags,
+    source: :photo
 end

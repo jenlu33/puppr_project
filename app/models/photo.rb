@@ -22,7 +22,7 @@ class Photo < ApplicationRecord
     foreign_key: :photo_id,
     class_name: :Comment
 
-  has_many :album_photo,
+  has_many :album_photos,
     primary_key: :id, 
     foreign_key: :photo_id,
     class_name: :AlbumPhoto
@@ -30,5 +30,13 @@ class Photo < ApplicationRecord
   has_many :albums,
     through: :album_photos,
     source: :album
+
+  has_many :photo_tags,
+    foreign_key: :photo_id,
+    source: :PhotoTag
+
+  has_many :tags,
+    through: :photo_tags,
+    source: :tag
 
 end
