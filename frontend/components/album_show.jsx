@@ -7,25 +7,32 @@ class AlbumShow extends React.Component {
     super(props);
 
     this.viewPhoto = this.viewPhoto.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   };
 
   componentDidMount() {
-    this.props.fetchAlbum(this.props.match.params.albumId)
+    this.props.fetchAlbum(this.props.match.params.albumId);
   }
 
   viewPhoto(e) {
     this.props.history.push(`/photos/${e.currentTarget.id}`)
   }
 
+  handleDelete(e) {
+    e.preventDefault;
+    const user_id = this.props.album.user_id
+    this.props.deleteAlbum(this.props.album.id)
+      .then(this.props.history.push(`/users/${user_id}`))
+  }
+
   render() {
     const { album, currentUser } = this.props;
 
     if (!album) return null;
-    console.log(album.id);
     
     const photos = album.photos;
     const editAlbum = album.user_id === currentUser.id ? (
-      <Link to={`/albums/${album.id}/edit`} className="edit-album">Edit</Link>
+      <button onClick={this.handleDelete} className="delete-album-btn">Delete Album</button>
     ):(null)
     
     return(
