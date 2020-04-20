@@ -12,9 +12,10 @@ Rails.application.routes.draw do
     end
     resources :photos, except: [:new, :edit] do
       resources :comments, only: [:index, :create]
+      resources :tags, only: [:index, :create]
     end
     resources :comments, only: [:destroy]
     resources :albums, only: [:create, :show, :destroy]
-    
+    resources :tags, only: [:destroy]
   end
 end
