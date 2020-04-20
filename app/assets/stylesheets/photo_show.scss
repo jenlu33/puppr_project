@@ -143,10 +143,19 @@ h2 {
 }
 
 
+//COMMENTS AND TAGS
+
+.comments-and-tags-container {
+  border: 1px solid red;
+  width: 75vw;
+  display: flex;
+}
+
 //COMMENTS
 
 
 .comments-container {
+  border: 1px solid red;
   display: flex;
   justify-content: space-between;
   padding-top: 10px;

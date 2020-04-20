@@ -1,13 +1,15 @@
 class Api::TagsController < ApplicationController
   def index
-    @tags = Tag.where(photo_id: params[:photo_id])
+    @tags = Tag.all
     render :index
   end
 
   def create
-    @tag = Tag.new(tag_params)
+    @tag = Tag.new({name: tag_params[:name]})
+    @tag.user_id = current_user.id
     if @tag.save
-      render 'api/tags/tag'
+      PhotoTag.create(photo_id: params[:photo_id], tag_id: @tag.id)
+      render 'api/tags/_tag'
     else
       render json: @tag.errors.full_messages, status: 422
     end
@@ -15,6 +17,6 @@ class Api::TagsController < ApplicationController
 
   private
   def tag_params
-    params.require(:tag).permit(:name, :photo_id)
+    params.require(:tag).permit(:name, photo_id:[])
   end
 end

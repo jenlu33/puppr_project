@@ -6,9 +6,11 @@ import {
 
 const tagsReducer = (state = {}, action) => {
   Object.freeze(state);
+
   switch (action.type) {
     case RECEIVE_ALL_TAGS:
       return Object.assign({}, state, action.tags);
+      // return action.tags
     case RECEIVE_TAG:
       return Object.assign({}, state, {[action.tag.id]: action.tag})
     case REMOVE_TAG:
@@ -20,4 +22,4 @@ const tagsReducer = (state = {}, action) => {
   };
 };
 
-export default tagsReducer
+export default tagsReducer;

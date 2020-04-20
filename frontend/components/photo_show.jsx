@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import LoggedInHeader from './logged_in_header';
 import Comments from './comments';
+import Tags from './tags';
 
 class PhotoShow extends React.Component {
   constructor(props) {
@@ -80,7 +81,10 @@ class PhotoShow extends React.Component {
               </div>
             </div>
 
+            <div className="comments-and-tags-container">
               {<Comments {...this.props}/>}
+              {<Tags {...this.props}/>}
+            </div>
 
           </div>
         </div>

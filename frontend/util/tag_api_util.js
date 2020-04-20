@@ -1,6 +1,6 @@
 //fetches all tags
 export const fetchTags = (photoId) => (
-  $ajax({
+  $.ajax({
     url: `/api/photos/${photoId}/tags`,
     method: "GET"
   })
@@ -13,7 +13,7 @@ export const createTag = (tag) => {
     $.ajax({
       url: `api/photos/${photoId}/tags`,
       method: "POST",
-      data: {comment}
+      data: {tag}
     })
   )
 };

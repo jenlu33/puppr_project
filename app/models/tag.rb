@@ -9,7 +9,7 @@
 #  updated_at :datetime         not null
 #
 class Tag < ApplicationRecord
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true, length: {maximum: 20}
 
   belongs_to :user,
     foreign_key: :user_id,
