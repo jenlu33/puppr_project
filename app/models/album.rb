@@ -10,7 +10,7 @@
 #
 
 class Album < ApplicationRecord
-  validates :title, presence: true
+  validates :title, presence: true, length: {maximum: 25}
   
   belongs_to :user,
     foreign_key: :user_id,

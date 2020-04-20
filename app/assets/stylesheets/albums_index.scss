@@ -1,6 +1,7 @@
 .main-album-index-div {
   // border: 1px solid red;
   margin-top: 48px;
+  margin-bottom: 100px;
   min-width: 600px;
 }
 
@@ -12,4 +13,68 @@
   justify-content: center;
   background-color: white;
 }
+
+//ALBUMS INDEX
+
+.user-albums {
+  margin: 10px 20px;
+}
+
+.albums-ul {
+  // border: 1px solid red;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.album-index-item {
+  border: 1px solid rgba(0, 0, 0, 0);
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  // justify-content: center;
+  margin: 5px;
+  width: 200px;
+  height: 220px;
+}
+
+.album-index-item:hover {
+  cursor: pointer;
+  border: 1px solid grey;
+  transition-duration: 0.5s;
+}
+
+//ALBUM INDEX ITEM W PHOTOS
+
+.album-index-wphotos {
+  // border:1px solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.album-item-title {
+  width: 100%;
+  padding: 2px 0;
+  text-align: center;
+  background-color: white;
+}
+
+.album-cover {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+//ALBUM INDEX ITEM W/O PHOTOS
+
+.album-index-nphotos {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
 

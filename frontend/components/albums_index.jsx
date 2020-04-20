@@ -6,6 +6,8 @@ import UserShowCover from './user_show_cover';
 class AlbumsIndex extends React.Component {
   constructor(props) {
     super(props);
+
+    this.viewAlbum = this.viewAlbum.bind(this);
   };
 
   componentDidMount() {
@@ -13,8 +15,15 @@ class AlbumsIndex extends React.Component {
     this.props.fetchUser(this.props.match.params.userId);
   };
 
+  viewAlbum(e) {
+    this.props.history.push(`/albums/${e.currentTarget.id}`)
+  }
+
   render() {
     const {showUser, currentUser, albums} = this.props;
+    // const albumCover = albums.photos ? (
+    //   album.photos
+    // ):(null)
     if (!showUser) return null;
     return (
       <div className="main-album-index-div">
@@ -34,10 +43,29 @@ class AlbumsIndex extends React.Component {
 
 
         <div className="user-albums">
-          <ul>
+          <ul className="albums-ul">
             { albums.map(album => 
-              <div key={album.id}>
-                {album.title}
+              <div 
+                key={album.id} 
+                id={album.id}
+                className="album-index-item"
+                onClick={this.viewAlbum}>
+                  {/* <p>{album.title}</p> */}
+                  {album.photos.length ? (
+                    <div className="album-index-wphotos">
+                      <img src={Object.values(album.photos)[0].photoUrl}
+                          className="album-cover"/>
+                          <p className="album-item-title">{album.title}</p>
+                    </div>
+                    
+                  ):(
+                    <div className="album-index-nphotos">
+                      <p>{album.title}</p>
+                      <p>No photos</p>
+                    </div>
+                    
+                  )}
+
               </div>
               )}
           </ul>

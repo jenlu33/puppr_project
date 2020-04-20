@@ -22,4 +22,4 @@ const mapDispatchToProps = dispatch => ({
   removeCommentErrors: () => dispatch(removeCommentErrors())
 })
 
-export default connect (mapStateToProps, mapDispatchToProps)(PhotoShow);
+export default connect(mapStateToProps, mapDispatchToProps)(PhotoShow);

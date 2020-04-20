@@ -10,6 +10,7 @@ import CreatePhotoContainer from './containers/photo_create_container';
 import UserShowContainer from './containers/show_user_container';
 import AlbumIndexContainer from './containers/albums_index_container';
 import AlbumCreateContainer from './containers/album_create_container';
+import AlbumShowContainer from './containers/album_show_container';
 
 import ErrorContainer from './error404'
 
@@ -23,6 +24,7 @@ const App = () => (
       <ProtectedRoute exact path="/users/:userId" component={UserShowContainer} />
       <ProtectedRoute exact path="/users/:userId/albums" component={AlbumIndexContainer} />
       <ProtectedRoute path="/album/new" component={AlbumCreateContainer} />
+      <ProtectedRoute path="/albums/:albumId" component={AlbumShowContainer} />
       <Route exact path="/" component={GreetingContainer} />
       <Route component={ErrorContainer} />
     </Switch>
