@@ -90,7 +90,7 @@
 /*!*******************************************!*\
   !*** ./frontend/actions/album_actions.js ***!
   \*******************************************/
-/*! exports provided: RECEIVE_ALL_ALBUMS, RECEIVE_ALBUM, REMOVE_ALBUM, RECEIVE_ALBUM_ERRORS, REMOVE_ALBUM_ERRORS, removeAlbumErrors, fetchAlbums, fetchAlbum, createAlbum, updateAlbum, deleteAlbum */
+/*! exports provided: RECEIVE_ALL_ALBUMS, RECEIVE_ALBUM, REMOVE_ALBUM, RECEIVE_ALBUM_ERRORS, REMOVE_ALBUM_ERRORS, removeAlbumErrors, fetchAlbums, fetchAlbum, createAlbum, deleteAlbum */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -104,7 +104,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAlbums", function() { return fetchAlbums; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAlbum", function() { return fetchAlbum; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createAlbum", function() { return createAlbum; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateAlbum", function() { return updateAlbum; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteAlbum", function() { return deleteAlbum; });
 /* harmony import */ var _util_album_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/album_api_util */ "./frontend/util/album_api_util.js");
 
@@ -170,16 +169,12 @@ var createAlbum = function createAlbum(album) {
       return dispatch(receiveAlbumErrors(error.responseJSON));
     });
   };
-};
-var updateAlbum = function updateAlbum(album) {
-  return function (dispatch) {
-    return _util_album_api_util__WEBPACK_IMPORTED_MODULE_0__["updateAlbum"](album).then(function (album) {
-      return dispatch(receiveAlbum(album));
-    }, function (error) {
-      return dispatch(receiveAlbumErrors(error.responseJSON));
-    });
-  };
-};
+}; // export const updateAlbum = (album) => dispatch => (
+//   AlbumAPIUtil.updateAlbum(album)
+//     .then(album => dispatch(receiveAlbum(album)),
+//           (error) => dispatch(receiveAlbumErrors(error.responseJSON))
+// ));
+
 var deleteAlbum = function deleteAlbum(albumId) {
   return function (dispatch) {
     return _util_album_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteAlbum"](albumId).then(function () {
@@ -687,61 +682,6 @@ var AlbumCreate = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./frontend/components/album_edit.jsx":
-/*!********************************************!*\
-  !*** ./frontend/components/album_edit.jsx ***!
-  \********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-var AlbumEdit = /*#__PURE__*/function (_React$Component) {
-  _inherits(AlbumEdit, _React$Component);
-
-  function AlbumEdit(props) {
-    _classCallCheck(this, AlbumEdit);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(AlbumEdit).call(this, props));
-  }
-
-  _createClass(AlbumEdit, [{
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "ALBUM EDIT PAGE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "ALBUM EDIT"));
-    }
-  }]);
-
-  return AlbumEdit;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-;
-/* harmony default export */ __webpack_exports__["default"] = (AlbumEdit);
-
-/***/ }),
-
 /***/ "./frontend/components/album_show.jsx":
 /*!********************************************!*\
   !*** ./frontend/components/album_show.jsx ***!
@@ -993,6 +933,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _containers_album_create_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./containers/album_create_container */ "./frontend/components/containers/album_create_container.jsx");
 /* harmony import */ var _containers_album_show_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./containers/album_show_container */ "./frontend/components/containers/album_show_container.jsx");
 /* harmony import */ var _containers_album_edit_container__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./containers/album_edit_container */ "./frontend/components/containers/album_edit_container.jsx");
+/* harmony import */ var _containers_album_edit_container__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_containers_album_edit_container__WEBPACK_IMPORTED_MODULE_12__);
 /* harmony import */ var _error404__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./error404 */ "./frontend/components/error404.jsx");
 
 
@@ -1033,9 +974,6 @@ var App = function App() {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     path: "/album/new",
     component: _containers_album_create_container__WEBPACK_IMPORTED_MODULE_10__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
-    path: "/albums/:albumId/edit",
-    component: _containers_album_edit_container__WEBPACK_IMPORTED_MODULE_12__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     path: "/albums/:albumId",
     component: _containers_album_show_container__WEBPACK_IMPORTED_MODULE_11__["default"]
@@ -1247,33 +1185,19 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 /*!*****************************************************************!*\
   !*** ./frontend/components/containers/album_edit_container.jsx ***!
   \*****************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _album_edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../album_edit */ "./frontend/components/album_edit.jsx");
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
-
-
-
-
-var mapStateToProps = function mapStateToProps(state, ownProps) {
-  return {
-    currentUser: state.entities.users[state.session.id]
-  };
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    logout: function logout() {
-      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["log_out"])());
-    }
-  };
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_album_edit__WEBPACK_IMPORTED_MODULE_1__["default"]));
+// import { connect } from 'react-redux';
+// import AlbumEdit from '../album_edit';
+// import { log_out } from '../../actions/session_actions';
+// const mapStateToProps = (state, ownProps) => ({
+//   currentUser: state.entities.users[state.session.id]
+// });
+// const mapDispatchToProps = (dispatch) => ({
+//   logout: () => dispatch(log_out())
+// });
+// export default connect(mapStateToProps,mapDispatchToProps)(AlbumEdit);
 
 /***/ }),
 

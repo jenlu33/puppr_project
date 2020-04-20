@@ -25,7 +25,7 @@ const App = () => (
       <ProtectedRoute exact path="/users/:userId" component={UserShowContainer} />
       <ProtectedRoute exact path="/users/:userId/albums" component={AlbumIndexContainer} />
       <ProtectedRoute path="/album/new" component={AlbumCreateContainer} />
-      <ProtectedRoute path="/albums/:albumId/edit" component={AlbumEditContainer} />
+      {/* <ProtectedRoute path="/albums/:albumId/edit" component={AlbumEditContainer} /> */}
       <ProtectedRoute path="/albums/:albumId" component={AlbumShowContainer} />
       <Route exact path="/" component={GreetingContainer} />
       <Route component={ErrorContainer} />

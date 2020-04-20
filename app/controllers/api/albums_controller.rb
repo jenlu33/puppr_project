@@ -1,4 +1,3 @@
-require 'byebug'
 class Api::AlbumsController < ApplicationController
   def index
     @albums = Album.where(user_id: params[:user_id])

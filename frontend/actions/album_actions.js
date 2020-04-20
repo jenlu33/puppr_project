@@ -49,11 +49,11 @@ export const createAlbum = (album) => dispatch => (
       (error) => dispatch(receiveAlbumErrors(error.responseJSON))
     ));
 
-export const updateAlbum = (album) => dispatch => (
-  AlbumAPIUtil.updateAlbum(album)
-    .then(album => dispatch(receiveAlbum(album)),
-          (error) => dispatch(receiveAlbumErrors(error.responseJSON))
-));
+// export const updateAlbum = (album) => dispatch => (
+//   AlbumAPIUtil.updateAlbum(album)
+//     .then(album => dispatch(receiveAlbum(album)),
+//           (error) => dispatch(receiveAlbumErrors(error.responseJSON))
+// ));
 
 export const deleteAlbum = (albumId) => dispatch => (
   AlbumAPIUtil.deleteAlbum(albumId)
