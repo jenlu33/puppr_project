@@ -147,17 +147,16 @@ h2 {
 
 .comments-and-tags-container {
   border: 1px solid red;
-  width: 75vw;
+  width: 80vw;
   display: flex;
+  justify-content: space-between;
 }
 
 //COMMENTS
 
 
 .comments-container {
-  border: 1px solid red;
   display: flex;
-  justify-content: space-between;
   padding-top: 10px;
   width: 80%;
   max-width: 950px;

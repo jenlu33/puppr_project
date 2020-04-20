@@ -1,7 +1,6 @@
 class Api::TagsController < ApplicationController
   def index
-    @tags = Tag.all
-    render :index
+    @tags = Photo.find(params[:photo_id]).tags
   end
 
   def create
@@ -17,6 +16,6 @@ class Api::TagsController < ApplicationController
 
   private
   def tag_params
-    params.require(:tag).permit(:name, photo_id:[])
+    params.require(:tag).permit(:name, :photo_id)
   end
 end
