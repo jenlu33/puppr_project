@@ -278,7 +278,7 @@ var deleteComment = function deleteComment(commentId) {
 /*!*******************************************!*\
   !*** ./frontend/actions/photo_actions.js ***!
   \*******************************************/
-/*! exports provided: RECEIVE_ALL_PHOTOS, RECEIVE_ALL_USER_PHOTOS, RECEIVE_ALL_TAG_PHOTOS, RECEIVE_PHOTO, REMOVE_PHOTO, RECEIVE_PHOTO_ERRORS, REMOVE_PHOTO_ERRORS, removePhotoErrors, fetchPhotos, fetchUserPhotos, fetchTagPhotos, fetchPhoto, createPhoto, updatePhoto, deletePhoto */
+/*! exports provided: RECEIVE_ALL_PHOTOS, RECEIVE_ALL_USER_PHOTOS, RECEIVE_ALL_TAG_PHOTOS, RECEIVE_PHOTO, REMOVE_PHOTO, CLEAR_PHOTOS, RECEIVE_PHOTO_ERRORS, REMOVE_PHOTO_ERRORS, clearPhotos, removePhotoErrors, fetchPhotos, fetchUserPhotos, fetchTagPhotos, fetchPhoto, createPhoto, updatePhoto, deletePhoto */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -288,8 +288,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_TAG_PHOTOS", function() { return RECEIVE_ALL_TAG_PHOTOS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_PHOTO", function() { return RECEIVE_PHOTO; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_PHOTO", function() { return REMOVE_PHOTO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_PHOTOS", function() { return CLEAR_PHOTOS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_PHOTO_ERRORS", function() { return RECEIVE_PHOTO_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_PHOTO_ERRORS", function() { return REMOVE_PHOTO_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearPhotos", function() { return clearPhotos; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removePhotoErrors", function() { return removePhotoErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPhotos", function() { return fetchPhotos; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchUserPhotos", function() { return fetchUserPhotos; });
@@ -305,6 +307,7 @@ var RECEIVE_ALL_USER_PHOTOS = "RECEIVE_ALL_USER_PHOTOS";
 var RECEIVE_ALL_TAG_PHOTOS = "RECEIVE_ALL_TAG_PHOTOS";
 var RECEIVE_PHOTO = "RECEIVE_PHOTO";
 var REMOVE_PHOTO = "REMOVE_PHOTO";
+var CLEAR_PHOTOS = "CLEAR_PHOTOS";
 var RECEIVE_PHOTO_ERRORS = "RECEIVE_PHOTO_ERRORS";
 var REMOVE_PHOTO_ERRORS = "REMOVE_ERRORS";
 
@@ -340,6 +343,12 @@ var removePhoto = function removePhoto(photoId) {
   return {
     type: REMOVE_PHOTO,
     photoId: photoId
+  };
+};
+
+var clearPhotos = function clearPhotos() {
+  return {
+    type: CLEAR_PHOTOS
   };
 };
 
@@ -1225,7 +1234,7 @@ var Comments = /*#__PURE__*/function (_React$Component) {
           className: "individual-comment-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           className: "comment-username",
-          to: "/users/".concat(photo.user.id)
+          to: "/users/".concat(comment.user_id)
         }, comment.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "comment-body"
         }, comment.body)), currentUser.id == comment.user_id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -1437,6 +1446,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     fetchUsers: function fetchUsers() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["fetchUsers"])());
+    },
+    clearPhotos: function clearPhotos() {
+      return dispatch(Object(_actions_photo_actions__WEBPACK_IMPORTED_MODULE_3__["clearPhotos"])());
     }
   };
 };
@@ -1575,6 +1587,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     deletePhoto: function deletePhoto(photoId) {
       return dispatch(Object(_actions_photo_actions__WEBPACK_IMPORTED_MODULE_2__["deletePhoto"])(photoId));
+    },
+    clearPhoto: function clearPhoto() {
+      return dispatch(Object(_actions_photo_actions__WEBPACK_IMPORTED_MODULE_2__["clearPhotos"])());
     },
     displayComments: function displayComments(photoId) {
       return dispatch(Object(_actions_comment_actions__WEBPACK_IMPORTED_MODULE_4__["fetchComments"])(photoId));
@@ -2233,6 +2248,11 @@ var PhotoShow = /*#__PURE__*/function (_React$Component) {
       this.props.fetchPhoto(this.props.match.params.photoId);
     }
   }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.props.clearPhoto();
+    }
+  }, {
     key: "prevPage",
     value: function prevPage(e) {
       e.preventDefault();
@@ -2362,10 +2382,12 @@ var PhotosIndex = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       this.props.displayPhotos();
       this.props.fetchUsers();
-    } // componentWillUnmount() {
-    //   this.props.displayComments();
-    // }
-
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.props.clearPhotos();
+    }
   }, {
     key: "viewPhoto",
     value: function viewPhoto(e) {
@@ -3332,7 +3354,7 @@ var photosReducer = function photosReducer() {
       return Object.assign({}, state, action.photos);
 
     case _actions_photo_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PHOTO"]:
-      return Object.assign({}, state, _defineProperty({}, action.photo.id, action.photo));
+      return Object.assign({}, _defineProperty({}, action.photo.id, action.photo));
 
     case _actions_photo_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_USER_PHOTOS"]:
       return Object.assign({}, state, action.photos);
@@ -3344,6 +3366,9 @@ var photosReducer = function photosReducer() {
       var newState = Object.assign({}, state);
       delete newState[action.photoId];
       return newState;
+
+    case _actions_photo_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_PHOTOS"]:
+      return {};
 
     default:
       return state;

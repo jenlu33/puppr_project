@@ -90,7 +90,7 @@ class Comments extends React.Component {
                 <div className="individual-comment-container">
                   <Link 
                     className="comment-username" 
-                    to={`/users/${photo.user.id}`}>
+                    to={`/users/${comment.user_id}`}>
                       {comment.username}
                   </Link>
                   <p className="comment-body">{comment.body}</p>

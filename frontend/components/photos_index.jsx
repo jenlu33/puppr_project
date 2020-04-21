@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
 class PhotosIndex extends React.Component {
   constructor(props) {
     super(props)
@@ -14,9 +13,9 @@ class PhotosIndex extends React.Component {
     this.props.fetchUsers();
   }
 
-  // componentWillUnmount() {
-  //   this.props.displayComments();
-  // }
+  componentWillUnmount() {
+    this.props.clearPhotos();
+  }
 
   viewPhoto(e) {
     this.props.history.push(`/photos/${e.currentTarget.id}`)

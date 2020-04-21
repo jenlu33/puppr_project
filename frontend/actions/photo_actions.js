@@ -5,6 +5,7 @@ export const RECEIVE_ALL_USER_PHOTOS = "RECEIVE_ALL_USER_PHOTOS"
 export const RECEIVE_ALL_TAG_PHOTOS = "RECEIVE_ALL_TAG_PHOTOS"
 export const RECEIVE_PHOTO = "RECEIVE_PHOTO";
 export const REMOVE_PHOTO = "REMOVE_PHOTO";
+export const CLEAR_PHOTOS = "CLEAR_PHOTOS";
 
 export const RECEIVE_PHOTO_ERRORS = "RECEIVE_PHOTO_ERRORS";
 export const REMOVE_PHOTO_ERRORS = "REMOVE_ERRORS";
@@ -34,6 +35,10 @@ const removePhoto = (photoId) => ({
   type: REMOVE_PHOTO,
   photoId
 });
+
+export const clearPhotos = () => ({
+  type: CLEAR_PHOTOS
+})
 
 const receivePhotoErrors = (errors) => ({
   type: RECEIVE_PHOTO_ERRORS,
@@ -76,5 +81,4 @@ export const updatePhoto = (photo) => dispatch => (PhotoAPIUtil.fetchPhoto(photo
 //photo delete
 export const deletePhoto = (photoId) => dispatch => (PhotoAPIUtil.deletePhoto(photoId)
   .then(() => dispatch(removePhoto(photoId))))
-
 

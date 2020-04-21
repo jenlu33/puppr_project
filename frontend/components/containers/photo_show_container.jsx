@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import PhotoShow from '../photo_show';
-import { fetchPhoto, deletePhoto } from '../../actions/photo_actions'
+import { fetchPhoto, deletePhoto, clearPhotos } from '../../actions/photo_actions'
 import { log_out } from '../../actions/session_actions';
 import {fetchComments, createComment, deleteComment} from '../../actions/comment_actions';
 import { removeCommentErrors } from '../../actions/comment_actions';
@@ -18,6 +18,7 @@ const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(log_out()),
   fetchPhoto: (photoId) => dispatch(fetchPhoto(photoId)),
   deletePhoto: (photoId) => dispatch(deletePhoto(photoId)),
+  clearPhoto: () => dispatch(clearPhotos()),
   displayComments: (photoId) => dispatch(fetchComments(photoId)),
   createComment: (comment) => dispatch(createComment(comment)),
   deleteComment: (commentId) => dispatch(deleteComment(commentId)),

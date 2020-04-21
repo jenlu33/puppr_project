@@ -16,6 +16,9 @@ class PhotoShow extends React.Component {
     this.props.fetchPhoto(this.props.match.params.photoId);
   }
 
+  componentWillUnmount() {
+    this.props.clearPhoto();
+  }
 
   prevPage(e) {
     e.preventDefault();
