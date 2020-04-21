@@ -13,7 +13,7 @@ const commentErrorsReducer = (state = [], action) => {
     case RECEIVE_COMMENT:
       return state;
     case REMOVE_COMMENT_ERRORS:
-      return state;
+      return [];
     default:
       return state;
   }

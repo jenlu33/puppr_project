@@ -1130,6 +1130,10 @@ var Comments = /*#__PURE__*/function (_React$Component) {
         photo_id: photoId
       });
       this.props.createComment(comment);
+      this.setState({
+        body: "",
+        photo_id: ""
+      });
     }
   }, {
     key: "handleDelete",
@@ -1147,6 +1151,11 @@ var Comments = /*#__PURE__*/function (_React$Component) {
           key: "error-".concat(i)
         }, error);
       }));
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.props.removeCommentErrors();
     }
   }, {
     key: "render",
@@ -2988,7 +2997,7 @@ var commentErrorsReducer = function commentErrorsReducer() {
       return state;
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_COMMENT_ERRORS"]:
-      return state;
+      return [];
 
     default:
       return state;

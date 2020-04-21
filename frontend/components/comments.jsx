@@ -33,6 +33,11 @@ class Comments extends React.Component {
         photo_id: photoId
       });
     this.props.createComment(comment);
+
+    this.setState({
+      body: "",
+      photo_id: ""
+    })
   };
 
   handleDelete(e) {
@@ -51,6 +56,10 @@ class Comments extends React.Component {
       </ul>
     );
   };
+
+  componentWillUnmount() {
+    this.props.removeCommentErrors();
+  }
 
   render() {
     const { comments, currentUser, photo } = this.props;

@@ -125,28 +125,28 @@ h2 {
 
 //REMOVE PHOTO
 
-.delete-container {
+.delete-btn {
+  cursor: pointer;
+  outline: none;
   border: 1px solid black;
   border-radius: 4px;
-  padding: 2px;
-}
-
-.delete-container:hover {
-  opacity: 70%;
-}
-
-.delete-btn {
-  background: none;
-  border: none;
+  padding: 5px;
   width: 90px;
-  cursor: pointer;
+  background: none;
+}
+
+.delete-btn:hover {
+  background-color: rgb(163, 163, 163);
+  border: 1px solid rgb(163, 163, 163);
+  color: white;
+  transition-duration: 0.3s;
 }
 
 
 //COMMENTS AND TAGS
 
 .comments-and-tags-container {
-  border: 1px solid red;
+  // border: 1px solid red;
   width: 80vw;
   display: flex;
   justify-content: space-between;
