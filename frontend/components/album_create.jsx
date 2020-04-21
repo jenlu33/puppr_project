@@ -40,11 +40,6 @@ class AlbumCreate extends React.Component {
     this.setState({
       photo_ids: newIds
     });
-
-    // console.log(this.state);
-    // console.log(newIds);
-   
-    
     
   };
 

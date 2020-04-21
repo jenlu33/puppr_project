@@ -742,8 +742,7 @@ var AlbumCreate = /*#__PURE__*/function (_React$Component) {
 
       this.setState({
         photo_ids: newIds
-      }); // console.log(this.state);
-      // console.log(newIds);
+      });
     }
   }, {
     key: "handleSubmit",
@@ -2758,8 +2757,7 @@ var TagPhotoIndex = /*#__PURE__*/function (_React$Component) {
   _createClass(TagPhotoIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchTag(this.props.match.params.tagId); // this.props.displayPhotos(this.props.match.params.tagId)
-      // console.log(this.props.match.params);
+      this.props.fetchTag(this.props.match.params.tagId);
     }
   }, {
     key: "render",

@@ -9,8 +9,6 @@ class TagPhotoIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchTag(this.props.match.params.tagId)
-    // this.props.displayPhotos(this.props.match.params.tagId)
-    // console.log(this.props.match.params);
     
   }
 
