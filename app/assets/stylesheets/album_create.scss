@@ -6,8 +6,40 @@
   justify-content: center;
 }
 
+.create-album-form {
+  background-color: white;
+  border-radius: 4px;
+  margin-top: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.create-album-title {
+  margin: 5px;
+  padding: 5px;
+}
+
+.create-album-title:focus {
+  outline: none;
+  border: 2px groove lightgrey;
+  border-radius: 4px;
+}
+
+.album-submit-btn {
+  border: 1px solid grey;
+  border-radius: 4px;
+}
+
+.album-submit-btn:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 .select-album-photos {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
 }
 

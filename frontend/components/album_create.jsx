@@ -7,8 +7,7 @@ class AlbumCreate extends React.Component {
     super(props);
     this.state = {
       title: "",
-      photo_ids: [],
-      // user_id: ""
+      photo_ids: []
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -49,10 +48,8 @@ class AlbumCreate extends React.Component {
       {
         title: this.state.title,
         photo_ids: this.state.photo_ids,
-        // user_id: this.props.currentUser.id
       }
     );
-    // debugger
     this.props.createAlbum(album)
       .then(this.props.history.push(`/users/${this.props.currentUser.id}/albums`));
   };

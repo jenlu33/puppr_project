@@ -705,8 +705,7 @@ var AlbumCreate = /*#__PURE__*/function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(AlbumCreate).call(this, props));
     _this.state = {
       title: "",
-      photo_ids: [] // user_id: ""
-
+      photo_ids: []
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.updateTitle = _this.updateTitle.bind(_assertThisInitialized(_this));
@@ -750,10 +749,8 @@ var AlbumCreate = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       var album = Object.assign({}, {
         title: this.state.title,
-        photo_ids: this.state.photo_ids // user_id: this.props.currentUser.id
-
-      }); // debugger
-
+        photo_ids: this.state.photo_ids
+      });
       this.props.createAlbum(album).then(this.props.history.push("/users/".concat(this.props.currentUser.id, "/albums")));
     }
   }, {
@@ -3393,7 +3390,7 @@ var photosReducer = function photosReducer() {
       return Object.assign({}, state, action.photos);
 
     case _actions_photo_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PHOTO"]:
-      return Object.assign({}, _defineProperty({}, action.photo.id, action.photo));
+      return Object.assign({}, state, _defineProperty({}, action.photo.id, action.photo));
 
     case _actions_photo_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_USER_PHOTOS"]:
       return Object.assign({}, state, action.photos);
