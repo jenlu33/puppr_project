@@ -20,6 +20,10 @@ class UserShow extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.clearPhotos();
+  }
+
   viewPhoto(e) {
     this.props.history.push(`/photos/${e.currentTarget.id}`)
   }

@@ -52,20 +52,17 @@ class AlbumsIndex extends React.Component {
                 id={album.id}
                 className="album-index-item"
                 onClick={this.viewAlbum}>
-                  {/* <p>{album.title}</p> */}
                   {album.photos.length ? (
                     <div className="album-index-wphotos">
                       <img src={Object.values(album.photos)[0].photoUrl}
                           className="album-cover"/>
                           <p className="album-item-title">{album.title}</p>
                     </div>
-                    
                   ):(
                     <div className="album-index-nphotos">
                       <p>{album.title}</p>
                       <p>No photos</p>
                     </div>
-                    
                   )}
 
               </div>

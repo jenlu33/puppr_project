@@ -8,10 +8,22 @@
 //ALBUM NAV
 .album-nav {
   // border: 1px solid red;
+  height: 20px;
   padding: 5px 0;
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: white;
+}
+
+.new-album-link {
+  text-decoration: none;
+  color: rgb(80, 80, 80);
+}
+
+.new-album-link:hover {
+  color: black;
+  transition-duration: 0.3s;
 }
 
 //ALBUMS INDEX

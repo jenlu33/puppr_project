@@ -864,6 +864,11 @@ var AlbumShow = /*#__PURE__*/function (_React$Component) {
       this.props.fetchAlbum(this.props.match.params.albumId);
     }
   }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.props.clearAlbum();
+    }
+  }, {
     key: "viewPhoto",
     value: function viewPhoto(e) {
       this.props.history.push("/photos/".concat(e.currentTarget.id));
@@ -1351,9 +1356,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _album_show__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../album_show */ "./frontend/components/album_show.jsx");
 /* harmony import */ var _actions_album_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/album_actions */ "./frontend/actions/album_actions.js");
-/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/user_actions */ "./frontend/actions/user_actions.js");
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
-
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
 
 
 
@@ -1369,13 +1372,16 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     logout: function logout() {
-      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["log_out"])());
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["log_out"])());
     },
     fetchAlbum: function fetchAlbum(albumId) {
       return dispatch(Object(_actions_album_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAlbum"])(albumId));
     },
     deleteAlbum: function deleteAlbum(albumId) {
       return dispatch(Object(_actions_album_actions__WEBPACK_IMPORTED_MODULE_2__["deleteAlbum"])(albumId));
+    },
+    clearAlbum: function clearAlbum() {
+      return dispatch(Object(_actions_album_actions__WEBPACK_IMPORTED_MODULE_2__["clearAlbums"])());
     }
   };
 };
@@ -1684,11 +1690,14 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     logout: function logout() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["log_out"])());
     },
+    fetchUser: function fetchUser(userId) {
+      return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_3__["fetchUser"])(userId));
+    },
     displayPhotos: function displayPhotos(userId) {
       return dispatch(Object(_actions_photo_actions__WEBPACK_IMPORTED_MODULE_2__["fetchUserPhotos"])(userId));
     },
-    fetchUser: function fetchUser(userId) {
-      return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_3__["fetchUser"])(userId));
+    clearPhotos: function clearPhotos() {
+      return dispatch(Object(_actions_photo_actions__WEBPACK_IMPORTED_MODULE_2__["clearPhotos"])());
     }
   };
 };
@@ -2960,6 +2969,11 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
       if (prevProps.match.params.userId !== this.props.match.params.userId) {
         this.props.fetchUser(this.props.match.userId);
       }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.props.clearPhotos();
     }
   }, {
     key: "viewPhoto",

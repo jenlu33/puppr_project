@@ -14,6 +14,10 @@ class AlbumShow extends React.Component {
     this.props.fetchAlbum(this.props.match.params.albumId);
   }
 
+  componentWillUnmount() {
+    this.props.clearAlbum();
+  }
+
   viewPhoto(e) {
     this.props.history.push(`/photos/${e.currentTarget.id}`)
   }

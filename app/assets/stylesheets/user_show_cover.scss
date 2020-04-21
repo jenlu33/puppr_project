@@ -44,6 +44,7 @@
   color: black;
 }
 
-.nav-user-photos:focus, .nav-user-albums:focus {
-  opacity: 50%;
+.nav-user-photos:hover, .nav-user-albums:hover {
+  opacity: 0.7;
+  transition-duration: 0.3s;
 }
