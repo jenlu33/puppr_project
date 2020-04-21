@@ -66,7 +66,7 @@ class Tags extends React.Component {
             {
               tags.map(tag => 
                 <li key={tag.id} className="tags-li">
-                  <p>{tag.name}</p>
+                  <Link to={`/tags/${tag.id}`} className="tag-link">{tag.name}</Link>
                   {currentUser.id === photo.user_id ? (
                     <button 
                       id={tag.id}

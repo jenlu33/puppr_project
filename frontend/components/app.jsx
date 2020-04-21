@@ -12,6 +12,7 @@ import AlbumIndexContainer from './containers/albums_index_container';
 import AlbumCreateContainer from './containers/album_create_container';
 import AlbumShowContainer from './containers/album_show_container';
 import AlbumEditContainer from './containers/album_edit_container';
+import TagPhotoIndex from './containers/tag_photo_index_container';
 
 import ErrorContainer from './error404'
 
@@ -27,6 +28,7 @@ const App = () => (
       <ProtectedRoute path="/album/new" component={AlbumCreateContainer} />
       {/* <ProtectedRoute path="/albums/:albumId/edit" component={AlbumEditContainer} /> */}
       <ProtectedRoute path="/albums/:albumId" component={AlbumShowContainer} />
+      <ProtectedRoute path="/tags/:tagId" component={TagPhotoIndex} />
       <Route exact path="/" component={GreetingContainer} />
       <Route component={ErrorContainer} />
     </Switch>
