@@ -1562,6 +1562,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     createTag: function createTag(tag) {
       return dispatch(Object(_actions_tag_actions__WEBPACK_IMPORTED_MODULE_5__["createTag"])(tag));
+    },
+    deleteTag: function deleteTag(tagId) {
+      return dispatch(Object(_actions_tag_actions__WEBPACK_IMPORTED_MODULE_5__["deleteTag"])(tagId));
     }
   };
 };
@@ -2615,6 +2618,7 @@ var Tags = /*#__PURE__*/function (_React$Component) {
     };
     _this.updateName = _this.updateName.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2642,8 +2646,16 @@ var Tags = /*#__PURE__*/function (_React$Component) {
       this.props.createTag(tag);
     }
   }, {
+    key: "handleDelete",
+    value: function handleDelete(e) {
+      e.preventDefault;
+      this.props.deleteTag(e.target.id);
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var _this$props = this.props,
           currentUser = _this$props.currentUser,
           photo = _this$props.photo,
@@ -2654,14 +2666,18 @@ var Tags = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         onChange: this.updateName,
-        placeholder: "tag name"
+        placeholder: "tag name",
+        className: "tag-text-input"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
-        value: "Create Tag"
+        value: "Create Tag",
+        className: "tag-submit-btn"
       })) : null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-tags-div"
-      }, tagForm, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "tags-header"
+      }, "Tags"), tagForm, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "all-tags"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "tags-ul"
@@ -2669,7 +2685,10 @@ var Tags = /*#__PURE__*/function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: tag.id,
           className: "tags-li"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, tag.name));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, tag.name), currentUser.id === photo.user_id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          id: tag.id,
+          onClick: _this2.handleDelete
+        }, "x") : null);
       }))));
     }
   }]);

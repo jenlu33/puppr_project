@@ -1,6 +1,75 @@
 .main-tags-div {
-  // border: 1px solid red;
+  width: 25%;
+  margin: 15px 0;
+  padding: 20px 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.tags-header {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+//TAG FORM
+
+.tags-form {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+}
+
+.tag-text-input {
+  border: 1px solid rgba(0,0,0,0);
+  border-radius: 4px;
+  margin: 5px;
+  padding: 10px;
+}
+
+.tag-text-input:focus {
+  outline: none;
+  border: 1px solid lightgrey;
+  border-radius: 4px;
+}
+
+.tag-submit-btn {
+  cursor: pointer;
+  outline: none;
+  border: 1px solid rgb(71, 71, 71);
+  border-radius: 4px;
+  margin: 10px 0;
+  padding: 2px;
+  background: none;
+}
+
+.tag-submit-btn:hover {
+  background-color: rgb(163, 163, 163);
+  border: 1px solid rgb(163, 163, 163);
+  color: white;
+  transition-duration: 0.3s;
+}
+
+//MAPPED TAGS
+
+.all-tags {
+  // border: 1px solid red;
+  width: 100%;
+}
+
+.tags-ul {
+  border: 1px solid red;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tags-li {
+  border: 1px solid lightgrey;
+  background-color: lightgrey;
+  border-radius: 4px;
+  margin: 5px;
+  padding: 5px;
+  font-weight: 300;
+  display: flex;
 }

@@ -17,11 +17,7 @@ class Api::CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    if @comment.destroy
-      render json: 'success!'
-    else
-      render json: @comment.errors.full_messages, status: 422
-    end
+    @comment.destroy
   end
 
   private

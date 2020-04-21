@@ -4,7 +4,7 @@ import { fetchPhoto, deletePhoto } from '../../actions/photo_actions'
 import { log_out } from '../../actions/session_actions';
 import {fetchComments, createComment, deleteComment} from '../../actions/comment_actions';
 import { removeCommentErrors } from '../../actions/comment_actions';
-import { fetchTags, createTag } from '../../actions/tag_actions';
+import { fetchTags, createTag, deleteTag } from '../../actions/tag_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   currentUser: state.entities.users[state.session.id],
@@ -23,7 +23,8 @@ const mapDispatchToProps = dispatch => ({
   deleteComment: (commentId) => dispatch(deleteComment(commentId)),
   removeCommentErrors: () => dispatch(removeCommentErrors()),
   displayTags: (photoId) => dispatch(fetchTags(photoId)),
-  createTag: (tag) => dispatch(createTag(tag))
+  createTag: (tag) => dispatch(createTag(tag)),
+  deleteTag: (tagId) => dispatch(deleteTag(tagId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhotoShow);

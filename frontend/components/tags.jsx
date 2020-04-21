@@ -11,6 +11,7 @@ class Tags extends React.Component {
 
     this.updateName = this.updateName.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   };
 
   componentDidMount() {
@@ -34,18 +35,31 @@ class Tags extends React.Component {
     this.props.createTag(tag);
   }
 
+  handleDelete(e) {
+    e.preventDefault;
+    this.props.deleteTag(e.target.id);
+  }
+
   render() {
     const { currentUser, photo, tags } = this.props;
 
     const tagForm = currentUser.id === photo.user_id ? (
       <form onSubmit={this.handleSubmit} className="tags-form">
-        <input type="text" onChange={this.updateName} placeholder="tag name"/>
-        <input type="submit" value="Create Tag"/>
+        <input 
+          type="text" 
+          onChange={this.updateName} 
+          placeholder="tag name"
+          className="tag-text-input"/>
+        <input 
+          type="submit" 
+          value="Create Tag"
+          className="tag-submit-btn"/>
       </form>
-    ):(null)
+      ):(null);
 
     return(
       <div className="main-tags-div">
+        <h1 className="tags-header">Tags</h1>
         {tagForm}
         <div className="all-tags">
           <ul className="tags-ul">
@@ -53,6 +67,11 @@ class Tags extends React.Component {
               tags.map(tag => 
                 <li key={tag.id} className="tags-li">
                   <p>{tag.name}</p>
+                  {currentUser.id === photo.user_id ? (
+                    <button 
+                      id={tag.id}
+                      onClick={this.handleDelete}>x</button>
+                  ) : (null)}
                 </li>)
             }
           </ul>

@@ -1,9 +1,6 @@
-.main-photo-show-div {
-  height: 100vh;
-}
-
 .photo-content-container {
   width: 100vw;
+  min-width: 700px;
   height: 85vh;
   margin-bottom: 16px;
   background-color: #212124;
@@ -11,7 +8,6 @@
 }
 
 .photo-content {
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,7 +59,7 @@ h2 {
 }
 
 .sub-photo-container {
-  width: 100%;
+  margin: 0 10vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -146,8 +142,10 @@ h2 {
 //COMMENTS AND TAGS
 
 .comments-and-tags-container {
-  // border: 1px solid red;
-  width: 80vw;
+  width: 90%;
+  margin: 0 10vw;
+  min-width: 600px;
+  max-width: 950px;
   display: flex;
   justify-content: space-between;
 }
