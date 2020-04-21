@@ -18,6 +18,7 @@ class PhotoShow extends React.Component {
 
   componentWillUnmount() {
     this.props.clearPhoto();
+    this.props.clearComments();
   }
 
   prevPage(e) {

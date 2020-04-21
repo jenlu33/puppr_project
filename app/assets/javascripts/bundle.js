@@ -189,7 +189,7 @@ var deleteAlbum = function deleteAlbum(albumId) {
 /*!*********************************************!*\
   !*** ./frontend/actions/comment_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_ALL_COMMENTS, RECEIVE_COMMENT, REMOVE_COMMENT, RECEIVE_COMMENT_ERRORS, REMOVE_COMMENT_ERRORS, removeCommentErrors, fetchComments, createComment, deleteComment */
+/*! exports provided: RECEIVE_ALL_COMMENTS, RECEIVE_COMMENT, REMOVE_COMMENT, CLEAR_COMMENTS, RECEIVE_COMMENT_ERRORS, REMOVE_COMMENT_ERRORS, clearComments, removeCommentErrors, fetchComments, createComment, deleteComment */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -197,8 +197,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_COMMENTS", function() { return RECEIVE_ALL_COMMENTS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_COMMENT", function() { return RECEIVE_COMMENT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_COMMENT", function() { return REMOVE_COMMENT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_COMMENTS", function() { return CLEAR_COMMENTS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_COMMENT_ERRORS", function() { return RECEIVE_COMMENT_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_COMMENT_ERRORS", function() { return REMOVE_COMMENT_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearComments", function() { return clearComments; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeCommentErrors", function() { return removeCommentErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchComments", function() { return fetchComments; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createComment", function() { return createComment; });
@@ -208,6 +210,7 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_ALL_COMMENTS = "RECEIVE_ALL_COMMENTS";
 var RECEIVE_COMMENT = "RECEIVE_COMMENT";
 var REMOVE_COMMENT = "REMOVE_COMMENT";
+var CLEAR_COMMENTS = "CLEAR_COMMENTS";
 var RECEIVE_COMMENT_ERRORS = "RECEIVE_COMMENT_ERRORS";
 var REMOVE_COMMENT_ERRORS = "REMOVE_COMMENT_ERRORS";
 
@@ -229,6 +232,12 @@ var removeComment = function removeComment(commentId) {
   return {
     type: REMOVE_COMMENT,
     commentId: commentId
+  };
+};
+
+var clearComments = function clearComments() {
+  return {
+    type: CLEAR_COMMENTS
   };
 };
 
@@ -1155,6 +1164,9 @@ var Comments = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "updateBody",
+    // componentWillUnmount() {
+    //   this.props.clearComments();
+    // }
     value: function updateBody(e) {
       this.setState({
         body: e.target.value
@@ -1566,7 +1578,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     currentUser: state.entities.users[state.session.id],
@@ -1602,6 +1613,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     removeCommentErrors: function removeCommentErrors() {
       return dispatch(Object(_actions_comment_actions__WEBPACK_IMPORTED_MODULE_4__["removeCommentErrors"])());
+    },
+    clearComments: function clearComments() {
+      return dispatch(Object(_actions_comment_actions__WEBPACK_IMPORTED_MODULE_4__["clearComments"])());
     },
     displayTags: function displayTags(photoId) {
       return dispatch(Object(_actions_tag_actions__WEBPACK_IMPORTED_MODULE_5__["fetchTags"])(photoId));
@@ -2251,6 +2265,7 @@ var PhotoShow = /*#__PURE__*/function (_React$Component) {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
       this.props.clearPhoto();
+      this.props.clearComments();
     }
   }, {
     key: "prevPage",
@@ -3223,6 +3238,9 @@ var commentsReducer = function commentsReducer() {
       var newState = Object.assign({}, state);
       delete newState[action.commentId];
       return newState;
+
+    case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_COMMENTS"]:
+      return {};
 
     default:
       return state;
