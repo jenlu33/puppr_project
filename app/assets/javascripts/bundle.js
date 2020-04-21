@@ -278,13 +278,14 @@ var deleteComment = function deleteComment(commentId) {
 /*!*******************************************!*\
   !*** ./frontend/actions/photo_actions.js ***!
   \*******************************************/
-/*! exports provided: RECEIVE_ALL_PHOTOS, RECEIVE_ALL_USER_PHOTOS, RECEIVE_PHOTO, REMOVE_PHOTO, RECEIVE_PHOTO_ERRORS, REMOVE_PHOTO_ERRORS, removePhotoErrors, fetchPhotos, fetchUserPhotos, fetchPhoto, createPhoto, updatePhoto, deletePhoto */
+/*! exports provided: RECEIVE_ALL_PHOTOS, RECEIVE_ALL_USER_PHOTOS, RECEIVE_ALL_TAG_PHOTOS, RECEIVE_PHOTO, REMOVE_PHOTO, RECEIVE_PHOTO_ERRORS, REMOVE_PHOTO_ERRORS, removePhotoErrors, fetchPhotos, fetchUserPhotos, fetchTagPhotos, fetchPhoto, createPhoto, updatePhoto, deletePhoto */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_PHOTOS", function() { return RECEIVE_ALL_PHOTOS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_USER_PHOTOS", function() { return RECEIVE_ALL_USER_PHOTOS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_TAG_PHOTOS", function() { return RECEIVE_ALL_TAG_PHOTOS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_PHOTO", function() { return RECEIVE_PHOTO; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_PHOTO", function() { return REMOVE_PHOTO; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_PHOTO_ERRORS", function() { return RECEIVE_PHOTO_ERRORS; });
@@ -292,6 +293,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removePhotoErrors", function() { return removePhotoErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPhotos", function() { return fetchPhotos; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchUserPhotos", function() { return fetchUserPhotos; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchTagPhotos", function() { return fetchTagPhotos; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPhoto", function() { return fetchPhoto; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPhoto", function() { return createPhoto; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updatePhoto", function() { return updatePhoto; });
@@ -300,6 +302,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var RECEIVE_ALL_PHOTOS = "RECEIVE_ALL_PHOTOS";
 var RECEIVE_ALL_USER_PHOTOS = "RECEIVE_ALL_USER_PHOTOS";
+var RECEIVE_ALL_TAG_PHOTOS = "RECEIVE_ALL_TAG_PHOTOS";
 var RECEIVE_PHOTO = "RECEIVE_PHOTO";
 var REMOVE_PHOTO = "REMOVE_PHOTO";
 var RECEIVE_PHOTO_ERRORS = "RECEIVE_PHOTO_ERRORS";
@@ -315,6 +318,13 @@ var receivePhotos = function receivePhotos(photos) {
 var receiveAllUserPhotos = function receiveAllUserPhotos(photos) {
   return {
     type: RECEIVE_ALL_USER_PHOTOS,
+    photos: photos
+  };
+};
+
+var receiveAllTagPhotos = function receiveAllTagPhotos(photos) {
+  return {
+    type: RECEIVE_ALL_TAG_PHOTOS,
     photos: photos
   };
 };
@@ -359,6 +369,14 @@ var fetchUserPhotos = function fetchUserPhotos(userId) {
   return function (dispatch) {
     return _util_photo_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchAllUserPhotos"](userId).then(function (photos) {
       return dispatch(receiveAllUserPhotos(photos));
+    });
+  };
+}; // tag photo index
+
+var fetchTagPhotos = function fetchTagPhotos(tagId) {
+  return function (dispatch) {
+    return _util_photo_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchAllTagPhotos"](tagId).then(function (tags) {
+      return dispatch(receiveAllTagPhotos(tags));
     });
   };
 }; //photo show
@@ -3192,6 +3210,9 @@ var photosReducer = function photosReducer() {
       return Object.assign({}, state, _defineProperty({}, action.photo.id, action.photo));
 
     case _actions_photo_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_USER_PHOTOS"]:
+      return Object.assign({}, state, action.photos);
+
+    case _actions_photo_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_TAG_PHOTOS"]:
       return Object.assign({}, state, action.photos);
 
     case _actions_photo_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_PHOTO"]:

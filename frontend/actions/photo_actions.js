@@ -2,6 +2,7 @@ import * as PhotoAPIUtil from '../util/photo_api_util';
 
 export const RECEIVE_ALL_PHOTOS = "RECEIVE_ALL_PHOTOS";
 export const RECEIVE_ALL_USER_PHOTOS = "RECEIVE_ALL_USER_PHOTOS"
+export const RECEIVE_ALL_TAG_PHOTOS = "RECEIVE_ALL_TAG_PHOTOS"
 export const RECEIVE_PHOTO = "RECEIVE_PHOTO";
 export const REMOVE_PHOTO = "REMOVE_PHOTO";
 
@@ -12,32 +13,37 @@ export const REMOVE_PHOTO_ERRORS = "REMOVE_ERRORS";
 const receivePhotos = (photos) => ({
   type: RECEIVE_ALL_PHOTOS,
   photos
-})
+});
 
 const receiveAllUserPhotos = (photos) => ({
   type: RECEIVE_ALL_USER_PHOTOS,
+  photos
+});
+
+const receiveAllTagPhotos = (photos) => ({
+  type: RECEIVE_ALL_TAG_PHOTOS,
   photos
 })
 
 const receivePhoto = (photo) => ({
   type: RECEIVE_PHOTO,
   photo
-})
+});
 
 const removePhoto = (photoId) => ({
   type: REMOVE_PHOTO,
   photoId
-})
+});
 
 const receivePhotoErrors = (errors) => ({
   type: RECEIVE_PHOTO_ERRORS,
   errors: errors
-})
+});
 
 export const removePhotoErrors = () => ({
   type: REMOVE_PHOTO_ERRORS,
   errors: []
-})
+});
 
 //general photo index
 export const fetchPhotos = () => dispatch => {
@@ -48,6 +54,10 @@ export const fetchPhotos = () => dispatch => {
 // user's photo index
 export const fetchUserPhotos = (userId) => dispatch => (PhotoAPIUtil.fetchAllUserPhotos(userId)
   .then(photos => dispatch(receiveAllUserPhotos(photos))))
+
+// tag photo index
+export const fetchTagPhotos = (tagId) => dispatch => (PhotoAPIUtil.fetchAllTagPhotos(tagId)
+  .then(tags => dispatch(receiveAllTagPhotos(tags))))
 
 //photo show
 export const fetchPhoto = (photoId) => dispatch => (PhotoAPIUtil.fetchPhoto(photoId)
