@@ -16,7 +16,8 @@ class UserShow extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.match.params.userId !== this.props.match.params.userId) {
-      this.props.fetchUser(this.props.match.userId)
+      this.props.fetchUser(this.props.match.params.userId)
+      this.props.displayPhotos(this.props.match.params.userId)
     }
   }
 
@@ -31,13 +32,7 @@ class UserShow extends React.Component {
   render() {
     const {photos, showUser} = this.props;
     if (!showUser) return null;
-
-    let photoCount = 0;
-    for (let i = 0; i < photos.length; i++) {
-      if (photos[i].user_id == showUser.id) {
-        photoCount += 1;
-      };
-    }
+    
     
     return (
       

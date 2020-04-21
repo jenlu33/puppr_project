@@ -2964,7 +2964,8 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       if (prevProps.match.params.userId !== this.props.match.params.userId) {
-        this.props.fetchUser(this.props.match.userId);
+        this.props.fetchUser(this.props.match.params.userId);
+        this.props.displayPhotos(this.props.match.params.userId);
       }
     }
   }, {
@@ -2986,16 +2987,6 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
           photos = _this$props.photos,
           showUser = _this$props.showUser;
       if (!showUser) return null;
-      var photoCount = 0;
-
-      for (var i = 0; i < photos.length; i++) {
-        if (photos[i].user_id == showUser.id) {
-          photoCount += 1;
-        }
-
-        ;
-      }
-
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-user-show-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_logged_in_header__WEBPACK_IMPORTED_MODULE_2__["default"], this.props), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_user_show_cover__WEBPACK_IMPORTED_MODULE_3__["default"], {
