@@ -2687,6 +2687,7 @@ var Tags = /*#__PURE__*/function (_React$Component) {
           className: "tags-li"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, tag.name), currentUser.id === photo.user_id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           id: tag.id,
+          className: "delete-tag-btn",
           onClick: _this2.handleDelete
         }, "x") : null);
       }))));
@@ -3521,13 +3522,14 @@ var deleteComment = function deleteComment(commentId) {
 /*!*****************************************!*\
   !*** ./frontend/util/photo_api_util.js ***!
   \*****************************************/
-/*! exports provided: fetchPhotos, fetchAllUserPhotos, fetchPhoto, createPhoto, updatePhoto, deletePhoto */
+/*! exports provided: fetchPhotos, fetchAllUserPhotos, fetchAllTagPhotos, fetchPhoto, createPhoto, updatePhoto, deletePhoto */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPhotos", function() { return fetchPhotos; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllUserPhotos", function() { return fetchAllUserPhotos; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllTagPhotos", function() { return fetchAllTagPhotos; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPhoto", function() { return fetchPhoto; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPhoto", function() { return createPhoto; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updatePhoto", function() { return updatePhoto; });
@@ -3543,6 +3545,13 @@ var fetchPhotos = function fetchPhotos() {
 var fetchAllUserPhotos = function fetchAllUserPhotos(userId) {
   return $.ajax({
     url: "/api/users/".concat(userId, "/photos"),
+    method: "GET"
+  });
+}; //all photos w same tag
+
+var fetchAllTagPhotos = function fetchAllTagPhotos(tagId) {
+  return $.ajax({
+    url: "api/tags/".concat(tagId, "/photos"),
     method: "GET"
   });
 }; //show photo

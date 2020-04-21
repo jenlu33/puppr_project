@@ -70,6 +70,7 @@ class Tags extends React.Component {
                   {currentUser.id === photo.user_id ? (
                     <button 
                       id={tag.id}
+                      className="delete-tag-btn"
                       onClick={this.handleDelete}>x</button>
                   ) : (null)}
                 </li>)

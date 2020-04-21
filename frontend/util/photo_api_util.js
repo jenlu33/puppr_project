@@ -14,7 +14,15 @@ export const fetchAllUserPhotos = (userId) => (
     url: `/api/users/${userId}/photos`,
     method: "GET"
   })
-)
+);
+
+//all photos w same tag
+export const fetchAllTagPhotos = (tagId) => (
+  $.ajax({
+    url: `api/tags/${tagId}/photos`,
+    method: "GET"
+  })
+);
 
 //show photo
 export const fetchPhoto = (photoId) => (
@@ -51,4 +59,4 @@ export const deletePhoto = (photoId) => {
   return $.ajax({
     url: `api/photos/${photoId}`,
     method: "DELETE"
-  })};
+})};

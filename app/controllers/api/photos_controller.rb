@@ -1,10 +1,12 @@
 
 class Api::PhotosController < ApplicationController
   def index
-    if params[:user_id] == nil
-      @photos = Photo.all
-    else
+    if params[:user_id]
       @photos = Photo.where(user_id: params[:user_id])
+    elsif
+      @photos = Photo.tagged_with(params[:tag_id])
+    else
+      @photos = Photo.all
     end
     render :index
   end

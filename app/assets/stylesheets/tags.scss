@@ -58,18 +58,27 @@
 }
 
 .tags-ul {
-  border: 1px solid red;
+  // border: 1px solid red;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
 
 .tags-li {
-  border: 1px solid lightgrey;
-  background-color: lightgrey;
+  background-color: rgb(231, 231, 231);
   border-radius: 4px;
   margin: 5px;
   padding: 5px;
   font-weight: 300;
   display: flex;
+}
+
+.delete-tag-btn {
+  outline: none;
+  border: none;
+  background: none;
+}
+
+.delete-tag-btn:hover {
+  cursor: pointer;
 }

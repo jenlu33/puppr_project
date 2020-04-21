@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     end
     resources :comments, only: [:destroy]
     resources :albums, only: [:create, :show, :destroy]
-    resources :tags, only: [:destroy]
+    resources :tags, only: [:destroy] do 
+      resources :photos, only:[:index]
+    end
   end
 end
