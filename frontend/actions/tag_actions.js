@@ -24,6 +24,11 @@ export const fetchTags = (photoId) => dispatch => (
     .then(tags => dispatch(receiveTags(tags)))
 );
 
+export const fetchTag = (photoId) => dispatch => (
+  TagAPIUtil.fetchTag(photoId)
+    .then(tag => dispatch(receiveTag(tag)))
+);
+
 export const createTag = (tag) => dispatch => (
   TagAPIUtil.createTag(tag)
     .then(tag => dispatch(receiveTag(tag)))

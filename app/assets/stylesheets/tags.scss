@@ -73,6 +73,17 @@
   display: flex;
 }
 
+.tag-link {
+  text-decoration: none;
+  color: black;
+}
+
+.tag-link:hover {
+  cursor: pointer;
+  opacity: 0.6;
+  transition-duration: 0.3s;
+}
+
 .delete-tag-btn {
   outline: none;
   border: none;

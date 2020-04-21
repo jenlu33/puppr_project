@@ -522,7 +522,7 @@ var fetchUsers = function fetchUsers() {
 /*!*****************************************!*\
   !*** ./frontend/actions/tag_actions.js ***!
   \*****************************************/
-/*! exports provided: RECEIVE_ALL_TAGS, RECEIVE_TAG, REMOVE_TAG, fetchTags, createTag, deleteTag */
+/*! exports provided: RECEIVE_ALL_TAGS, RECEIVE_TAG, REMOVE_TAG, fetchTags, fetchTag, createTag, deleteTag */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -531,6 +531,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_TAG", function() { return RECEIVE_TAG; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_TAG", function() { return REMOVE_TAG; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchTags", function() { return fetchTags; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchTag", function() { return fetchTag; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createTag", function() { return createTag; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteTag", function() { return deleteTag; });
 /* harmony import */ var _util_tag_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/tag_api_util */ "./frontend/util/tag_api_util.js");
@@ -564,6 +565,13 @@ var fetchTags = function fetchTags(photoId) {
   return function (dispatch) {
     return _util_tag_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchTags"](photoId).then(function (tags) {
       return dispatch(receiveTags(tags));
+    });
+  };
+};
+var fetchTag = function fetchTag(photoId) {
+  return function (dispatch) {
+    return _util_tag_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchTag"](photoId).then(function (tag) {
+      return dispatch(receiveTag(tag));
     });
   };
 };
@@ -1696,12 +1704,17 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _tag_photo_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../tag_photo_index */ "./frontend/components/tag_photo_index.jsx");
+/* harmony import */ var _actions_tag_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/tag_actions */ "./frontend/actions/tag_actions.js");
+/* harmony import */ var _actions_photo_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/photo_actions */ "./frontend/actions/photo_actions.js");
+
+
 
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    currentUser: state.entities.users[state.session.user_id]
+    currentUser: state.entities.users[state.session.id],
+    tag: state.entities.tags[ownProps.match.params.tagId]
   };
 };
 
@@ -1709,6 +1722,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     logout: function logout() {
       return dispatch(log_out(userId));
+    },
+    fetchTag: function fetchTag(tagId) {
+      return dispatch(Object(_actions_tag_actions__WEBPACK_IMPORTED_MODULE_2__["fetchTag"])(tagId));
+    },
+    displayPhotos: function displayPhotos(tagId) {
+      return dispatch(Object(_actions_photo_actions__WEBPACK_IMPORTED_MODULE_3__["fetchTagPhotos"])(tagId));
     }
   };
 };
@@ -2636,6 +2655,8 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _logged_in_header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./logged_in_header */ "./frontend/components/logged_in_header.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2656,6 +2677,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var TagPhotoIndex = /*#__PURE__*/function (_React$Component) {
   _inherits(TagPhotoIndex, _React$Component);
 
@@ -2666,9 +2689,16 @@ var TagPhotoIndex = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(TagPhotoIndex, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchTag(this.props.match.params.tagId); // this.props.displayPhotos(this.props.match.params.tagId)
+      // console.log(this.props.match.params);
+    }
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "THESE ARE TAGGED PHOTOS"));
+      var tag = this.props.tag;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_logged_in_header__WEBPACK_IMPORTED_MODULE_2__["default"], this.props), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "THESE ARE TAGGED PHOTOS"));
     }
   }]);
 
@@ -3818,18 +3848,26 @@ var fetchAllUsers = function fetchAllUsers() {
 /*!***************************************!*\
   !*** ./frontend/util/tag_api_util.js ***!
   \***************************************/
-/*! exports provided: fetchTags, createTag, deleteTag */
+/*! exports provided: fetchTags, fetchTag, createTag, deleteTag */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchTags", function() { return fetchTags; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchTag", function() { return fetchTag; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createTag", function() { return createTag; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteTag", function() { return deleteTag; });
 //fetches all tags
 var fetchTags = function fetchTags(photoId) {
   return $.ajax({
     url: "/api/photos/".concat(photoId, "/tags"),
+    method: "GET"
+  });
+}; //fetch single tag
+
+var fetchTag = function fetchTag(tagId) {
+  return $.ajax({
+    url: "/api/tags/".concat(tagId),
     method: "GET"
   });
 }; //create tag

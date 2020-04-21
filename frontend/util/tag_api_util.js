@@ -6,6 +6,14 @@ export const fetchTags = (photoId) => (
   })
 );
 
+//fetch single tag
+export const fetchTag = (tagId) => (
+  $.ajax({
+    url: `/api/tags/${tagId}`,
+    method: "GET"
+  })
+)
+
 //create tag
 export const createTag = (tag) => {
   const photoId = tag.photo_id;

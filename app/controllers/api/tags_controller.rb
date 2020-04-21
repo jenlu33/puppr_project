@@ -3,6 +3,11 @@ class Api::TagsController < ApplicationController
     @tags = Photo.find(params[:photo_id]).tags
   end
 
+  def show
+    @tag = Tag.find(params[:id])
+    render 'api/tags/_tag'
+  end
+
   def create
     @tag = Tag.new({name: tag_params[:name]})
     @tag.user_id = current_user.id
