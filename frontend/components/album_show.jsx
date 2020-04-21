@@ -33,6 +33,7 @@ class AlbumShow extends React.Component {
     const { album, currentUser } = this.props;
 
     if (!album) return null;
+    document.title = "Puppr | Album"
     
     const photos = album.photos;
     const editAlbum = album.user_id === currentUser.id ? (

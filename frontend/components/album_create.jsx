@@ -63,7 +63,7 @@ class AlbumCreate extends React.Component {
 
   render() {
     if (!this.props.photos) return null;
-
+    document.title = "Puppr | Create Album"
     return (
       <div>
         {<LoggedInHeader {...this.props}/>}

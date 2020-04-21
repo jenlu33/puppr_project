@@ -767,6 +767,7 @@ var AlbumCreate = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       if (!this.props.photos) return null;
+      document.title = "Puppr | Create Album";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_logged_in_header__WEBPACK_IMPORTED_MODULE_2__["default"], this.props), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "create-album-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -885,6 +886,7 @@ var AlbumShow = /*#__PURE__*/function (_React$Component) {
           album = _this$props.album,
           currentUser = _this$props.currentUser;
       if (!album) return null;
+      document.title = "Puppr | Album";
       var photos = album.photos;
       var editAlbum = album.user_id === currentUser.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleDelete,
@@ -999,6 +1001,7 @@ var AlbumsIndex = /*#__PURE__*/function (_React$Component) {
           currentUser = _this$props.currentUser,
           albums = _this$props.albums;
       if (!showUser) return null;
+      document.title = "Puppr | Albums";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-album-index-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_logged_in_header__WEBPACK_IMPORTED_MODULE_2__["default"], this.props), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_user_show_cover__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -2984,6 +2987,7 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
           photos = _this$props.photos,
           showUser = _this$props.showUser;
       if (!showUser) return null;
+      document.title = "Puppr | ".concat(showUser.username);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-user-show-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_logged_in_header__WEBPACK_IMPORTED_MODULE_2__["default"], this.props), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_user_show_cover__WEBPACK_IMPORTED_MODULE_3__["default"], {

@@ -32,7 +32,7 @@ class UserShow extends React.Component {
   render() {
     const {photos, showUser} = this.props;
     if (!showUser) return null;
-    
+    document.title = `Puppr | ${showUser.username}`
     
     return (
       

@@ -27,6 +27,7 @@ class AlbumsIndex extends React.Component {
     const {showUser, currentUser, albums} = this.props;
  
     if (!showUser) return null;
+    document.title = "Puppr | Albums"
     return (
       <div className="main-album-index-div">
         {<LoggedInHeader {...this.props} />}
