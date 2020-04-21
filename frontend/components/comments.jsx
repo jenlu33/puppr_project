@@ -13,14 +13,6 @@ class Comments extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
   };
 
-  componentDidMount() {
-    this.props.displayComments(this.props.match.params.photoId);  
-  };
-
-  // componentWillUnmount() {
-  //   this.props.clearComments();
-  // }
-
   updateBody(e) {
     this.setState({
       body: e.target.value,

@@ -14,10 +14,6 @@ class Tags extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
   };
 
-  componentDidMount() {
-    this.props.displayTags(this.props.match.params.photoId)
-  };
-
   updateName(e) {
     this.setState({
       name: e.target.value

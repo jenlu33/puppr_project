@@ -1,7 +1,8 @@
 import {
   RECEIVE_ALL_TAGS, 
   RECEIVE_TAG, 
-  REMOVE_TAG 
+  REMOVE_TAG,
+  CLEAR_TAGS 
 } from '../actions/tag_actions';
 
 const tagsReducer = (state = {}, action) => {
@@ -10,13 +11,14 @@ const tagsReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_ALL_TAGS:
       return Object.assign({}, state, action.tags);
-      // return action.tags
     case RECEIVE_TAG:
-      return Object.assign({}, state, {[action.tag.id]: action.tag})
+      return Object.assign({}, {[action.tag.id]: action.tag})
     case REMOVE_TAG:
       let newState = Object.assign({}, state);
       delete newState[action.tagId];
       return newState;
+    case CLEAR_TAGS:
+      return {};
     default:
       return state;
   };

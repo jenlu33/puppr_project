@@ -9,7 +9,7 @@ import {
   removeCommentErrors,
   clearComments
 } from '../../actions/comment_actions';
-import { fetchTags, createTag, deleteTag } from '../../actions/tag_actions';
+import { fetchTags, createTag, deleteTag, clearTags } from '../../actions/tag_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   currentUser: state.entities.users[state.session.id],
@@ -31,7 +31,8 @@ const mapDispatchToProps = dispatch => ({
   clearComments: () => dispatch(clearComments()),
   displayTags: (photoId) => dispatch(fetchTags(photoId)),
   createTag: (tag) => dispatch(createTag(tag)),
-  deleteTag: (tagId) => dispatch(deleteTag(tagId))
+  deleteTag: (tagId) => dispatch(deleteTag(tagId)),
+  clearTags: () => dispatch(clearTags())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhotoShow);

@@ -540,7 +540,7 @@ var fetchUsers = function fetchUsers() {
 /*!*****************************************!*\
   !*** ./frontend/actions/tag_actions.js ***!
   \*****************************************/
-/*! exports provided: RECEIVE_ALL_TAGS, RECEIVE_TAG, REMOVE_TAG, fetchTags, fetchTag, createTag, deleteTag */
+/*! exports provided: RECEIVE_ALL_TAGS, RECEIVE_TAG, REMOVE_TAG, CLEAR_TAGS, clearTags, fetchTags, fetchTag, createTag, deleteTag */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -548,6 +548,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_TAGS", function() { return RECEIVE_ALL_TAGS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_TAG", function() { return RECEIVE_TAG; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_TAG", function() { return REMOVE_TAG; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_TAGS", function() { return CLEAR_TAGS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearTags", function() { return clearTags; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchTags", function() { return fetchTags; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchTag", function() { return fetchTag; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createTag", function() { return createTag; });
@@ -557,6 +559,7 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_ALL_TAGS = "RECEIVE_ALL_TAGS";
 var RECEIVE_TAG = "RECEIVE_TAG";
 var REMOVE_TAG = "REMOVE_TAG";
+var CLEAR_TAGS = "CLEAR_TAGS";
 
 var receiveTags = function receiveTags(tags) {
   return {
@@ -579,6 +582,11 @@ var removeTag = function removeTag(tagId) {
   };
 };
 
+var clearTags = function clearTags() {
+  return {
+    type: CLEAR_TAGS
+  };
+};
 var fetchTags = function fetchTags(photoId) {
   return function (dispatch) {
     return _util_tag_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchTags"](photoId).then(function (tags) {
@@ -1158,15 +1166,7 @@ var Comments = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(Comments, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.displayComments(this.props.match.params.photoId);
-    }
-  }, {
     key: "updateBody",
-    // componentWillUnmount() {
-    //   this.props.clearComments();
-    // }
     value: function updateBody(e) {
       this.setState({
         body: e.target.value
@@ -1625,6 +1625,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     deleteTag: function deleteTag(tagId) {
       return dispatch(Object(_actions_tag_actions__WEBPACK_IMPORTED_MODULE_5__["deleteTag"])(tagId));
+    },
+    clearTags: function clearTags() {
+      return dispatch(Object(_actions_tag_actions__WEBPACK_IMPORTED_MODULE_5__["clearTags"])());
     }
   };
 };
@@ -2259,13 +2262,17 @@ var PhotoShow = /*#__PURE__*/function (_React$Component) {
   _createClass(PhotoShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchPhoto(this.props.match.params.photoId);
+      var photoId = this.props.match.params.photoId;
+      this.props.fetchPhoto(photoId);
+      this.props.displayComments(photoId);
+      this.props.displayTags(photoId);
     }
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
       this.props.clearPhoto();
       this.props.clearComments();
+      this.props.clearTags();
     }
   }, {
     key: "prevPage",
@@ -2800,11 +2807,6 @@ var Tags = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(Tags, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.displayTags(this.props.match.params.photoId);
-    }
-  }, {
     key: "updateName",
     value: function updateName(e) {
       this.setState({
@@ -3519,15 +3521,17 @@ var tagsReducer = function tagsReducer() {
   switch (action.type) {
     case _actions_tag_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_TAGS"]:
       return Object.assign({}, state, action.tags);
-    // return action.tags
 
     case _actions_tag_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_TAG"]:
-      return Object.assign({}, state, _defineProperty({}, action.tag.id, action.tag));
+      return Object.assign({}, _defineProperty({}, action.tag.id, action.tag));
 
     case _actions_tag_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_TAG"]:
       var newState = Object.assign({}, state);
       delete newState[action.tagId];
       return newState;
+
+    case _actions_tag_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_TAGS"]:
+      return {};
 
     default:
       return state;
