@@ -2887,8 +2887,7 @@ var Tags = /*#__PURE__*/function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: tag.id,
           className: "tags-li"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          to: "/tags/".concat(tag.id),
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "tag-link"
         }, tag.name), currentUser.id === photo.user_id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           id: tag.id,

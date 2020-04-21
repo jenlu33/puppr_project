@@ -53,12 +53,10 @@
 //MAPPED TAGS
 
 .all-tags {
-  // border: 1px solid red;
   width: 100%;
 }
 
 .tags-ul {
-  // border: 1px solid red;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -78,11 +76,11 @@
   color: black;
 }
 
-.tag-link:hover {
-  cursor: pointer;
-  opacity: 0.6;
-  transition-duration: 0.3s;
-}
+// .tag-link:hover {
+//   cursor: pointer;
+//   opacity: 0.6;
+//   transition-duration: 0.3s;
+// }
 
 .delete-tag-btn {
   outline: none;

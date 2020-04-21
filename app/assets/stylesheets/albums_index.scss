@@ -1,5 +1,4 @@
 .main-album-index-div {
-  // border: 1px solid red;
   margin-top: 48px;
   margin-bottom: 100px;
   min-width: 600px;
@@ -7,7 +6,6 @@
 
 //ALBUM NAV
 .album-nav {
-  // border: 1px solid red;
   height: 20px;
   padding: 5px 0;
   display: flex;
@@ -33,7 +31,6 @@
 }
 
 .albums-ul {
-  // border: 1px solid red;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -41,10 +38,6 @@
 
 .album-index-item {
   border: 1px solid rgba(0, 0, 0, 0);
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
-  // justify-content: center;
   margin: 5px;
   width: 200px;
   height: 220px;
@@ -59,7 +52,6 @@
 //ALBUM INDEX ITEM W PHOTOS
 
 .album-index-wphotos {
-  // border:1px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;
