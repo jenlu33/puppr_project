@@ -38,7 +38,7 @@ class CreatePhoto extends React.Component {
     };
 
     this.props.createPhoto(formData)
-      // .then(this.props.history.push('/'));
+      .then(this.props.history.push('/'));
   };
 
   handleFile(e) {

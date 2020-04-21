@@ -26,12 +26,18 @@
   text-align: center;
 }
 
-.edit-album {
-  text-decoration: none;
+
+.delete-album-btn {
+  background: none;
+  border: 1px solid black;
+  border-radius: 4px;
+  margin: 5px 0;
+  padding: 3px 5px;
   color: black;
 }
 
-.edit-album:hover {
+.delete-album-btn:hover {
+  cursor: pointer;
   opacity: 0.8;
 }
 

@@ -2108,7 +2108,7 @@ var CreatePhoto = /*#__PURE__*/function (_React$Component) {
       }
 
       ;
-      this.props.createPhoto(formData); // .then(this.props.history.push('/'));
+      this.props.createPhoto(formData).then(this.props.history.push('/'));
     }
   }, {
     key: "handleFile",
