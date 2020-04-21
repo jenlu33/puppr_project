@@ -2964,9 +2964,12 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       if (prevProps.match.params.userId !== this.props.match.params.userId) {
+        this.props.clearPhotos();
         this.props.fetchUser(this.props.match.params.userId);
         this.props.displayPhotos(this.props.match.params.userId);
       }
+
+      ;
     }
   }, {
     key: "componentWillUnmount",

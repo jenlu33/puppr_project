@@ -16,18 +16,19 @@ class UserShow extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.match.params.userId !== this.props.match.params.userId) {
-      this.props.fetchUser(this.props.match.params.userId)
-      this.props.displayPhotos(this.props.match.params.userId)
-    }
-  }
+      this.props.clearPhotos();
+      this.props.fetchUser(this.props.match.params.userId);
+      this.props.displayPhotos(this.props.match.params.userId);
+    };
+  };
 
   componentWillUnmount() {
     this.props.clearPhotos();
-  }
+  };
 
   viewPhoto(e) {
     this.props.history.push(`/photos/${e.currentTarget.id}`)
-  }
+  };
 
   render() {
     const {photos, showUser} = this.props;
