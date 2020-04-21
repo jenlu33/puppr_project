@@ -1244,7 +1244,8 @@ var Comments = /*#__PURE__*/function (_React$Component) {
         onChange: this.updateBody,
         className: "comment-text",
         placeholder: "add a comment",
-        rows: "6"
+        rows: "6",
+        value: this.state.body
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         className: "comment-submit",
@@ -2844,6 +2845,10 @@ var Tags = /*#__PURE__*/function (_React$Component) {
         photo_id: photoId
       });
       this.props.createTag(tag);
+      this.setState({
+        name: "",
+        photo_id: ""
+      });
     }
   }, {
     key: "handleDelete",
@@ -2867,7 +2872,8 @@ var Tags = /*#__PURE__*/function (_React$Component) {
         type: "text",
         onChange: this.updateName,
         placeholder: "tag name",
-        className: "tag-text-input"
+        className: "tag-text-input",
+        value: this.state.name
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         value: "Create Tag",

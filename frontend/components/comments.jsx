@@ -72,7 +72,8 @@ class Comments extends React.Component {
             onChange={this.updateBody}
             className="comment-text" 
             placeholder="add a comment"
-            rows="6"/>
+            rows="6"
+            value={this.state.body}/>
 
           <input type="submit" className="comment-submit" value="Comment"/>
         </form>

@@ -29,6 +29,11 @@ class Tags extends React.Component {
         photo_id: photoId
       });
     this.props.createTag(tag);
+
+    this.setState({
+      name: "",
+      photo_id:""
+    })
   }
 
   handleDelete(e) {
@@ -45,7 +50,8 @@ class Tags extends React.Component {
           type="text" 
           onChange={this.updateName} 
           placeholder="tag name"
-          className="tag-text-input"/>
+          className="tag-text-input"
+          value={this.state.name}/>
         <input 
           type="submit" 
           value="Create Tag"
