@@ -2,7 +2,8 @@ import * as AlbumAPIUtil from '../util/album_api_util';
 
 export const RECEIVE_ALL_ALBUMS = "RECEIVE_ALL_ALBUMS";
 export const RECEIVE_ALBUM = "RECEIVE_ALBUM";
-export const REMOVE_ALBUM = "REMOVE_ALBUM"
+export const REMOVE_ALBUM = "REMOVE_ALBUM";
+export const CLEAR_ALBUMS = "CLEAR_ALBUMS";
 
 export const RECEIVE_ALBUM_ERRORS = "RECEIVE_ALBUM_ERRORS";
 export const REMOVE_ALBUM_ERRORS = "REMOVE_ALBUM_ERRORS";
@@ -21,6 +22,10 @@ const removeAlbum = (albumId) => ({
   type: REMOVE_ALBUM,
   albumId
 });
+
+export const clearAlbums = () => ({
+  type: CLEAR_ALBUMS
+})
 
 const receiveAlbumErrors = (errors) => ({
   type: RECEIVE_ALBUM_ERRORS,

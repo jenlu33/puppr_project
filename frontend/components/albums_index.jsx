@@ -15,15 +15,17 @@ class AlbumsIndex extends React.Component {
     this.props.fetchUser(this.props.match.params.userId);
   };
 
+  componentWillUnmount() {
+    this.props.clearAlbums();
+  }
+
   viewAlbum(e) {
     this.props.history.push(`/albums/${e.currentTarget.id}`)
   }
 
   render() {
     const {showUser, currentUser, albums} = this.props;
-    // const albumCover = albums.photos ? (
-    //   album.photos
-    // ):(null)
+ 
     if (!showUser) return null;
     return (
       <div className="main-album-index-div">

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import AlbumIndex from '../albums_index';
-import { fetchAlbums } from '../../actions/album_actions';
+import { fetchAlbums, clearAlbums } from '../../actions/album_actions';
 import { log_out } from '../../actions/session_actions';
 import { fetchUser } from '../../actions/user_actions';
 
@@ -12,9 +12,10 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  displayAlbums: (userId) => dispatch(fetchAlbums(userId)),
+  logout: () => dispatch(log_out()),
   fetchUser: (userId) => dispatch(fetchUser(userId)),
-  logout: () => dispatch(log_out())
+  displayAlbums: (userId) => dispatch(fetchAlbums(userId)),
+  clearAlbums: () => dispatch(clearAlbums())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AlbumIndex);

@@ -90,7 +90,7 @@
 /*!*******************************************!*\
   !*** ./frontend/actions/album_actions.js ***!
   \*******************************************/
-/*! exports provided: RECEIVE_ALL_ALBUMS, RECEIVE_ALBUM, REMOVE_ALBUM, RECEIVE_ALBUM_ERRORS, REMOVE_ALBUM_ERRORS, removeAlbumErrors, fetchAlbums, fetchAlbum, createAlbum, deleteAlbum */
+/*! exports provided: RECEIVE_ALL_ALBUMS, RECEIVE_ALBUM, REMOVE_ALBUM, CLEAR_ALBUMS, RECEIVE_ALBUM_ERRORS, REMOVE_ALBUM_ERRORS, clearAlbums, removeAlbumErrors, fetchAlbums, fetchAlbum, createAlbum, deleteAlbum */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -98,8 +98,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_ALBUMS", function() { return RECEIVE_ALL_ALBUMS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALBUM", function() { return RECEIVE_ALBUM; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_ALBUM", function() { return REMOVE_ALBUM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_ALBUMS", function() { return CLEAR_ALBUMS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALBUM_ERRORS", function() { return RECEIVE_ALBUM_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_ALBUM_ERRORS", function() { return REMOVE_ALBUM_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearAlbums", function() { return clearAlbums; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeAlbumErrors", function() { return removeAlbumErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAlbums", function() { return fetchAlbums; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAlbum", function() { return fetchAlbum; });
@@ -110,6 +112,7 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_ALL_ALBUMS = "RECEIVE_ALL_ALBUMS";
 var RECEIVE_ALBUM = "RECEIVE_ALBUM";
 var REMOVE_ALBUM = "REMOVE_ALBUM";
+var CLEAR_ALBUMS = "CLEAR_ALBUMS";
 var RECEIVE_ALBUM_ERRORS = "RECEIVE_ALBUM_ERRORS";
 var REMOVE_ALBUM_ERRORS = "REMOVE_ALBUM_ERRORS";
 
@@ -131,6 +134,12 @@ var removeAlbum = function removeAlbum(albumId) {
   return {
     type: REMOVE_ALBUM,
     albumId: albumId
+  };
+};
+
+var clearAlbums = function clearAlbums() {
+  return {
+    type: CLEAR_ALBUMS
   };
 };
 
@@ -970,6 +979,11 @@ var AlbumsIndex = /*#__PURE__*/function (_React$Component) {
       this.props.fetchUser(this.props.match.params.userId);
     }
   }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.props.clearAlbums();
+    }
+  }, {
     key: "viewAlbum",
     value: function viewAlbum(e) {
       this.props.history.push("/albums/".concat(e.currentTarget.id));
@@ -982,10 +996,7 @@ var AlbumsIndex = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           showUser = _this$props.showUser,
           currentUser = _this$props.currentUser,
-          albums = _this$props.albums; // const albumCover = albums.photos ? (
-      //   album.photos
-      // ):(null)
-
+          albums = _this$props.albums;
       if (!showUser) return null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-album-index-div"
@@ -1404,14 +1415,17 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    displayAlbums: function displayAlbums(userId) {
-      return dispatch(Object(_actions_album_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAlbums"])(userId));
+    logout: function logout() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["log_out"])());
     },
     fetchUser: function fetchUser(userId) {
       return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_4__["fetchUser"])(userId));
     },
-    logout: function logout() {
-      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["log_out"])());
+    displayAlbums: function displayAlbums(userId) {
+      return dispatch(Object(_actions_album_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAlbums"])(userId));
+    },
+    clearAlbums: function clearAlbums() {
+      return dispatch(Object(_actions_album_actions__WEBPACK_IMPORTED_MODULE_2__["clearAlbums"])());
     }
   };
 };
@@ -3163,6 +3177,9 @@ var albumsReducer = function albumsReducer() {
       delete newState[action.albumId];
       return newState;
 
+    case _actions_album_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_ALBUMS"]:
+      return {};
+
     default:
       return state;
   }
@@ -3523,7 +3540,7 @@ var tagsReducer = function tagsReducer() {
       return Object.assign({}, state, action.tags);
 
     case _actions_tag_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_TAG"]:
-      return Object.assign({}, _defineProperty({}, action.tag.id, action.tag));
+      return Object.assign({}, state, _defineProperty({}, action.tag.id, action.tag));
 
     case _actions_tag_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_TAG"]:
       var newState = Object.assign({}, state);
