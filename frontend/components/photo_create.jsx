@@ -43,6 +43,9 @@ class CreatePhoto extends React.Component {
 
   handleFile(e) {
     const file = e.currentTarget.files[0];
+    const fileSize = Math.floor(file.size/1024);
+    const validFile = fileSize < 3072
+
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
       this.setState({
@@ -51,9 +54,20 @@ class CreatePhoto extends React.Component {
         upload: true
       });
     };
-    if (file) {
+
+    if (!validFile) {
+      const uploadFalse = document.querySelector(".upload-false")
+      const error = document.createElement("p");
+      error.className = "upload-size-error"
+      error.innerHTML = "Please select a file size under 3mb";
+      uploadFalse.appendChild(error);
+      setTimeout(() => {
+        uploadFalse.removeChild(error)
+      }, 2000)
+    } else {
       fileReader.readAsDataURL(file);
     };
+    
   };
 
   renderErrors() {
@@ -102,12 +116,14 @@ class CreatePhoto extends React.Component {
         </div>
       </div>
     ) : (
-      <div className="fake-upload-btn">Choose photo to upload
-          <input
-          type="file"
-          onChange={this.handleFile}
-          className="photo-upload-btn"
-        />
+      <div className="upload-false">
+        <div className="fake-upload-btn">Choose photo to upload
+            <input
+            type="file"
+            onChange={this.handleFile}
+            className="photo-upload-btn"
+            />
+        </div>
       </div>
     )
 

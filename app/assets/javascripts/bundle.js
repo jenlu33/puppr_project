@@ -2117,6 +2117,8 @@ var CreatePhoto = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       var file = e.currentTarget.files[0];
+      var fileSize = Math.floor(file.size / 1024);
+      var validFile = fileSize < 3072;
       var fileReader = new FileReader();
 
       fileReader.onloadend = function () {
@@ -2127,7 +2129,16 @@ var CreatePhoto = /*#__PURE__*/function (_React$Component) {
         });
       };
 
-      if (file) {
+      if (!validFile) {
+        var uploadFalse = document.querySelector(".upload-false");
+        var error = document.createElement("p");
+        error.className = "upload-size-error";
+        error.innerHTML = "Please select a file size under 3mb";
+        uploadFalse.appendChild(error);
+        setTimeout(function () {
+          uploadFalse.removeChild(error);
+        }, 2000);
+      } else {
         fileReader.readAsDataURL(file);
       }
 
@@ -2181,12 +2192,14 @@ var CreatePhoto = /*#__PURE__*/function (_React$Component) {
         src: this.state.photoUrl,
         className: "preview"
       }))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "upload-false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "fake-upload-btn"
       }, "Choose photo to upload", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "file",
         onChange: this.handleFile,
         className: "photo-upload-btn"
-      }));
+      })));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-photo-form-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3635,7 +3648,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var configureStore = function configureStore() {
   var preLoadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__["default"], preLoadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"], redux_logger__WEBPACK_IMPORTED_MODULE_1___default.a));
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__["default"], preLoadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"]));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
