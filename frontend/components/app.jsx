@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactGA from "react-ga";
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
@@ -15,6 +16,11 @@ import AlbumEditContainer from './containers/album_edit_container';
 import TagPhotoIndex from './containers/tag_photo_index_container';
 
 import ErrorContainer from './error404'
+
+const initializeReactGA = () => {
+  ReactGA.initialize("UA-179294759-1");
+  ReactGA.pageview("/homepage");
+}
 
 const App = () => (
   <div>
