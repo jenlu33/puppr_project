@@ -1072,23 +1072,22 @@ var AlbumsIndex = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_ga__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-ga */ "./node_modules/react-ga/dist/esm/index.js");
-/* harmony import */ var history__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! history */ "./node_modules/history/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
-/* harmony import */ var _containers_greeting_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./containers/greeting_container */ "./frontend/components/containers/greeting_container.jsx");
-/* harmony import */ var _containers_signup_form_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./containers/signup_form_container */ "./frontend/components/containers/signup_form_container.jsx");
-/* harmony import */ var _containers_login_form_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./containers/login_form_container */ "./frontend/components/containers/login_form_container.jsx");
-/* harmony import */ var _containers_photo_show_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./containers/photo_show_container */ "./frontend/components/containers/photo_show_container.jsx");
-/* harmony import */ var _containers_photo_create_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./containers/photo_create_container */ "./frontend/components/containers/photo_create_container.jsx");
-/* harmony import */ var _containers_show_user_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./containers/show_user_container */ "./frontend/components/containers/show_user_container.jsx");
-/* harmony import */ var _containers_albums_index_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./containers/albums_index_container */ "./frontend/components/containers/albums_index_container.jsx");
-/* harmony import */ var _containers_album_create_container__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./containers/album_create_container */ "./frontend/components/containers/album_create_container.jsx");
-/* harmony import */ var _containers_album_show_container__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./containers/album_show_container */ "./frontend/components/containers/album_show_container.jsx");
-/* harmony import */ var _containers_album_edit_container__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./containers/album_edit_container */ "./frontend/components/containers/album_edit_container.jsx");
-/* harmony import */ var _containers_album_edit_container__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_containers_album_edit_container__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var _containers_tag_photo_index_container__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./containers/tag_photo_index_container */ "./frontend/components/containers/tag_photo_index_container.jsx");
-/* harmony import */ var _error404__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./error404 */ "./frontend/components/error404.jsx");
+/* harmony import */ var history__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! history */ "./node_modules/history/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
+/* harmony import */ var _containers_greeting_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./containers/greeting_container */ "./frontend/components/containers/greeting_container.jsx");
+/* harmony import */ var _containers_signup_form_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./containers/signup_form_container */ "./frontend/components/containers/signup_form_container.jsx");
+/* harmony import */ var _containers_login_form_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./containers/login_form_container */ "./frontend/components/containers/login_form_container.jsx");
+/* harmony import */ var _containers_photo_show_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./containers/photo_show_container */ "./frontend/components/containers/photo_show_container.jsx");
+/* harmony import */ var _containers_photo_create_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./containers/photo_create_container */ "./frontend/components/containers/photo_create_container.jsx");
+/* harmony import */ var _containers_show_user_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./containers/show_user_container */ "./frontend/components/containers/show_user_container.jsx");
+/* harmony import */ var _containers_albums_index_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./containers/albums_index_container */ "./frontend/components/containers/albums_index_container.jsx");
+/* harmony import */ var _containers_album_create_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./containers/album_create_container */ "./frontend/components/containers/album_create_container.jsx");
+/* harmony import */ var _containers_album_show_container__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./containers/album_show_container */ "./frontend/components/containers/album_show_container.jsx");
+/* harmony import */ var _containers_album_edit_container__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./containers/album_edit_container */ "./frontend/components/containers/album_edit_container.jsx");
+/* harmony import */ var _containers_album_edit_container__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_containers_album_edit_container__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _containers_tag_photo_index_container__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./containers/tag_photo_index_container */ "./frontend/components/containers/tag_photo_index_container.jsx");
+/* harmony import */ var _error404__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./error404 */ "./frontend/components/error404.jsx");
 
 
 
@@ -1105,53 +1104,43 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-react_ga__WEBPACK_IMPORTED_MODULE_1__["default"].initialize("UA-179294759-1");
-var history = Object(history__WEBPACK_IMPORTED_MODULE_2__["createBrowserHistory"])();
-history.listen(function (location) {
-  react_ga__WEBPACK_IMPORTED_MODULE_1__["default"].set({
-    page: location.pathname
-  }); // Update the user's current page
-
-  react_ga__WEBPACK_IMPORTED_MODULE_1__["default"].pageview(location.pathname); // Record a pageview for the given page
-});
 
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Switch"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["AuthRoute"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["AuthRoute"], {
     path: "/login",
-    component: _containers_login_form_container__WEBPACK_IMPORTED_MODULE_7__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["AuthRoute"], {
+    component: _containers_login_form_container__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["AuthRoute"], {
     path: "/signup",
-    component: _containers_signup_form_container__WEBPACK_IMPORTED_MODULE_6__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["ProtectedRoute"], {
+    component: _containers_signup_form_container__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
     path: "/photos/:photoId",
-    component: _containers_photo_show_container__WEBPACK_IMPORTED_MODULE_8__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["ProtectedRoute"], {
+    component: _containers_photo_show_container__WEBPACK_IMPORTED_MODULE_7__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
     path: "/upload",
-    component: _containers_photo_create_container__WEBPACK_IMPORTED_MODULE_9__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["ProtectedRoute"], {
+    component: _containers_photo_create_container__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
     exact: true,
     path: "/users/:userId",
-    component: _containers_show_user_container__WEBPACK_IMPORTED_MODULE_10__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["ProtectedRoute"], {
+    component: _containers_show_user_container__WEBPACK_IMPORTED_MODULE_9__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
     exact: true,
     path: "/users/:userId/albums",
-    component: _containers_albums_index_container__WEBPACK_IMPORTED_MODULE_11__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["ProtectedRoute"], {
+    component: _containers_albums_index_container__WEBPACK_IMPORTED_MODULE_10__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
     path: "/album/new",
-    component: _containers_album_create_container__WEBPACK_IMPORTED_MODULE_12__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["ProtectedRoute"], {
+    component: _containers_album_create_container__WEBPACK_IMPORTED_MODULE_11__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
     path: "/albums/:albumId",
-    component: _containers_album_show_container__WEBPACK_IMPORTED_MODULE_13__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["ProtectedRoute"], {
+    component: _containers_album_show_container__WEBPACK_IMPORTED_MODULE_12__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
     path: "/tags/:tagId",
-    component: _containers_tag_photo_index_container__WEBPACK_IMPORTED_MODULE_15__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
+    component: _containers_tag_photo_index_container__WEBPACK_IMPORTED_MODULE_14__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     exact: true,
     path: "/",
-    component: _containers_greeting_container__WEBPACK_IMPORTED_MODULE_5__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
-    component: _error404__WEBPACK_IMPORTED_MODULE_16__["default"]
+    component: _containers_greeting_container__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    component: _error404__WEBPACK_IMPORTED_MODULE_15__["default"]
   })));
 };
 
@@ -2576,19 +2565,30 @@ var PhotosIndex = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app */ "./frontend/components/app.jsx");
+/* harmony import */ var react_ga__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-ga */ "./node_modules/react-ga/dist/esm/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app */ "./frontend/components/app.jsx");
 
 
 
 
+
+react_ga__WEBPACK_IMPORTED_MODULE_1__["default"].initialize("UA-179294759-1");
 
 var Root = function Root(_ref) {
   var store = _ref.store;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_1__["Provider"], {
+  var history = createBrowserHistory();
+  history.listen(function () {
+    react_ga__WEBPACK_IMPORTED_MODULE_1__["default"].set({
+      page: history.location.hash
+    }); // Update the user's current page
+
+    react_ga__WEBPACK_IMPORTED_MODULE_1__["default"].pageview(history.location.hash); // Record a pageview for the given page
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_2__["Provider"], {
     store: store
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["HashRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_app__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["HashRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_app__WEBPACK_IMPORTED_MODULE_4__["default"], null)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Root);
