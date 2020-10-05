@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactGA from 'react-ga';
-import { createBrowserHistory } from "history";
+import { createBrowserHistory } from "history"; 
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 import App from './app';
